@@ -170,7 +170,7 @@ export default function SignIn(props) {
         setPage(page);
     }
     return (
-        <Box>a
+        <Box>
             {error ? (<Alert severity="error" variant="outlined">
                 <AlertTitle>Error</AlertTitle>
                 {errorMessage}
