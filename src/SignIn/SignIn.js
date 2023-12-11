@@ -196,7 +196,7 @@ export default function SignIn(props) {
                                 }}>
                                     <Fade in={page == ''} >
                                         <Card sx={{
-                                            bgcolor: '#16191a', height: '50vh', m: '20px', alignItems: 'center', display: "flex", flexDirection: "column",
+                                            bgcolor: '#16191a', height: '50vh', margin: '20px', alignItems: 'center', display: "flex", flexDirection: "column",
                                             justifyContent: "center"
                                         }}>
 
