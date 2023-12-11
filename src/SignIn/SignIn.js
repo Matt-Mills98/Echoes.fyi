@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Box,  Link } from "@mui/material";
+import { Box, Link } from "@mui/material";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Grid from "@mui/material/Grid";
@@ -196,7 +196,7 @@ export default function SignIn(props) {
                                 }}>
                                     <Fade in={page == ''} >
                                         <Card sx={{
-                                            bgcolor: '#16191a', height: '50vh', ml: '20px',mt: '20px',mb: '20px',mr: '20px', alignItems: 'center', display: "flex", flexDirection: "column",
+                                            bgcolor: '#16191a', m: '20px', pt: { xs: '100px', md: '100px', lg: '200px', xl: '200px' }, pb: { xs: '100px', md: '100px', lg: '200px', xl: '200px' }, alignItems: 'center', display: "flex", flexDirection: "column",
                                             justifyContent: "center"
                                         }}>
 
@@ -399,9 +399,7 @@ export default function SignIn(props) {
                                     </Grow>
                                 </Grid>
                             }
-                            <Grid item xs={12} md={12} lg={0} xl={0}>
-                                <Box component='img' src='./SignInArt.png' width={{ xs: '100%', md: '100%', lg: '0%', xl: '0%' }}></Box>
-                            </Grid>
+
 
 
                         </Grid >
