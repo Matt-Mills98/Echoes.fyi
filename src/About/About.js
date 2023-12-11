@@ -34,16 +34,14 @@ export default function SignIn() {
                     </CardContent>
                     <CardContent>
                         <Typography align="left" sx={{ color: '#71c1e3' }} gutterBottom variant="h5" component="div">
-                            Description of Functions
+                            Description of Pages
                         </Typography>
                         <Box marginLeft={'20px'} marginTop={'20px'}>
                             <Typography align="left" sx={{ color: '#c4c4c4' }} gutterBottom variant="h6" component="div">
                                 Home
                             </Typography>
                             <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-                                Echoes.fyi is a web application built with the purpose of making Spotify information/data more available to the public.
-                                Echoes.fyi links to your Spotify account to display relevant track, artist, and album information that may not be easily accessible in a way that is easily comprehendable.
-                                This information is then used for various purposes, including song recommendations and search filtering. Feel free to reach out reach out via the contact section for any feature requests or bug reports.
+                                Displays general playlists, including Spotify Featured, Top Global, Top Local, and more.
                             </Typography>
                         </Box>
                         <Box marginLeft={'20px'} marginTop={'20px'}>
@@ -51,9 +49,7 @@ export default function SignIn() {
                                 Recommendations
                             </Typography>
                             <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-                                Echoes.fyi is a web application built with the purpose of making Spotify information/data more available to the public.
-                                Echoes.fyi links to your Spotify account to display relevant track, artist, and album information that may not be easily accessible in a way that is easily comprehendable.
-                                This information is then used for various purposes, including song recommendations and search filtering. Feel free to reach out reach out via the contact section for any feature requests or bug reports.
+                                Uses Spotify's algorithms to recommend songs based on a number of factors. These recommendations can be filtered via popularity, genres, tempo, key, etc. to allow the user more control over their recommendations.
                             </Typography>
                         </Box>
                         <Box marginLeft={'20px'} marginTop={'20px'}>
@@ -61,9 +57,7 @@ export default function SignIn() {
                                 Search
                             </Typography>
                             <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-                                Echoes.fyi is a web application built with the purpose of making Spotify information/data more available to the public.
-                                Echoes.fyi links to your Spotify account to display relevant track, artist, and album information that may not be easily accessible in a way that is easily comprehendable.
-                                This information is then used for various purposes, including song recommendations and search filtering. Feel free to reach out reach out via the contact section for any feature requests or bug reports.
+                                Utilizes Spotify's search functionality to allow users to view and preview results based on several filters. Users can select the results they would like to see as well as include tags to narrow results.
                             </Typography>
                         </Box>
                         <Box marginLeft={'20px'} marginTop={'20px'}>
@@ -71,9 +65,7 @@ export default function SignIn() {
                                 Profile
                             </Typography>
                             <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-                                Echoes.fyi is a web application built with the purpose of making Spotify information/data more available to the public.
-                                Echoes.fyi links to your Spotify account to display relevant track, artist, and album information that may not be easily accessible in a way that is easily comprehendable.
-                                This information is then used for various purposes, including song recommendations and search filtering. Feel free to reach out reach out via the contact section for any feature requests or bug reports.
+                                Profile returns data depending on the logged in user. A user can see their liked songs, created and followed playlists, and followed artists. All information pertaining to these items can be displayed by clicking on a selected row.
                             </Typography>
                         </Box>
                     </CardContent>
@@ -82,7 +74,7 @@ export default function SignIn() {
                             Contact
                         </Typography>
                         <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-                            Email:
+                            Email: contact@echoesfyi.com
                         </Typography>
                     </CardContent>
                 </Card>
@@ -156,7 +148,7 @@ export default function SignIn() {
                                         General bug fixes
                                     </Typography>
                                     <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-                                        
+
                                     </Typography>
                                 </Box>
                             </CardContent>

@@ -1,6 +1,6 @@
 
 export default async function refreshToken() {
-    const clientId = "76b9997e54d64867998b1a05ed376b2c";
+    const clientId = "cb2281b91efd4dd2a548e71374e311ff";
 
     const refresh = localStorage.getItem('refreshToken');
     const url = 'https://accounts.spotify.com/api/token';

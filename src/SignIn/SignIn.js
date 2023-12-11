@@ -12,7 +12,7 @@ import Grow from '@mui/material/Grow';
 import Fade from '@mui/material/Fade';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
-const clientId = "76b9997e54d64867998b1a05ed376b2c";
+const clientId = "cb2281b91efd4dd2a548e71374e311ff";
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
 
@@ -36,7 +36,7 @@ async function redirectToAuthCodeFlow(clientId) {
         const params = new URLSearchParams();
         params.append("client_id", clientId);
         params.append("response_type", "code");
-        params.append("redirect_uri", "http://localhost:5173/callback");
+        params.append("redirect_uri", "https://echoes.fyi/callback");
         params.append("scope", "user-read-private user-read-email playlist-read-collaborative playlist-read-private user-read-recently-played user-library-read user-library-modify user-follow-read streaming user-modify-playback-state user-top-read");
         params.append("code_challenge_method", "S256");
         params.append("code_challenge", challenge);
@@ -95,7 +95,7 @@ export default function SignIn(props) {
             params2.append("client_id", clientId);
             params2.append("grant_type", "authorization_code");
             params2.append("code", code);
-            params2.append("redirect_uri", "http://localhost:5173/callback");
+            params2.append("redirect_uri", "https://echoes.fyi/callback");
             params2.append("code_verifier", verifier);
 
             await fetch("https://accounts.spotify.com/api/token", {
@@ -114,7 +114,7 @@ export default function SignIn(props) {
                         localStorage.setItem("refreshToken", refresh_token);
                         await getProfile(access_token);
                         await getGenres(access_token);
-                        document.location = 'http://localhost:5173/';
+                        document.location = 'https://echoes.fyi/';
                         window.document.title = 'Home'
                     }
                     else {

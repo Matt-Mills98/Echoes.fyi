@@ -10,7 +10,7 @@ export default function Callback() {
 
 
     const getAccessToken = async () =>{
-        const clientId = "76b9997e54d64867998b1a05ed376b2c";
+        const clientId = "cb2281b91efd4dd2a548e71374e311ff";
         const params = new URLSearchParams(window.location.search);
         const code = params.get("code");
         const verifier = localStorage.getItem("verifier");
@@ -20,7 +20,7 @@ export default function Callback() {
             params2.append("client_id", clientId);
             params2.append("grant_type", "authorization_code");
             params2.append("code", code);
-            params2.append("redirect_uri", "http://localhost:3000/callback");
+            params2.append("redirect_uri", "https://echoes.fyi/callback");
             params2.append("code_verifier", verifier);
             console.log(code);
 
