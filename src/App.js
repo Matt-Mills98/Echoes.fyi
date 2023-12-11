@@ -350,7 +350,7 @@ function ResponsiveAppBar() {
                     component="img"
 
                     sx={{
-                      display: { xs: 'none', md: 'flex', width: '150px' }, mr: 1
+                      display: { xs: 'none', md: 'flex', width: '100px' }, mr: 1
                     }}
                     alt="Echoes Logo"
                     src="EchoesTextLogo.png"
