@@ -342,7 +342,7 @@ function ResponsiveAppBar() {
       <BrowserRouter>
         {(refreshToken == null || accessToken == null || refreshToken == '' || accessToken == '') ? (
           <Box sx={{ bgcolor: '#0f0f0f', minHeight: '100vh', height: '100%' }}><SignIn ></SignIn></Box>) : (
-          <div><AppBar position="sticky" variant='dense' sx={{ background: 'linear-gradient(to right bottom, #4daad1, #0d4157)', minWidth: '100%', maxWidth: '100%' }}>
+          <div><AppBar position="sticky"  sx={{ background: 'linear-gradient(to right bottom, #4daad1, #0d4157)', minWidth: '100%', maxWidth: '100%' }}>
             <Container sx={{ width: '95vw', maxWidth: '100vw' }} maxWidth={false}>
               <Toolbar disableGutters>
                 <Box component={Link} to='/About' >
@@ -430,7 +430,7 @@ function ResponsiveAppBar() {
                   component="img"
                   sx={{
                     mr: 2,
-                    display: { xs: 'flex', md: 'none', maxWidth: '150px' },
+                    display: { xs: 'flex', md: 'none', maxWidth: '100px' },
                     flexGrow: 1,
                   }}
                   alt="Echoes Logo"
