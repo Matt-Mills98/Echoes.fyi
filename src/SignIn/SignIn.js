@@ -83,7 +83,7 @@ export default function SignIn(props) {
     }
 
     const getAccessToken = async () => {
-        const clientId = "76b9997e54d64867998b1a05ed376b2c";
+        const clientId = "cb2281b91efd4dd2a548e71374e311ff";
 
         if (code != '' && code != null) {
             console.log(code);
