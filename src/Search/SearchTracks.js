@@ -16,7 +16,7 @@ import Snackbar from '@mui/material/Snackbar';
 import CircularProgress from '@mui/material/CircularProgress';
 import Backdrop from '@mui/material/Backdrop';
 
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -44,6 +44,8 @@ import GetWindowDimensions from '../WindowDimensions/WindowDimensions';
 import AnalysisDialog from '../Profile/AnalysisDialog';
 import refreshTokenFunc from '../SignIn/RefreshToken';
 import checkAccessToken from '../SignIn/CheckAccessToken'
+import AnalyticsIcon from '@mui/icons-material/Analytics';
+
 function msToTime(duration) {
     var milliseconds = Math.floor((duration % 1000) / 100),
         seconds = Math.floor((duration / 1000) % 60),
@@ -132,9 +134,7 @@ function stableSortArtist(array, comparator) {
     return stabilizedThis?.map((el) => el[0]);
 }
 export default function StickyHeadTable(props) {
-    let { aT } = props;
-
-    const { rows, setRows, initPlayingArr, playingArr, setIsPlayingArr, setIndex, setType, setTrackID, trackID } = props;
+    const { aT, rows, setRows, initPlayingArr, playingArr, setIsPlayingArr, setIndex, setType, setTrackID, trackID } = props;
     const { height, width } = GetWindowDimensions();
     const [order, setOrder] = React.useState('desc');
     const [orderBy, setOrderBy] = React.useState('');
@@ -293,9 +293,9 @@ export default function StickyHeadTable(props) {
         navigator.clipboard.writeText(codestring);
     }
     const openMenu = (event, item, index) => {
-        setOpenMore(event.currentTarget);
         setMenuItem(item);
-        setItemIndex(index);
+        setItemIndex(index)
+        setOpenMore(event.currentTarget);
     }
     const artistsOpenMenu = (event) => {
         setArtistsOpenMore(event.currentTarget);
@@ -328,43 +328,57 @@ export default function StickyHeadTable(props) {
         setOpenSnackbar(true);
         setSnackbarMessage('Error: Audio Preview not supplied by Spotify');
     }
-    const handleClickOpen = async (trackLocal) => {
-        setLoading(true);
-
-        await fetch("https://api.spotify.com/v1/audio-analysis/" + trackLocal.id, {
-            method: "GET", headers: { Authorization: `Bearer ${aT}` }
-        })
-            .then(async (result) => {
-                if (result.ok) {
-                    const json = await result.json();
-                    setAnalysis(json);
-
-                }
-                else {
-                    setOpenSnackbar(true);
-                    setSnackbarMessage('Error: Failed to retrieve audio analysis');;
-                }
-            });
-
-        await fetch("https://api.spotify.com/v1/audio-features/" + trackLocal.id, {
-            method: "GET", headers: { Authorization: `Bearer ${aT}` }
-        })
-            .then(async (result) => {
-                if (result.ok) {
-                    const json = await result.json();
-                    setFeatures(json);
-
-                }
-                else {
-                    setOpenSnackbar(true);
-                    setSnackbarMessage('Error: Failed to retrieve audio features');
-                }
-            });
-        setTrack(trackLocal);
-        setOpen(true);
-        setLoading(false);
+    const handleClickOpen = (event, item, actIndex, trackLocal) => {
+        if (width > 700) {
+            openAnalysis(trackLocal);
+        }
+        else {
+            openMenu(event, item, actIndex)
+        }
 
     };
+    const openAnalysis = async (trackLocal) => {
+        if (!checkAccessToken()) {
+
+            setLoading(true);
+
+            await fetch("https://api.spotify.com/v1/audio-analysis/" + trackLocal.id, {
+                method: "GET", headers: { Authorization: `Bearer ${aT}` }
+            })
+                .then(async (result) => {
+                    if (result.ok) {
+                        const json = await result.json();
+                        setAnalysis(json);
+
+                    }
+                    else {
+                        setOpenSnackbar(true);
+                        setSnackbarMessage('Error: Failed to retrieve audio analysis');;
+                    }
+                });
+
+            await fetch("https://api.spotify.com/v1/audio-features/" + trackLocal.id, {
+                method: "GET", headers: { Authorization: `Bearer ${aT}` }
+            })
+                .then(async (result) => {
+                    if (result.ok) {
+                        const json = await result.json();
+                        setFeatures(json);
+
+                    }
+                    else {
+                        setOpenSnackbar(true);
+                        setSnackbarMessage('Error: Failed to retrieve audio features');
+                    }
+                });
+            setTrack(trackLocal);
+            setOpen(true);
+            setLoading(false);
+        }
+        else {
+            refreshTokenFunc();
+        }
+    }
 
 
     const handleClose = (value) => {
@@ -400,7 +414,8 @@ export default function StickyHeadTable(props) {
                     ':hover': {
                         "&::-webkit-scrollbar-thumb": {
                             backgroundColor: '#272c2e'
-                        },},
+                        },
+                    },
 
                     "&::-webkit-scrollbar": {
                         width: '10px',
@@ -418,11 +433,13 @@ export default function StickyHeadTable(props) {
                         backgroundColor: '#16191a',
                         borderRadius: '4px',
                         height: '10px',
-                        
+
                     },
                 }}>
                     <Table size="small" stickyHeader aria-label="sticky table" sx={{
-                        bgcolor: '#16191a', display: 'block', width: '100%'
+                        bgcolor: '#16191a', display: 'block', width: '100%', '& .MuiTableCell-sizeSmall': {
+                            pt: '0px', pb: '0px', margin: '0px'
+                        },
                     }}>
                         <TableHead >
                             <TableRow >
@@ -553,14 +570,17 @@ export default function StickyHeadTable(props) {
                                         </Typography>
                                     </TableCell>
                                 }
-                                <TableCell
-                                    key={'more'}
-                                    align={'right'}
-                                    sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%' }}>
-                                    <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                        More
-                                    </Typography>
-                                </TableCell>
+                                {width > 700 &&
+
+                                    <TableCell
+                                        key={'more'}
+                                        align={'right'}
+                                        sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%' }}>
+                                        <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                            More
+                                        </Typography>
+                                    </TableCell>
+                                }
                             </TableRow>
                         </TableHead>
                         <TableBody >
@@ -609,16 +629,22 @@ export default function StickyHeadTable(props) {
                                             </div>)
                                             }
                                         </TableCell>
-                                        <TableCell sx={{ borderBottom: 'none', width: '35%', paddingTop: 0, paddingBottom: 0 }} onClick={() => { handleClickOpen(item) }}>
-                                            <Card elevation={0} sx={{ display: 'flex', bgcolor: 'transparent', width: '100%', padding: 0, }}>
-                                                <CardMedia component="img" sx={{ margin: 'auto', display: 'block', width: '50px', borderRadius: '4px' }}
+                                        <TableCell sx={{ borderBottom: 'none', width: '35%', paddingTop: 0, paddingBottom: 0 }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
+                                            <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
+                                                <CardMedia component="img" sx={{ p: '0px', m: '10px', ml: '0px', display: 'block', width: '40px', height: '40px', borderRadius: '2px' }}
                                                     image={item?.album?.images[1].url}
                                                 />
-                                                <CardContent sx={{ flex: '1 0 auto' }}>
-                                                    <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                                <Stack sx={{
+                                                    m: '0px', p: '0px',
+                                                    overflow: "hidden",
+                                                    "& .MuiCardContent-content": {
+                                                        overflow: "hidden"
+                                                    }
+                                                }} direction="column" alignItems="left" >
+                                                    <Typography noWrap sx={{ color: '#FFFFFF' }} variant="body2">
                                                         {item?.name}
                                                     </Typography>
-                                                    <Typography sx={{ color: '#999999' }} variant="body2">
+                                                    <Typography noWrap sx={{ color: '#999999' }} variant="body2">
 
                                                         <Stack direction="row" alignItems="center">
 
@@ -635,12 +661,12 @@ export default function StickyHeadTable(props) {
 
                                                         </Stack>
                                                     </Typography>
-                                                </CardContent>
-                                            </Card>
+                                                </Stack>
+                                            </Stack>
                                         </TableCell>
                                         {width > 800 &&
 
-                                            <TableCell sx={{ borderBottom: 'none', width: '35%', paddingTop: 0, paddingBottom: 0 }} onClick={() => { handleClickOpen(item) }}>
+                                            <TableCell sx={{ borderBottom: 'none', width: '35%', paddingTop: 0, paddingBottom: 0 }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
                                                 <Typography sx={{ color: '#999999' }} variant="body2">
                                                     {item?.album.name}
                                                 </Typography>
@@ -648,7 +674,7 @@ export default function StickyHeadTable(props) {
                                         }
                                         {width > 1400 &&
 
-                                            <TableCell sx={{ borderBottom: 'none', width: '15%', paddingTop: 0, paddingBottom: 0 }} onClick={() => { handleClickOpen(item) }}>
+                                            <TableCell sx={{ borderBottom: 'none', width: '15%', paddingTop: 0, paddingBottom: 0 }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
                                                 <Typography sx={{ color: '#999999' }} variant="body2">
                                                     {moment(item?.album?.release_date).fromNow()}
                                                 </Typography>
@@ -656,7 +682,7 @@ export default function StickyHeadTable(props) {
                                         }
                                         {width > 1000 &&
 
-                                            <TableCell sx={{ borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0 }} onClick={() => { handleClickOpen(item) }}>
+                                            <TableCell sx={{ borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0 }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
                                                 <Typography sx={{ color: '#999999' }} variant="body2">
                                                     {msToTime(item?.duration_ms)}
                                                 </Typography>
@@ -678,12 +704,14 @@ export default function StickyHeadTable(props) {
                                                     </div>)}
                                             </TableCell>
                                         }
-                                        <TableCell align={'right'} sx={{ borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0 }} >
-                                            <IconButton sx={{ color: '#999999' }} onClick={(event) => { openMenu(event, item, actIndex) }}>
-                                                <MoreHorizIcon sx={{ color: '#999999' }} />
-                                            </IconButton>
-                                        </TableCell>
+                                        {width > 700 &&
 
+                                            <TableCell align={'right'} sx={{ borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0 }} >
+                                                <IconButton sx={{ color: '#999999' }} onClick={(event) => { openMenu(event, item, actIndex) }}>
+                                                    <MoreHorizIcon sx={{ color: '#999999' }} />
+                                                </IconButton>
+                                            </TableCell>
+                                        }
                                     </TableRow>
 
                                 );
@@ -705,6 +733,21 @@ export default function StickyHeadTable(props) {
                                     'aria-labelledby': 'basic-button',
                                 }}
                             >
+                                {width <= 700 &&
+
+                                    <MenuItem sx={{
+                                        color: '#999999', ':hover': {
+                                            bgcolor: '#272c2e',
+                                            transition: '0.25s',
+                                            cursor: 'pointer'
+                                        },
+                                    }} onClick={() => { closeMenu(); openAnalysis(menuItem); }} >
+                                        <ListItemIcon >
+                                            <AnalyticsIcon sx={{ color: '#999999' }} />
+                                        </ListItemIcon>
+                                        <ListItemText>Get Analysis</ListItemText>
+                                    </MenuItem>
+                                }
                                 <MenuItem sx={{
                                     color: '#999999', ':hover': {
                                         bgcolor: '#272c2e',

@@ -44,6 +44,7 @@ import AnalysisDialog from './AnalysisDialog';
 import refreshTokenFunc from '../SignIn/RefreshToken';
 import checkAccessToken from '../SignIn/CheckAccessToken'
 import AlertTitle from '@mui/material/AlertTitle';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
 
 function msToTime(duration) {
     var milliseconds = Math.floor((duration % 1000) / 100),
@@ -329,7 +330,8 @@ export default function StickyHeadTable(props) {
     const openMenu = (event, item, index) => {
         setOpenMore(event.currentTarget);
         setMenuItem(item);
-        setItemIndex(index)
+        setItemIndex(index);
+
     }
     const artistsOpenMenu = (event) => {
         setArtistsOpenMore(event.currentTarget);
@@ -363,45 +365,57 @@ export default function StickyHeadTable(props) {
         setOpenSnackbar(true);
         setSnackbarMessage('Error: Audio Preview not supplied by Spotify');
     }
-    const handleClickOpen = async (trackLocal) => {
-        setLoading(true);
-
-        await fetch("https://api.spotify.com/v1/audio-analysis/" + trackLocal.id, {
-            method: "GET", headers: { Authorization: `Bearer ${aT}` }
-        })
-            .then(async (result) => {
-                if (result.ok) {
-                    const json = await result.json();
-                    setAnalysis(json);
-
-                }
-                else {
-                    setOpenSnackbar(true);
-                    setSnackbarMessage('Error: Failed to retrieve audio analysis');;
-                }
-            });
-
-        await fetch("https://api.spotify.com/v1/audio-features/" + trackLocal.id, {
-            method: "GET", headers: { Authorization: `Bearer ${aT}` }
-        })
-            .then(async (result) => {
-                if (result.ok) {
-                    const json = await result.json();
-                    setFeatures(json);
-
-                }
-                else {
-                    setOpenSnackbar(true);
-                    setSnackbarMessage('Error: Failed to retrieve audio features');
-                }
-            });
-        setTrack(trackLocal);
-        setOpen(true);
-        setLoading(false);
-
+    const handleClickOpen = (event, item, actIndex, trackLocal) => {
+        if (width > 700) {
+            openAnalysis(trackLocal);
+        }
+        else {
+            openMenu(event, item, actIndex)
+        }
     };
 
+    const openAnalysis = async (trackLocal) => {
+        if (!checkAccessToken()) {
 
+            setLoading(true);
+
+            await fetch("https://api.spotify.com/v1/audio-analysis/" + trackLocal.id, {
+                method: "GET", headers: { Authorization: `Bearer ${aT}` }
+            })
+                .then(async (result) => {
+                    if (result.ok) {
+                        const json = await result.json();
+                        setAnalysis(json);
+
+                    }
+                    else {
+                        setOpenSnackbar(true);
+                        setSnackbarMessage('Error: Failed to retrieve audio analysis');;
+                    }
+                });
+
+            await fetch("https://api.spotify.com/v1/audio-features/" + trackLocal.id, {
+                method: "GET", headers: { Authorization: `Bearer ${aT}` }
+            })
+                .then(async (result) => {
+                    if (result.ok) {
+                        const json = await result.json();
+                        setFeatures(json);
+
+                    }
+                    else {
+                        setOpenSnackbar(true);
+                        setSnackbarMessage('Error: Failed to retrieve audio features');
+                    }
+                });
+            setTrack(trackLocal);
+            setOpen(true);
+            setLoading(false);
+        }
+        else {
+            refreshTokenFunc();
+        }
+    }
     const handleClose = (value) => {
         setOpen(false);
     };
@@ -594,14 +608,17 @@ export default function StickyHeadTable(props) {
                                                 </Typography>
                                             </TableCell>
                                         }
-                                        <TableCell
-                                            key={'more'}
-                                            align={'right'}
-                                            sx={{ bgcolor: '#16191a', borderBottom: 'none', minWidth: '5%' }}>
-                                            <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                                More
-                                            </Typography>
-                                        </TableCell>
+                                        {width > 700 &&
+
+                                            <TableCell
+                                                key={'more'}
+                                                align={'right'}
+                                                sx={{ bgcolor: '#16191a', borderBottom: 'none', minWidth: '5%' }}>
+                                                <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                                    More
+                                                </Typography>
+                                            </TableCell>
+                                        }
                                     </TableRow>
                                 </TableHead>
                                 <TableBody >
@@ -657,17 +674,23 @@ export default function StickyHeadTable(props) {
                                                 </TableCell>
                                                 <TableCell sx={{
                                                     borderBottom: 'none', width: '35%', paddingTop: 0, paddingBottom: 0,
-                                                }} onClick={() => { handleClickOpen(item.track) }}>
+                                                }} onClick={(event) => { handleClickOpen(event, item, actIndex, item.track) }}>
                                                     <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
-                                                        <CardMedia component="img" sx={{ p: '0px', m: '10px', display: 'block', width: '40px', height: '40px', borderRadius: '2px' }}
+                                                        <CardMedia component="img" sx={{ p: '0px', m: '10px',ml:'0px', display: 'block', width: '40px', height: '40px', borderRadius: '2px' }}
                                                             image={item.track.album.images[1].url}
                                                         />
-                                                        <Stack sx={{ m: '0px', p: '0px' }} direction="column" alignItems="left">
+                                                        <Stack sx={{
+                                                            m: '0px', p: '0px',
+                                                            overflow: "hidden",
+                                                            "& .MuiCardContent-content": {
+                                                                overflow: "hidden"
+                                                            }
+                                                        }} direction="column" alignItems="left" >
 
-                                                            <Typography sx={{ color: '#FFFFFF', mt: '0px', p: '0px' }} variant="body2">
+                                                            <Typography noWrap sx={{ color: '#FFFFFF', mt: '0px', p: '0px' }} variant="body2">
                                                                 {item.track.name}
                                                             </Typography>
-                                                            <Typography sx={{ color: '#999999', m: '0px', p: '0px' }} variant="body2">
+                                                            <Typography noWrap sx={{ color: '#999999', m: '0px', p: '0px' }} variant="body2">
                                                                 <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
 
                                                                     {item.track.explicit ?
@@ -687,7 +710,7 @@ export default function StickyHeadTable(props) {
                                                 {width > 800 &&
                                                     <TableCell sx={{
                                                         borderBottom: 'none', width: '35%', paddingTop: 0, paddingBottom: 0,
-                                                    }} onClick={() => { handleClickOpen(item.track) }}>
+                                                    }} onClick={(event) => { handleClickOpen(event, item, actIndex, item.track) }}>
                                                         <Typography sx={{ color: '#999999' }} variant="body2">
                                                             {item.track.album.name}
                                                         </Typography>
@@ -696,7 +719,7 @@ export default function StickyHeadTable(props) {
                                                 {width > 1400 &&
                                                     <TableCell sx={{
                                                         borderBottom: 'none', width: '10%', paddingTop: 0, paddingBottom: 0,
-                                                    }} onClick={() => { handleClickOpen(item.track) }}>
+                                                    }} onClick={(event) => { handleClickOpen(event, item, actIndex, item.track) }}>
                                                         <Typography sx={{ color: '#999999' }} variant="body2">
                                                             {moment(item.added_at).fromNow()}
                                                         </Typography>
@@ -705,7 +728,7 @@ export default function StickyHeadTable(props) {
                                                 {width > 1000 &&
                                                     <TableCell sx={{
                                                         borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0,
-                                                    }} onClick={() => { handleClickOpen(item.track) }}>
+                                                    }} onClick={(event) => { handleClickOpen(event, item, actIndex, item.track) }}>
                                                         <Typography sx={{ color: '#999999' }} variant="body2">
                                                             {msToTime(item.track.duration_ms)}
                                                         </Typography>
@@ -728,13 +751,16 @@ export default function StickyHeadTable(props) {
                                                             </div>)}
                                                     </TableCell>
                                                 }
-                                                <TableCell align={'right'} sx={{
-                                                    borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0,
-                                                }} >
-                                                    <IconButton sx={{ color: '#999999' }} onClick={(event) => { openMenu(event, item, actIndex) }}>
-                                                        <MoreHorizIcon sx={{ color: '#999999' }} />
-                                                    </IconButton>
-                                                </TableCell>
+                                                {width > 700 &&
+
+                                                    <TableCell align={'right'} sx={{
+                                                        borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0,
+                                                    }} >
+                                                        <IconButton sx={{ color: '#999999' }} onClick={(event) => { openMenu(event, item, actIndex) }}>
+                                                            <MoreHorizIcon sx={{ color: '#999999' }} />
+                                                        </IconButton>
+                                                    </TableCell>
+                                                }
                                             </TableRow>
                                         );
                                     })}
@@ -753,6 +779,18 @@ export default function StickyHeadTable(props) {
                                             'aria-labelledby': 'basic-button',
                                         }}
                                     >
+                                        <MenuItem sx={{
+                                            color: '#999999', ':hover': {
+                                                bgcolor: '#272c2e',
+                                                transition: '0.25s',
+                                                cursor: 'pointer'
+                                            },
+                                        }} onClick={() => { closeMenu(); openAnalysis(menuItem?.track); }} >
+                                            <ListItemIcon >
+                                                <AnalyticsIcon sx={{ color: '#999999' }} />
+                                            </ListItemIcon>
+                                            <ListItemText>Get Analysis</ListItemText>
+                                        </MenuItem>
                                         <MenuItem sx={{
                                             color: '#999999', ':hover': {
                                                 bgcolor: '#272c2e',

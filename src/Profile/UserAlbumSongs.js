@@ -46,6 +46,7 @@ import AnalysisDialog from './AnalysisDialog';
 import refreshTokenFunc from '../SignIn/RefreshToken';
 import checkAccessToken from '../SignIn/CheckAccessToken'
 import AlertTitle from '@mui/material/AlertTitle';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
 
 
 
@@ -140,8 +141,7 @@ function stableSortArtist(array, comparator) {
     return stabilizedThis?.map((el) => el[0]);
 }
 export default function UserAlbumSongs(props) {
-    let { aT } = props;
-    const { playlistID, playlistName, albumDateAdded, albumMedia, setDisplayed, setSelectedPlaylist, setSelectedPlaylistName, setDateAdded, setAlbumMedia, setArtistID, setRows, playingArr, setIsPlayingArr, setIndex, setType, updateGlobalMedia, setTrackID, trackID } = props;
+    const { aT, playlistID, playlistName, albumDateAdded, albumMedia, setDisplayed, setSelectedPlaylist, setSelectedPlaylistName, setDateAdded, setAlbumMedia, setArtistID, setRows, playingArr, setIsPlayingArr, setIndex, setType, updateGlobalMedia, setTrackID, trackID } = props;
     const { width } = GetWindowDimensions();
     const [order, setOrder] = React.useState('desc');
     const [orderBy, setOrderBy] = React.useState('');
@@ -336,9 +336,10 @@ export default function UserAlbumSongs(props) {
         navigator.clipboard.writeText(codestring);
     }
     const openMenu = (event, item, index) => {
-        setOpenMore(event.currentTarget);
         setMenuItem(item);
         setItemIndex(index)
+        setOpenMore(event.currentTarget);
+
 
     }
     const artistsOpenMenu = (event) => {
@@ -369,7 +370,16 @@ export default function UserAlbumSongs(props) {
     const changePage = (event, value) => {
         setPage(value)
     }
-    const handleClickOpen = async (trackLocal) => {
+    const handleClickOpen = (event, item, actIndex, trackLocal) => {
+        if (width > 700) {
+            openAnalysis(trackLocal);
+        }
+        else {
+            openMenu(event, item, actIndex)
+        }
+
+    };
+    const openAnalysis = async (trackLocal) => {
         if (!checkAccessToken()) {
 
             setLoading(true);
@@ -410,9 +420,7 @@ export default function UserAlbumSongs(props) {
         else {
             refreshTokenFunc();
         }
-
-    };
-
+    }
     const handleClose = (value) => {
         setOpen(false);
     };
@@ -476,7 +484,9 @@ export default function UserAlbumSongs(props) {
                             },
                         }}>
                             <Table size="small" stickyHeader aria-label="sticky table" sx={{
-                                bgcolor: '#16191a', display: 'block'
+                                bgcolor: '#16191a', display: 'block', '& .MuiTableCell-sizeSmall': {
+                                    pt: '0px', pb: '0px', margin: '0px'
+                                },
                             }}>
                                 <TableHead >
                                     <TableRow >
@@ -580,14 +590,17 @@ export default function UserAlbumSongs(props) {
                                                 </Typography>
                                             </TableCell>
                                         }
-                                        <TableCell
-                                            key={'more'}
-                                            align={'right'}
-                                            sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%' }}>
-                                            <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                                More
-                                            </Typography>
-                                        </TableCell>
+                                        {width > 700 &&
+
+                                            <TableCell
+                                                key={'more'}
+                                                align={'right'}
+                                                sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%' }}>
+                                                <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                                    More
+                                                </Typography>
+                                            </TableCell>
+                                        }
                                     </TableRow>
                                 </TableHead>
                                 <TableBody >
@@ -637,16 +650,22 @@ export default function UserAlbumSongs(props) {
 
                                                     }
                                                 </TableCell>
-                                                <TableCell sx={{ borderBottom: 'none', width: '35%' }} onClick={() => { handleClickOpen(item) }}>
-                                                    <Card elevation={0} sx={{ display: 'flex', bgcolor: 'transparent', width: '100%', padding: 0, }}>
-                                                        <CardMedia component="img" sx={{ margin: 'auto', display: 'block', width: '50px', borderRadius: '4px' }}
+                                                <TableCell sx={{ borderBottom: 'none', width: '35%' }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
+                                                    <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
+                                                        <CardMedia component="img" sx={{ p: '0px', m: '10px', ml: '0px', display: 'block', width: '40px', height: '40px', borderRadius: '2px' }}
                                                             image={albumMedia}
                                                         />
-                                                        <CardContent sx={{ flex: '1 0 auto' }} >
-                                                            <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                                        <Stack sx={{
+                                                            m: '0px', p: '0px',
+                                                            overflow: "hidden",
+                                                            "& .MuiCardContent-content": {
+                                                                overflow: "hidden"
+                                                            }
+                                                        }} direction="column" alignItems="left" >
+                                                            <Typography noWrap sx={{ color: '#FFFFFF' }} variant="body2">
                                                                 {item.name}
                                                             </Typography>
-                                                            <Typography sx={{ color: '#999999' }} variant="body2">
+                                                            <Typography noWrap sx={{ color: '#999999' }} variant="body2">
                                                                 <Stack direction="row" alignItems="center">
                                                                     {item.explicit ?
                                                                         (
@@ -659,12 +678,12 @@ export default function UserAlbumSongs(props) {
                                                                     {item.artists.map((artist, index) => (index ? ', ' : '') + artist.name)}
                                                                 </Stack>
                                                             </Typography>
-                                                        </CardContent>
-                                                    </Card>
+                                                        </Stack>
+                                                    </Stack>
                                                 </TableCell>
                                                 {width > 800 &&
 
-                                                    <TableCell sx={{ borderBottom: 'none', width: '35%' }} onClick={() => { handleClickOpen(item) }}>
+                                                    <TableCell sx={{ borderBottom: 'none', width: '35%' }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
                                                         <Typography sx={{ color: '#999999' }} variant="body2">
                                                             {playlistName}
                                                         </Typography>
@@ -672,7 +691,7 @@ export default function UserAlbumSongs(props) {
                                                 }
                                                 {width > 1400 &&
 
-                                                    <TableCell sx={{ borderBottom: 'none', width: '15%' }} onClick={() => { handleClickOpen(item) }}>
+                                                    <TableCell sx={{ borderBottom: 'none', width: '15%' }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
                                                         <Typography sx={{ color: '#999999' }} variant="body2">
                                                             {moment(albumDateAdded).fromNow()}
                                                         </Typography>
@@ -680,7 +699,7 @@ export default function UserAlbumSongs(props) {
                                                 }
                                                 {width > 1000 &&
 
-                                                    <TableCell sx={{ borderBottom: 'none', width: '5%' }} onClick={() => { handleClickOpen(item) }}>
+                                                    <TableCell sx={{ borderBottom: 'none', width: '5%' }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
                                                         <Typography sx={{ color: '#999999' }} variant="body2">
                                                             {msToTime(item.duration_ms)}
                                                         </Typography>
@@ -701,11 +720,14 @@ export default function UserAlbumSongs(props) {
                                                             </div>)}
                                                     </TableCell>
                                                 }
-                                                <TableCell align={'right'} sx={{ borderBottom: 'none', width: '5%' }} >
-                                                    <IconButton sx={{ color: '#999999' }} onClick={(event) => { openMenu(event, item, actIndex) }}>
-                                                        <MoreHorizIcon sx={{ color: '#999999' }} />
-                                                    </IconButton>
-                                                </TableCell>
+                                                {width > 700 &&
+
+                                                    <TableCell align={'right'} sx={{ borderBottom: 'none', width: '5%' }} >
+                                                        <IconButton sx={{ color: '#999999' }} onClick={(event) => { openMenu(event, item, actIndex) }}>
+                                                            <MoreHorizIcon sx={{ color: '#999999' }} />
+                                                        </IconButton>
+                                                    </TableCell>
+                                                }
                                             </TableRow>
                                         );
                                     })}
@@ -725,6 +747,21 @@ export default function UserAlbumSongs(props) {
                                             'aria-labelledby': 'basic-button',
                                         }}
                                     >
+                                        {width <= 700 &&
+
+                                            <MenuItem sx={{
+                                                color: '#999999', ':hover': {
+                                                    bgcolor: '#272c2e',
+                                                    transition: '0.25s',
+                                                    cursor: 'pointer'
+                                                },
+                                            }} onClick={() => { closeMenu(); openAnalysis(menuItem); }} >
+                                                <ListItemIcon >
+                                                    <AnalyticsIcon sx={{ color: '#999999' }} />
+                                                </ListItemIcon>
+                                                <ListItemText>Get Analysis</ListItemText>
+                                            </MenuItem>
+                                        }
                                         <MenuItem sx={{
                                             color: '#999999', ':hover': {
                                                 bgcolor: '#272c2e',
