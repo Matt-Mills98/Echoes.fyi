@@ -625,7 +625,7 @@ export default function StickyHeadTable(props) {
                                                         overflow: "hidden"
                                                     }
                                                 }} direction="column" alignItems="left" >
-                                                    <Typography noWrap sx={{ color: '#FFFFFF' }} variant="body2">
+                                                    <Typography noWrap sx={{ color: '#FFFFFF', fontSize: { xs: '14px', sm: '14px', md: '14px', lg: '14px', xl: '14px' }   }} variant="body2">
                                                         {item?.name}
                                                     </Typography>
                                                     <Stack direction="row" alignItems="center">

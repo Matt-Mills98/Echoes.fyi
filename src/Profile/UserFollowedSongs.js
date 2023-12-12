@@ -687,7 +687,7 @@ export default function StickyHeadTable(props) {
                                                             }
                                                         }} direction="column" alignItems="left" >
 
-                                                            <Typography noWrap sx={{ color: '#FFFFFF', mt: '0px', p: '0px' }} variant="body2">
+                                                            <Typography noWrap sx={{ color: '#FFFFFF', fontSize: { xs: '14px', sm: '14px', md: '14px', lg: '14px', xl: '14px' } }} variant="body2">
                                                                 {item.track.name}
                                                             </Typography>
                                                             <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
