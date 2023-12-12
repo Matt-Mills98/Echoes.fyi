@@ -687,22 +687,23 @@ export default function UserPlaylistSongs(props) {
                                                             <Typography noWrap sx={{ color: '#FFFFFF' }} variant="body2">
                                                                 {item.track.name}
                                                             </Typography>
-                                                            <Typography noWrap sx={{ color: '#999999' }} variant="body2">
-                                                                <Stack direction="row" alignItems="center">
+                                                            <Stack direction="row" alignItems="center">
 
-                                                                    {item.track.explicit ?
-                                                                        (
-                                                                            <ExplicitIcon fontSize={'small'} sx={{ color: '#999999', mr: '5px' }} />
+                                                                {item.track.explicit ?
+                                                                    (
+                                                                        <ExplicitIcon fontSize={'small'} sx={{ color: '#999999', mr: '5px' }} />
 
-                                                                        ) :
-                                                                        (
-                                                                            <div></div>
-                                                                        )}
+                                                                    ) :
+                                                                    (
+                                                                        <div></div>
+                                                                    )}
+                                                                <Typography noWrap sx={{ color: '#999999', fontSize:{xs:'11px', sm: '12px', md: '13px', lg:'14px', xl:'14px'}}} variant="body2">
+
                                                                     {item.track.artists.map((artist, index) => (index ? ', ' : '') + artist.name)}
 
+                                                                </Typography>
 
-                                                                </Stack>
-                                                            </Typography>
+                                                            </Stack>
                                                         </Stack>
                                                     </Stack>
                                                 </TableCell>

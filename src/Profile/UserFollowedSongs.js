@@ -676,7 +676,7 @@ export default function StickyHeadTable(props) {
                                                     borderBottom: 'none', width: '35%', paddingTop: 0, paddingBottom: 0,
                                                 }} onClick={(event) => { handleClickOpen(event, item, actIndex, item.track) }}>
                                                     <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
-                                                        <CardMedia component="img" sx={{ p: '0px', m: '10px',ml:'0px', display: 'block', width: '40px', height: '40px', borderRadius: '2px' }}
+                                                        <CardMedia component="img" sx={{ p: '0px', m: '10px', ml: '0px', display: 'block', width: '40px', height: '40px', borderRadius: '2px' }}
                                                             image={item.track.album.images[1].url}
                                                         />
                                                         <Stack sx={{
@@ -690,20 +690,22 @@ export default function StickyHeadTable(props) {
                                                             <Typography noWrap sx={{ color: '#FFFFFF', mt: '0px', p: '0px' }} variant="body2">
                                                                 {item.track.name}
                                                             </Typography>
-                                                            <Typography noWrap sx={{ color: '#999999', m: '0px', p: '0px' }} variant="body2">
-                                                                <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
+                                                            <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
 
-                                                                    {item.track.explicit ?
-                                                                        (
-                                                                            <ExplicitIcon fontSize={'small'} sx={{ color: '#999999', mr: '5px' }} />
-                                                                        ) :
-                                                                        (
-                                                                            <div></div>
-                                                                        )}
+                                                                {item.track.explicit ?
+                                                                    (
+                                                                        <ExplicitIcon fontSize={'small'} sx={{ color: '#999999', mr: '5px' }} />
+                                                                    ) :
+                                                                    (
+                                                                        <div></div>
+                                                                    )}
+                                                                <Typography noWrap sx={{ color: '#999999', fontSize: { xs: '11px', sm: '12px', md: '13px', lg: '14px', xl: '14px' } }} variant="body2">
+
                                                                     {item.track.artists.map((artist, index) => (index ? ', ' : '') + artist.name)}
-                                                                </Stack>
+                                                                </Typography>
 
-                                                            </Typography>
+                                                            </Stack>
+
                                                         </Stack>
                                                     </Stack>
                                                 </TableCell>

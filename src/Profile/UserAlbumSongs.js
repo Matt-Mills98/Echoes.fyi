@@ -665,19 +665,20 @@ export default function UserAlbumSongs(props) {
                                                             <Typography noWrap sx={{ color: '#FFFFFF' }} variant="body2">
                                                                 {item.name}
                                                             </Typography>
-                                                            <Typography noWrap sx={{ color: '#999999' }} variant="body2">
-                                                                <Stack direction="row" alignItems="center">
-                                                                    {item.explicit ?
-                                                                        (
-                                                                            <ExplicitIcon fontSize={'small'} sx={{ color: '#999999', mr: '5px' }} />
 
-                                                                        ) :
-                                                                        (
-                                                                            <div></div>
-                                                                        )}
+                                                            <Stack direction="row" alignItems="center">
+                                                                {item.explicit ?
+                                                                    (
+                                                                        <ExplicitIcon fontSize={'small'} sx={{ color: '#999999', mr: '5px' }} />
+
+                                                                    ) :
+                                                                    (
+                                                                        <div></div>
+                                                                    )}
+                                                                <Typography noWrap sx={{ color: '#999999', fontSize: { xs: '11px', sm: '12px', md: '13px', lg: '14px', xl: '14px' } }} variant="body2">
                                                                     {item.artists.map((artist, index) => (index ? ', ' : '') + artist.name)}
-                                                                </Stack>
-                                                            </Typography>
+                                                                </Typography>
+                                                            </Stack>
                                                         </Stack>
                                                     </Stack>
                                                 </TableCell>
@@ -1023,7 +1024,7 @@ export default function UserAlbumSongs(props) {
 
             )
             };
-        </Box>
+        </Box >
 
     );
 }

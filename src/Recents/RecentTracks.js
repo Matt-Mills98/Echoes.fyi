@@ -678,7 +678,7 @@ export default function StickyHeadTable(props) {
                                                 </TableCell>
                                                 <TableCell sx={{ borderBottom: 'none', width: '35%', paddingTop: 0, paddingBottom: 0 }} onClick={(event) => { handleClickOpen(event, item, actIndex, item.track) }}>
                                                     <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
-                                                        <CardMedia component="img" sx={{ p: '0px', m: '10px',ml:'0px', display: 'block', width: '40px', height: '40px', borderRadius: '2px' }}
+                                                        <CardMedia component="img" sx={{ p: '0px', m: '10px', ml: '0px', display: 'block', width: '40px', height: '40px', borderRadius: '2px' }}
                                                             image={item.track.album.images[1].url}
                                                         />
                                                         <Stack sx={{
@@ -687,26 +687,26 @@ export default function StickyHeadTable(props) {
                                                             "& .MuiCardContent-content": {
                                                                 overflow: "hidden"
                                                             }
-                                                        }} direction="column" alignItems="left" >                                                            
-                                                        <Typography noWrap sx={{ color: '#FFFFFF' }} variant="body2">
+                                                        }} direction="column" alignItems="left" >
+                                                            <Typography noWrap sx={{ color: '#FFFFFF' }} variant="body2">
                                                                 {item.track.name}
                                                             </Typography>
-                                                            <Typography noWrap sx={{ color: '#999999' }} variant="body2">
-                                                                <Stack direction="row" alignItems="center">
+                                                            <Stack direction="row" alignItems="center">
 
-                                                                    {item.track.explicit ?
-                                                                        (
-                                                                            <ExplicitIcon fontSize={'small'} sx={{ color: '#999999', mr: '5px' }} />
+                                                                {item.track.explicit ?
+                                                                    (
+                                                                        <ExplicitIcon fontSize={'small'} sx={{ color: '#999999', mr: '5px' }} />
 
-                                                                        ) :
-                                                                        (
-                                                                            <div></div>
-                                                                        )}
+                                                                    ) :
+                                                                    (
+                                                                        <div></div>
+                                                                    )}
+                                                                <Typography noWrap sx={{ color: '#999999', fontSize: { xs: '11px', sm: '12px', md: '13px', lg: '14px', xl: '14px' } }} variant="body2">
+
                                                                     {item.track.artists.map((artist, index) => (index ? ', ' : '') + artist.name)}
+                                                                </Typography>
 
-
-                                                                </Stack>
-                                                            </Typography>
+                                                            </Stack>
 
                                                         </Stack>
                                                     </Stack>
