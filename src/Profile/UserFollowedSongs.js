@@ -7,9 +7,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Card, CardMedia, CardContent, Typography } from '@mui/material';
 import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import moment from 'moment/moment';
+import IconButton from '@mui/material/IconButton';
 import Snackbar from '@mui/material/Snackbar';
 import Grid from '@mui/material/Grid';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -136,7 +136,7 @@ function stableSortArtist(array, comparator) {
 }
 export default function StickyHeadTable(props) {
     const { setDisplayed, setSelectedPlaylist, setSelectedPlaylistName, setDateAdded, setAlbumMedia, setArtistID, setRows, rows, initPlayingArr, playingArr, setIsPlayingArr, setIndex, setType, setTrackID, trackID } = props;
-    const {  width } = GetWindowDimensions();
+    const { width } = GetWindowDimensions();
     let { aT } = props
     const [order, setOrder] = React.useState('desc');
     const [orderBy, setOrderBy] = React.useState('added_at');
@@ -442,7 +442,8 @@ export default function StickyHeadTable(props) {
                             ':hover': {
                                 "&::-webkit-scrollbar-thumb": {
                                     backgroundColor: '#272c2e'
-                                },},
+                                },
+                            },
 
                             "&::-webkit-scrollbar": {
                                 width: '10px',
@@ -460,11 +461,15 @@ export default function StickyHeadTable(props) {
                                 backgroundColor: '#16191a',
                                 borderRadius: '4px',
                                 height: '10px',
-                                
+
                             },
                         }}>
                             <Table size="small" stickyHeader aria-label="sticky table" sx={{
-                                bgcolor: '#16191a', display: 'block', minWidth: '100%'
+                                bgcolor: '#16191a', display: 'block', minWidth: '100%',
+                                '& .MuiTableCell-sizeSmall': {
+                                    pt: '0px', pb: '0px', margin: '0px'
+                                },
+
                             }}>
                                 <TableHead sx={{ bgcolor: '#16191a', borderBottom: 'none', minWidth: '100%' }}>
                                     <TableRow >
@@ -611,7 +616,10 @@ export default function StickyHeadTable(props) {
                                                     cursor: 'pointer'
                                                 },
                                             }} tabIndex={-1} key={index} onMouseOver={() => { setIsHoveringArr(true, index) }} onMouseOut={() => { setIsHoveringArr(false, index) }} >
-                                                <TableCell align={'center'} sx={{ borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0 }} >
+                                                <TableCell align={'center'} sx={{
+                                                    borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0,
+
+                                                }} >
                                                     {width > 700 ? (
                                                         <div>
                                                             {hovering[index] ? (
@@ -647,17 +655,20 @@ export default function StickyHeadTable(props) {
 
                                                     }
                                                 </TableCell>
-                                                <TableCell sx={{ borderBottom: 'none', width: '35%', paddingTop: 0, paddingBottom: 0 }} onClick={() => { handleClickOpen(item.track) }}>
-                                                    <Card elevation={0} sx={{ display: 'flex', bgcolor: 'transparent', width: '100%', padding: 0, }}>
-                                                        <CardMedia component="img" sx={{ margin: 'auto', display: 'block', width: '50px', borderRadius: '2px' }}
+                                                <TableCell sx={{
+                                                    borderBottom: 'none', width: '35%', paddingTop: 0, paddingBottom: 0,
+                                                }} onClick={() => { handleClickOpen(item.track) }}>
+                                                    <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
+                                                        <CardMedia component="img" sx={{ p: '0px', m: '10px', display: 'block', width: '40px', height: '40px', borderRadius: '2px' }}
                                                             image={item.track.album.images[1].url}
                                                         />
-                                                        <CardContent sx={{ flex: '1 0 auto' }}>
-                                                            <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                                        <Stack sx={{ m: '0px', p: '0px' }} direction="column" alignItems="left">
+
+                                                            <Typography sx={{ color: '#FFFFFF', mt: '0px', p: '0px' }} variant="body2">
                                                                 {item.track.name}
                                                             </Typography>
-                                                            <Typography sx={{ color: '#999999' }} variant="body2">
-                                                                <Stack direction="row" alignItems="center">
+                                                            <Typography sx={{ color: '#999999', m: '0px', p: '0px' }} variant="body2">
+                                                                <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
 
                                                                     {item.track.explicit ?
                                                                         (
@@ -668,33 +679,42 @@ export default function StickyHeadTable(props) {
                                                                         )}
                                                                     {item.track.artists.map((artist, index) => (index ? ', ' : '') + artist.name)}
                                                                 </Stack>
+
                                                             </Typography>
-                                                        </CardContent>
-                                                    </Card>
+                                                        </Stack>
+                                                    </Stack>
                                                 </TableCell>
                                                 {width > 800 &&
-                                                    <TableCell sx={{ borderBottom: 'none', width: '35%', paddingTop: 0, paddingBottom: 0 }} onClick={() => { handleClickOpen(item.track) }}>
+                                                    <TableCell sx={{
+                                                        borderBottom: 'none', width: '35%', paddingTop: 0, paddingBottom: 0,
+                                                    }} onClick={() => { handleClickOpen(item.track) }}>
                                                         <Typography sx={{ color: '#999999' }} variant="body2">
                                                             {item.track.album.name}
                                                         </Typography>
                                                     </TableCell>
                                                 }
                                                 {width > 1400 &&
-                                                    <TableCell sx={{ borderBottom: 'none', width: '10%', paddingTop: 0, paddingBottom: 0 }} onClick={() => { handleClickOpen(item.track) }}>
+                                                    <TableCell sx={{
+                                                        borderBottom: 'none', width: '10%', paddingTop: 0, paddingBottom: 0,
+                                                    }} onClick={() => { handleClickOpen(item.track) }}>
                                                         <Typography sx={{ color: '#999999' }} variant="body2">
                                                             {moment(item.added_at).fromNow()}
                                                         </Typography>
                                                     </TableCell>
                                                 }
                                                 {width > 1000 &&
-                                                    <TableCell sx={{ borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0 }} onClick={() => { handleClickOpen(item.track) }}>
+                                                    <TableCell sx={{
+                                                        borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0,
+                                                    }} onClick={() => { handleClickOpen(item.track) }}>
                                                         <Typography sx={{ color: '#999999' }} variant="body2">
                                                             {msToTime(item.track.duration_ms)}
                                                         </Typography>
                                                     </TableCell>
                                                 }
                                                 {width > 700 &&
-                                                    <TableCell align={'right'} sx={{ borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0 }} >
+                                                    <TableCell align={'right'} sx={{
+                                                        borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0,
+                                                    }} >
                                                         {liked[actIndex] ? (
                                                             <IconButton sx={{ color: '#999999' }} onClick={(event) => { toggleLiked(liked[actIndex], item.track.id, actIndex); }}>
                                                                 <FavoriteIcon sx={{ color: '#71c1e3' }} />
@@ -708,7 +728,9 @@ export default function StickyHeadTable(props) {
                                                             </div>)}
                                                     </TableCell>
                                                 }
-                                                <TableCell align={'right'} sx={{ borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0 }} >
+                                                <TableCell align={'right'} sx={{
+                                                    borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0,
+                                                }} >
                                                     <IconButton sx={{ color: '#999999' }} onClick={(event) => { openMenu(event, item, actIndex) }}>
                                                         <MoreHorizIcon sx={{ color: '#999999' }} />
                                                     </IconButton>
