@@ -123,8 +123,9 @@ export default function MultiActionAreaCard(props) {
                                                 <Grid item sx={4}>
                                                     <CardMedia
                                                         component="img"
-                                                        maxHeight="140px"
-                                                        maxWidth='140px'
+                                                        height="140px"
+                                                        width='140px'
+                                                        sx={{  objectFit: "contain" }}
                                                         image={image}
                                                         alt="Album Cover"
                                                     >
