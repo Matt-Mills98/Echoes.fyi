@@ -246,12 +246,10 @@ export default function TemporaryDrawer(props) {
                 <Collapse in={!expandDrawer}>
 
 
-                    <Box sx={{ margin: '0px', padding: '0px', display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none', xl: 'none' } }} >
                         <Slider
-                            sx={{
-                                margin: '0px', padding: '0px', height: '4px', color: '#71c1e3', '& .MuiSlider-thumb': { width: '0px', height: '0px' },
-
-                            }}
+                           sx={{
+                            display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none', xl: 'none' }, margin: '0px', padding: '0px', height: '4px', color: '#71c1e3', '& .MuiSlider-thumb': { width: '0px', height: '0px', m: '0px', p: '0px' }, position: 'absolute', left: '0px', top: '-20px'
+                        }}
                             size="small"
                             defaultValue={0}
                             value={currentTime}
@@ -260,7 +258,6 @@ export default function TemporaryDrawer(props) {
                             min={0} max={trackLength}
 
                         />
-                    </Box>
                     <Grid container
                         spacing={0} sx={{ mb: { xs: '10px', sm: '10px', md: '0px' }, }}>
                         <Grid item xs={8} sm={8} md={2} lg={2} xl={2} onClick={expandDrawerTrue} >
