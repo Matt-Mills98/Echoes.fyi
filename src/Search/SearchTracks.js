@@ -629,7 +629,8 @@ export default function StickyHeadTable(props) {
                                             </div>)
                                             }
                                         </TableCell>
-                                        <TableCell sx={{ borderBottom: 'none', width: '35%', paddingTop: 0, paddingBottom: 0 }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
+                                        <TableCell sx={{ borderBottom: 'none',maxWidth:'40vw', whiteSpace: "nowrap",
+                                                            textOverflow: "ellipsis", paddingTop: 0, paddingBottom: 0 }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
                                             <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
                                                 <CardMedia component="img" sx={{ p: '0px', m: '10px', ml: '0px', display: 'block', width: '40px', height: '40px', borderRadius: '2px' }}
                                                     image={item?.album?.images[1].url}
@@ -666,8 +667,9 @@ export default function StickyHeadTable(props) {
                                         </TableCell>
                                         {width > 800 &&
 
-                                            <TableCell sx={{ borderBottom: 'none', width: '35%', paddingTop: 0, paddingBottom: 0 }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
-                                                <Typography sx={{ color: '#999999' }} variant="body2">
+                                            <TableCell sx={{ borderBottom: 'none', maxWidth:'20vw', whiteSpace: "nowrap",
+                                            textOverflow: "ellipsis", paddingTop: 0, paddingBottom: 0 }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
+                                                <Typography  noWrap sx={{ color: '#999999' }} variant="body2">
                                                     {item?.album.name}
                                                 </Typography>
                                             </TableCell>

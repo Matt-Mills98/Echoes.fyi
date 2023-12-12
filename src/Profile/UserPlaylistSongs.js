@@ -672,7 +672,9 @@ export default function UserPlaylistSongs(props) {
 
                                                     }
                                                 </TableCell>
-                                                <TableCell sx={{ borderBottom: 'none', width: '35%' }} onClick={(event) => { handleClickOpen(event, item, actIndex, item.track) }}>
+                                                <TableCell sx={{ borderBottom: 'none', maxWidth:'40vw', whiteSpace: "nowrap",
+                                                                textOverflow: "ellipsis", whiteSpace: "nowrap",
+                                                            textOverflow: "ellipsis", }} onClick={(event) => { handleClickOpen(event, item, actIndex, item.track) }}>
                                                     <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
                                                         <CardMedia component="img" sx={{ p: '0px', m: '10px', ml: '0px', display: 'block', width: '40px', height: '40px', borderRadius: '2px' }}
                                                             image={item.track.album.images[1].url}
@@ -709,8 +711,9 @@ export default function UserPlaylistSongs(props) {
                                                 </TableCell>
                                                 {width > 800 &&
 
-                                                    <TableCell sx={{ borderBottom: 'none', width: '35%' }} onClick={(event) => { handleClickOpen(event, item, actIndex, item.track) }}>
-                                                        <Typography sx={{ color: '#999999' }} variant="body2">
+                                                    <TableCell sx={{ borderBottom: 'none', maxWidth:'20vw', whiteSpace: "nowrap",
+                                                    textOverflow: "ellipsis",}} onClick={(event) => { handleClickOpen(event, item, actIndex, item.track) }}>
+                                                        <Typography noWrap sx={{ color: '#999999' }} variant="body2">
                                                             {item.track.album.name}
                                                         </Typography>
                                                     </TableCell>

@@ -457,10 +457,12 @@ export default function StickyHeadTable(props) {
                                     <FilterListIcon sx={{ color: '#71c1e3' }} onClick={(event) => { openFilterMenu(event) }} />
                                 </IconButton>
                             </Tooltips>
-                        </Toolbar>                <Box sx={{ overflow: "auto" }}>
+                        </Toolbar>                
+                        <Box sx={{ overflow: "auto" }}>
                             <Box sx={{ width: "100%", display: "table", tableLayout: "fixed" }}>
                                 <TableContainer sx={{
-                                    width: '100%',
+                                    maxWidth: '95vw',
+
                                     maxHeight: '67vh', scrollbarWidth: "none" /* Firefox */,
                                     ':hover': {
                                         "&::-webkit-scrollbar-thumb": {
@@ -488,7 +490,6 @@ export default function StickyHeadTable(props) {
                                     },
                                 }}>
                                     <Table size="small" stickyHeader aria-label="sticky table" sx={{
-                                        width: '100%',
                                         bgcolor: '#16191a', display: 'block',
                                         '& .MuiTableCell-sizeSmall': {
                                             pt: '0px', pb: '0px', margin: '0px'
@@ -645,7 +646,7 @@ export default function StickyHeadTable(props) {
                                                             bgcolor: '#272c2e',
                                                             transition: '0.25s',
                                                             cursor: 'pointer',
-                                                            width: '100%',
+
                                                         },
                                                     }} tabIndex={-1} key={index} onMouseOver={() => { setIsHoveringArr(true, index) }} onMouseOut={() => { setIsHoveringArr(false, index) }} >
                                                         <TableCell align={'center'} sx={{ borderBottom: 'none', width: '5%' }} >
@@ -686,8 +687,10 @@ export default function StickyHeadTable(props) {
                                                         </TableCell>
 
 
-                                                        <TableCell sx={{ borderBottom: 'none', width: '35%', whiteSpace: "nowrap",
-                                                            textOverflow: "ellipsis", }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
+                                                        <TableCell sx={{
+                                                            borderBottom: 'none', maxWidth:'40vw', whiteSpace: "nowrap",
+                                                            textOverflow: "ellipsis",
+                                                        }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
                                                             <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
 
                                                                 <CardMedia component="img" sx={{ p: '0px', m: '10px', ml: '0px', display: 'block', width: '40px', height: '40px', borderRadius: '2px' }}
@@ -723,10 +726,11 @@ export default function StickyHeadTable(props) {
                                                         </TableCell>
                                                         {width > 800 &&
 
-                                                            <TableCell sx={{ borderBottom: 'none', width: '35%', whiteSpace: "nowrap",
-                                                            textOverflow: "ellipsis", }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
-                                                                <Typography sx={{ color: '#999999', whiteSpace: "nowrap",
-                                                            textOverflow: "ellipsis", }} variant="body2">
+                                                            <TableCell sx={{
+                                                                borderBottom: 'none', maxWidth:'20vw', whiteSpace: "nowrap",
+                                                                textOverflow: "ellipsis",
+                                                            }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
+                                                                <Typography noWrap sx={{ color: '#999999' }} variant="body2">
                                                                     {item.album.name}
                                                                 </Typography>
                                                             </TableCell>
