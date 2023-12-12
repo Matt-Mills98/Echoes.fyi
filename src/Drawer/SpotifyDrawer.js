@@ -255,7 +255,7 @@ export default function TemporaryDrawer(props) {
                             min={0} max={trackLength}
                         />
                     <Grid container
-                        spacing={0} sx={{ mb: { xs: '10px', sm: '10px', md: '0px' }, }}>
+                        spacing={0} sx={{ mb: { xs: '0px', sm: '0px', md: '0px' }, }}>
                         <Grid item xs={8} sm={8} md={2} lg={2} xl={2} onClick={expandDrawerTrue} >
                             <Card
                                 elevation={0} sx={{
