@@ -130,7 +130,7 @@ export default function MultiActionAreaCard(props) {
                                                 <CardMedia
                                                     component="img"
                                                     sx={{
-                                                        mt: '12px', ml: '12px', display: 'block', width: '50px', height: '50px', borderRadius: '4px', padding: '0px'
+                                                        mt: '12px', ml: '12px', display: 'block', width: '50px', height: '50px',  padding: '0px'
                                                     }}
                                                     image={item.album.images[0].url}
                                                 />
@@ -225,7 +225,7 @@ export default function MultiActionAreaCard(props) {
                                                                         component="img"
 
                                                                         sx={{
-                                                                            width: '100px', height: '100px', borderRadius: '2px'
+                                                                            width: '100px', height: '100px', 
                                                                         }}
                                                                         image={item.album.images[0].url ? (item.album.images[0].url) : ('./Spotify_Icon_RGB_Green.png')}
                                                                     />

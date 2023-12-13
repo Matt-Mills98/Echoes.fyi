@@ -113,7 +113,7 @@ export default function MultiActionAreaCard(props) {
                                 <CardMedia
                                     component="img"
                                     sx={{
-                                        margin: 'auto', display: 'block', width: '50px', height: '20%', borderRadius: '4px', marginLeft: '3%'
+                                        margin: 'auto', display: 'block', width: '50px', height: '20%', marginLeft: '3%'
                                     }}
                                     image={item.images[0].url}
                                 />

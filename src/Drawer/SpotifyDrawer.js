@@ -272,7 +272,7 @@ export default function TemporaryDrawer(props) {
                                         setExpandDrawer(false);
                                     }}
                                     sx={{
-                                        m: '12px', display: 'block', width: '50px', height: '50px', borderRadius: '4px', padding: '0px', '&:hover': {
+                                        m: '12px', display: 'block', width: '50px', height: '50px',  padding: '0px', '&:hover': {
                                             cursor: 'pointer',
                                             width: '51px', height: '51px'
                                         },

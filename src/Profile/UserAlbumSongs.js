@@ -653,7 +653,7 @@ export default function UserAlbumSongs(props) {
                                                 <TableCell sx={{ borderBottom: 'none', maxWidth:'40vw', whiteSpace: "nowrap",
                                                             textOverflow: "ellipsis", }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
                                                     <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
-                                                        <CardMedia component="img" sx={{ p: '0px', m: '10px', ml: '0px', display: 'block', width: '40px', height: '40px', borderRadius: '2px' }}
+                                                        <CardMedia component="img" sx={{ p: '0px', m: '10px', ml: '0px', display: 'block', width: '40px', height: '40px', }}
                                                             image={albumMedia}
                                                         />
                                                         <Stack sx={{

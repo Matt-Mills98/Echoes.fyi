@@ -100,7 +100,7 @@ export default function MultiActionAreaCard(props) {
                                                         component="img"
 
                                                         sx={{
-                                                            width: '100px', height: '100px', borderRadius: '2px'
+                                                            width: '100px', height: '100px'
                                                         }}
                                                         image={item?.images[0]?.url ? (item?.images[0]?.url) : ('./Spotify_Icon_RGB_Green.png')}
                                                     />
