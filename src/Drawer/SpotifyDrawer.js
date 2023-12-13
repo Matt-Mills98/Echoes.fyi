@@ -63,7 +63,7 @@ export default function TemporaryDrawer(props) {
 
                         color: "#999999",
                         maxHeight: '100vh',
-                        maxWidth: '97vw',
+                        width: '100vw',
                     }
                 }}
                 anchor={'bottom'}
@@ -79,6 +79,8 @@ export default function TemporaryDrawer(props) {
                     <Grid container
                         direction={'column'}
                         sx={{
+                            maxHeight:'100vh',
+
                             m: '8vw', width: '80vw',
                         }}
                     >

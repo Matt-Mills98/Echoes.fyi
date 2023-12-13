@@ -64,7 +64,7 @@ export default function TemporaryDrawer(props) {
                         background: '#0f0f0f linear-gradient(to bottom right, ' + color + '22 0%, ' + '#0f0f0fFF' + ' 100%)',
                         color: "#999999",
                         maxHeight: '100vh',
-                        maxWidth: '97vw',
+                        width: '100vw',
                     }
                 }}
                 anchor={'bottom'}
@@ -80,6 +80,8 @@ export default function TemporaryDrawer(props) {
                     <Grid container
                         direction={'column'}
                         sx={{
+                            maxHeight:'100vh',
+
                             m: '8vw', width: '80vw',
                         }}
                     >
