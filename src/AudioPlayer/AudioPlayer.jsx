@@ -17,7 +17,7 @@ const AudioPlayer = ({ rows, isPlayingArr,updateState, setIsPlayingArr, index, e
     if (type == 'playlists') {
         album = rows?.items[index]?.track?.album;
         albumDate = album?.release_date;
-        albumMedia = album?.images[1]?.url;
+        albumMedia = album?.images[0]?.url;
         albumID = album?.id;
         albumName = album?.name;
         songName = rows?.items[index]?.track?.name;
@@ -38,7 +38,7 @@ const AudioPlayer = ({ rows, isPlayingArr,updateState, setIsPlayingArr, index, e
         album = rows?.tracks[index]?.album;
 
         albumDate = album?.release_date;
-        albumMedia = album?.images[1]?.url;
+        albumMedia = album?.images[0]?.url;
         albumID = album?.id;
         albumName = album?.name;
         songName = rows?.tracks[index]?.name;
@@ -48,7 +48,7 @@ const AudioPlayer = ({ rows, isPlayingArr,updateState, setIsPlayingArr, index, e
     if (type == 'recommend') {
         album = rows?.tracks[index]?.album;
         albumDate = album?.release_date;
-        albumMedia = album?.images[1]?.url;
+        albumMedia = album?.images[0]?.url;
         albumID = album?.id;
         albumName = album?.name;
         songName = rows?.tracks[index]?.name;
@@ -58,7 +58,7 @@ const AudioPlayer = ({ rows, isPlayingArr,updateState, setIsPlayingArr, index, e
     if (type == 'search') {
         album = rows?.items[index]?.album;
         albumDate = album?.release_date;
-        albumMedia = album?.images[1]?.url;
+        albumMedia = album?.images[0]?.url;
         albumID = album?.id;
         albumName = album?.name;
         songName = rows?.items[index]?.name;

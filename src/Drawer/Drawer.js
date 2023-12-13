@@ -62,8 +62,9 @@ export default function TemporaryDrawer(props) {
                         backgroundColor: '#0f0f0f',
                         background: '#0f0f0f linear-gradient(to bottom right, ' + color + '22 0%, ' + '#0f0f0fFF' + ' 100%)',
                         color: "#999999",
-                        width: '100vw'
-                    }
+                        maxHeight: '100vh',
+                        maxWidth:'97vw',
+                                        }
                 }}
                 anchor={'bottom'}
                 open={open}
@@ -76,7 +77,6 @@ export default function TemporaryDrawer(props) {
                 <Collapse in={expandDrawer}>
 
                     <Grid container
-                        minHeight='100vh'
                         direction={'column'}
                         sx={{
                             m: '8vw', width: '80vw',
@@ -91,7 +91,7 @@ export default function TemporaryDrawer(props) {
                             <CardMedia
                                 component="img"
                                 sx={{
-                                    width: '100%', height: '100%', maxHeight: '600px', p: '0px',
+                                    width: '100%', height: '100%', maxHeight: '600px', p: '0px',   objectFit: "contain"
                                 }}
                                 image={albumMedia}
                                 onClick={() => {

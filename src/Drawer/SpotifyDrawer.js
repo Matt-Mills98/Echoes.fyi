@@ -23,7 +23,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Collapse from '@mui/material/Collapse';
 export default function TemporaryDrawer(props) {
     const { color, albumName, albumID, albumReleaseDate, albumURL, current_track, artists, isPlayingArr, setIsPlayingArr, toPrev, track, toNext, open, closeDrawer, updateState, index, trackProgress, onScrub, submitChange, muteVolume, volume, setVolume, commitVolume, reloadLocation, trackLength } = props;
-    
+
     const [expandDrawer, setExpandDrawer] = React.useState(false);
     const { width } = GetWindowDimensions();
     const navigate = useNavigate();
@@ -60,7 +60,8 @@ export default function TemporaryDrawer(props) {
                         background: '#0f0f0f linear-gradient(to bottom right, ' + color + '22 0%, ' + '#0f0f0fFF' + ' 100%)',
 
                         color: "#999999",
-                        width: '100vw'
+                        maxHeight: '100vh',
+                        maxWidth: '97vw',
                     }
                 }}
                 anchor={'bottom'}
@@ -74,7 +75,6 @@ export default function TemporaryDrawer(props) {
                 <Collapse in={expandDrawer}>
 
                     <Grid container
-                        minHeight='100vh'
                         direction={'column'}
                         sx={{
                             m: '8vw', width: '80vw',
@@ -89,7 +89,7 @@ export default function TemporaryDrawer(props) {
                             <CardMedia
                                 component="img"
                                 sx={{
-                                    width: '100%', height: '100%', maxHeight: '600px', p: '0px',
+                                    width: '100%', height: '100%', maxHeight: '600px', p: '0px', objectFit: "contain"
                                 }}
                                 image={albumURL}
                                 onClick={() => {
@@ -242,18 +242,18 @@ export default function TemporaryDrawer(props) {
                     </Grid>
                 </Collapse>
                 <Collapse in={!expandDrawer}>
-                        <Slider
-                            sx={{
-                                display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none', xl: 'none' }, margin: '0px', padding: '0px', height: '4px', color: '#71c1e3', '& .MuiSlider-thumb': { width: '0px', height: '0px', m: '0px', p: '0px' }, position: 'absolute', left: '0px', top: '-20px'
-                            }}
-                            size="small"
-                            defaultValue={0}
-                            value={trackProgress}
-                            onChangeCommitted={submitChange}
-                            aria-label="Small"
-                            valueLabelDisplay="auto"
-                            min={0} max={trackLength}
-                        />
+                    <Slider
+                        sx={{
+                            display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none', xl: 'none' }, margin: '0px', padding: '0px', height: '4px', color: '#71c1e3', '& .MuiSlider-thumb': { width: '0px', height: '0px', m: '0px', p: '0px' }, position: 'absolute', left: '0px', top: '-20px'
+                        }}
+                        size="small"
+                        defaultValue={0}
+                        value={trackProgress}
+                        onChangeCommitted={submitChange}
+                        aria-label="Small"
+                        valueLabelDisplay="auto"
+                        min={0} max={trackLength}
+                    />
                     <Grid container
                         spacing={0} sx={{ mb: { xs: '0px', sm: '0px', md: '0px' }, }}>
                         <Grid item xs={8} sm={8} md={2} lg={2} xl={2} onClick={expandDrawerTrue} >
