@@ -267,7 +267,7 @@ export default function TemporaryDrawer(props) {
                                     component="img"
                                     onClick={() => {
                                         window.document.title = 'Home | ' + albumName;
-                                        navigate('/Album?id=' + albumID + '&name=' + encodeURIComponent(albumName) + '&date=' + encodeURIComponent(albumReleaseDate) + '&media=' + encodeURIComponent(albumMedia));
+                                        navigate('/Album?id=' + albumID + '&name=' + encodeURIComponent(albumName) + '&date=' + encodeURIComponent(albumReleaseDate) + '&media=' + encodeURIComponent(albumURL));
                                         updateState(true);
                                         setExpandDrawer(false);
                                     }}
@@ -277,7 +277,7 @@ export default function TemporaryDrawer(props) {
                                             width: '51px', height: '51px'
                                         },
                                     }}
-                                    image={albumMedia}
+                                    image={albumURL}
 
                                 />
                                 <Stack sx={{

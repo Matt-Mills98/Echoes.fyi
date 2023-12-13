@@ -29,7 +29,7 @@ function WebPlayback(props) {
     if (type == 'playlists') {
         album = rows?.items[index]?.track?.album;
         albumDate = album?.release_date;
-        albumMedia = album?.images[1]?.url;
+        albumMedia = album?.images[0]?.url;
         albumID = album?.id;
         albumName = album?.name;
         songName = rows?.items[index]?.track?.name;
@@ -50,7 +50,7 @@ function WebPlayback(props) {
         album = rows?.tracks[index]?.album;
 
         albumDate = album?.release_date;
-        albumMedia = album?.images[1]?.url;
+        albumMedia = album?.images[0]?.url;
         albumID = album?.id;
         albumName = album?.name;
         songName = rows?.tracks[index]?.name;
@@ -61,7 +61,7 @@ function WebPlayback(props) {
     if (type == 'recommend') {
         album = rows?.tracks[index]?.album;
         albumDate = album?.release_date;
-        albumMedia = album?.images[1]?.url;
+        albumMedia = album?.images[0]?.url;
         albumID = album?.id;
         albumName = album?.name;
         songName = rows?.tracks[index]?.name;
@@ -72,7 +72,7 @@ function WebPlayback(props) {
     if (type == 'search') {
         album = rows?.items[index]?.album;
         albumDate = album?.release_date;
-        albumMedia = album?.images[1]?.url;
+        albumMedia = album?.images[0]?.url;
         albumID = album?.id;
         albumName = album?.name;
         songName = rows?.items[index]?.name;
