@@ -397,6 +397,9 @@ function WebPlayback(props) {
                 })
                     .then(async (result) => {
                         if (result.ok) {
+                            player.resume().then(() => {
+                                console.log('Resumed!');
+                              });
                             startTimer();
                         }
                         else {
