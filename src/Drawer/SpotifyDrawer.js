@@ -21,6 +21,8 @@ import { useNavigate } from 'react-router-dom';
 import GetWindowDimensions from '../WindowDimensions/WindowDimensions';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Collapse from '@mui/material/Collapse';
+import ExplicitIcon from '@mui/icons-material/Explicit';
+import Stack from '@mui/material/Stack';
 export default function TemporaryDrawer(props) {
     const { color, albumName, albumID, albumReleaseDate, albumURL, current_track, artists, isPlayingArr, setIsPlayingArr, toPrev, track, toNext, open, closeDrawer, updateState, index, trackProgress, onScrub, submitChange, muteVolume, volume, setVolume, commitVolume, reloadLocation, trackLength } = props;
 
@@ -256,49 +258,62 @@ export default function TemporaryDrawer(props) {
                     />
                     <Grid container
                         spacing={0} sx={{ mb: { xs: '0px', sm: '0px', md: '0px' }, }}>
-                        <Grid item xs={8} sm={8} md={2} lg={2} xl={2} onClick={expandDrawerTrue} >
-                            <Card
-                                elevation={0} sx={{
-                                    display: 'flex', bgcolor: 'transparent', width: '100%', margin: '0px', marginLeft: '15px',
+                        <Grid item xs={7} sm={7} md={2} lg={2} xl={2} onClick={expandDrawerTrue} >
 
-                                }}>
+                            <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
                                 <CardMedia
                                     component="img"
                                     onClick={() => {
                                         window.document.title = 'Home | ' + albumName;
-                                        navigate('/Album?id=' + albumID + '&name=' + encodeURIComponent(albumName) + '&date=' + encodeURIComponent(albumReleaseDate) + '&media=' + encodeURIComponent(albumURL));
+                                        navigate('/Album?id=' + albumID + '&name=' + encodeURIComponent(albumName) + '&date=' + encodeURIComponent(albumReleaseDate) + '&media=' + encodeURIComponent(albumMedia));
                                         updateState(true);
                                         setExpandDrawer(false);
                                     }}
                                     sx={{
-                                        mt: '12px', ml: '12px', display: 'block', width: '50px', height: '50px', borderRadius: '4px', padding: '0px', '&:hover': {
+                                        m: '12px', display: 'block', width: '50px', height: '50px', borderRadius: '4px', padding: '0px', '&:hover': {
                                             cursor: 'pointer',
                                             width: '51px', height: '51px'
                                         },
                                     }}
-                                    image={current_track?.album?.images[0]?.url}
+                                    image={albumMedia}
 
                                 />
+                                <Stack sx={{
+                                    m: '0px', p: '0px',
+                                    overflow: "hidden",
+                                    "& .MuiCardContent-content": {
+                                        overflow: "hidden"
+                                    }
+                                }} direction="column" alignItems="left" >
 
-                                <CardContent sx={{ flex: '1 0 auto', mt: '15px', ml: '15px', padding: '0px' }}>
-                                    <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                        {current_track?.name}
+                                    <Typography noWrap sx={{ color: '#FFFFFF' }} variant="body2">
+                                        {track?.name}
                                     </Typography>
-                                    <Typography sx={{ color: '#999999' }} variant="body2">
+                                    <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
 
-                                        {current_track?.artists?.map((artist, i) => {
-                                            return (<Link2 component={Link} to={'/Artist?id=' + artists[i]?.id} onClick={() => {
-                                                window.document.title = 'Home | ' + artists[i]?.name;
-                                                updateState(true);
-                                                setExpandDrawer(false);
+                                        {track?.explicit ?
+                                            (
+                                                <ExplicitIcon fontSize={'small'} sx={{ color: '#999999', mr: '5px' }} />
+                                            ) :
+                                            (
+                                                <div></div>
+                                            )}
+                                        <Typography noWrap sx={{ color: '#999999', fontSize: { xs: '11px', sm: '12px', md: '13px', lg: '14px', xl: '14px' } }} variant="body2" >
 
-                                            }} sx={{ color: '#999999', margin: '0px', padding: '0px' }} variant="body3" underline="hover">{(i ? ', ' : '') + artist.name}</Link2>)
-                                        })}
-                                    </Typography>
-                                </CardContent>
+                                            {track?.artists?.map((artist, i) => {
+                                                return (<Link2 component={Link} to={'/Artist?id=' + artists[i]?.id} onClick={() => {
+                                                    window.document.title = 'Home | ' + artists[i]?.name;
+                                                    updateState(true);
+                                                    setExpandDrawer(false);
 
-                            </Card>
+                                                }} sx={{ color: '#999999', margin: '0px', padding: '0px' }} variant="body3" underline="hover">{(i ? ', ' : '') + artist.name}</Link2>)
+                                            })}
+                                        </Typography>
 
+                                    </Stack>
+
+                                </Stack>
+                            </Stack>
                         </Grid>
                         <Grid item xs={4} sm={4} md={0} lg={0} xl={0} sx={{ margin: '0px', padding: '0px', display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none', xl: 'none' } }}>
 
