@@ -12,6 +12,7 @@ import refreshTokenFunc from '../SignIn/RefreshToken';
 import checkAccessToken from '../SignIn/CheckAccessToken'
 import AlertTitle from '@mui/material/AlertTitle';
 import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 
 export default function MultiActionAreaCard(props) {
@@ -118,31 +119,42 @@ export default function MultiActionAreaCard(props) {
                                         },
                                     }}>
                                         {playlists.items?.map((item) =>
-                                            <Card component={Link} to={'/Album?id=' + item?.album?.id + '&name=' + encodeURIComponent(item?.album?.name) + '&date=' + encodeURIComponent(item?.album?.release_date) + '&media=' + encodeURIComponent(item?.album.images[1].url)}
-                                                onClick={() => { updateDisplayed('Albums'); updateSelectedPlaylist(item?.album?.id, item?.album?.name, item?.added_at, item.album.images[0].url); }} elevation={0} sx={{
-                                                    display: 'flex', bgcolor: '#16191a', width: '100%', margin: '0px', textDecoration: 'none',
-                                                    ':hover': {
-                                                        bgcolor: '#272c2e',
-                                                        transition: '.3s',
-                                                        cursor: 'pointer'
-                                                    },
-                                                }}>
-                                                <CardMedia
-                                                    component="img"
-                                                    sx={{
-                                                        mt: '12px', ml: '12px', display: 'block', width: '50px', height: '50px',  padding: '0px'
-                                                    }}
-                                                    image={item.album.images[0].url}
-                                                />
-                                                <CardContent sx={{ flex: '1 0 auto', mt: '15px', ml: '15px', padding: '0px' }}>
-                                                    <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                                        {item.album.name}
-                                                    </Typography>
-                                                    <Typography sx={{ color: '#999999' }} variant="body2">
+                                            <Stack direction="row" alignItems="center" component={Link} to={'/Album?id=' + item?.album?.id + '&name=' + encodeURIComponent(item?.album?.name) + '&date=' + encodeURIComponent(item?.album?.release_date) + '&media=' + encodeURIComponent(item?.album.images[1].url)}
+                                            onClick={() => { updateDisplayed('Albums'); updateSelectedPlaylist(item?.album?.id, item?.album?.name, item?.added_at, item.album.images[0].url); }} elevation={0} sx={{
+                                                display: 'flex', borderRadius: '4px', bgcolor: '#16191a', width: '100%', textDecoration: 'none', whiteSpace: "nowrap",
+                                                textOverflow: "ellipsis",
+                                                ':hover': {
+                                                    bgcolor: '#272c2e',
+                                                    transition: '.3s',
+                                                    cursor: 'pointer',
+                                                },
+                                            }}>
+                                            <CardMedia component="img" sx={{ p: '10px', m: '5px', ml: '0px', display: 'block', width: '45px', height: '45px' }}
+                                                image={item.album.images[0].url}
+                                            />
+                                            <Stack sx={{
+                                                m: '0px', p: '0px',
+                                                overflow: "hidden",
+                                                "& .MuiCardContent-content": {
+                                                    overflow: "hidden"
+                                                }
+                                            }} direction="column" alignItems="left" >
+
+                                                <Typography noWrap sx={{ color: '#FFFFFF', fontSize: { xs: '14px', sm: '14px', md: '14px', lg: '14px', xl: '14px' } }} variant="body2">
+                                                    {item.album.name}
+                                                </Typography>
+                                                <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
+
+
+                                                    <Typography noWrap sx={{ color: '#999999', fontSize: { xs: '11px', sm: '12px', md: '13px', lg: '14px', xl: '14px' } }} variant="body2">
+
                                                         {item.album.artists[0].name}
                                                     </Typography>
-                                                </CardContent>
-                                            </Card>
+
+                                                </Stack>
+
+                                            </Stack>
+                                        </Stack>
                                         )}</Box>
                                     <Grid container justifyContent="center">
                                         <Pagination sx={{
@@ -155,7 +167,7 @@ export default function MultiActionAreaCard(props) {
                                                 },
                                             },
                                             float: 'center'
-                                        }} size={'small'} count={Math.ceil(playlists?.total / 50)} page={page} onChange={changePage} />
+                                        }} size={'small'} count={Math.ceil(playlists?.total / 50)} page={page} onChange={changePage} siblingCount={0}/>
                                     </Grid>
                                 </CardContent>
                             }

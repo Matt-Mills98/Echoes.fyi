@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Pagination from '@mui/material/Pagination';
 import Grid from '@mui/material/Grid';
 import MenuItem from '@mui/material/MenuItem';
@@ -19,8 +19,8 @@ import checkAccessToken from '../SignIn/CheckAccessToken'
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 export default function MultiActionAreaCard(props) {
-    let {aT} = props;
-    const { userID,  setDisplayed, setSelectedPlaylist, setSelectedPlaylistName } = props;
+    let { aT } = props;
+    const { userID, setDisplayed, setSelectedPlaylist, setSelectedPlaylistName } = props;
     const accessToken = localStorage.getItem('accessToken');
 
     const [page, setPage] = React.useState(1);
@@ -79,7 +79,7 @@ export default function MultiActionAreaCard(props) {
                         const json = await result.json();
                         setPlaylists(json);
                         console.log(json);
-                        
+
                     }
                     else {
                         setError(true);
@@ -142,46 +142,44 @@ export default function MultiActionAreaCard(props) {
                                         </Typography>
                                     </Grid>
                                     <Stack direction="row" justifyContent={"flex-end"} spacing={1}>
-                                        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
 
-                                            <Select
-                                                MenuProps={{
-                                                    disableScrollLock: true,
+                                        <Select
+                                            MenuProps={{
+                                                disableScrollLock: true,
 
-                                                    sx: {
-                                                        "& .MuiPaper-root": {
-                                                            backgroundColor: '#16191a'
-                                                        }, overflow: 'auto', scrollbarWidth: "none" /* Firefox */,
-                                                        "& ::-webkit-scrollbar": {
-                                                            display: "none"
-                                                        }
-
+                                                sx: {
+                                                    "& .MuiPaper-root": {
+                                                        backgroundColor: '#16191a'
+                                                    }, overflow: 'auto', scrollbarWidth: "none" /* Firefox */,
+                                                    "& ::-webkit-scrollbar": {
+                                                        display: "none"
                                                     }
-                                                }}
-                                                sx={{ width: '0px', height: '0px', visibility: 'hidden' }}
-                                                labelId="demo-controlled-open-select-label"
-                                                id="demo-controlled-open-select"
-                                                open={open}
-                                                onClose={handleClose}
-                                                onOpen={handleOpen}
-                                                value={category}
-                                                label="Category"
-                                                onChange={handleChange}
-                                            >
-                                                {categories?.categories?.items?.map((cat) =>
-                                                    <MenuItem value={cat.id} sx={{
-                                                        color: '#999999', ':hover': {
-                                                            bgcolor: '#272c2e',
-                                                            transition: '0.25s',
-                                                            cursor: 'pointer'
-                                                        },
-                                                    }}>
-                                                        {cat?.name}
-                                                    </MenuItem>
-                                                )}
 
-                                            </Select>
-                                        </FormControl>
+                                                }
+                                            }}
+                                            sx={{ width: '0px', height: '0px', visibility: 'hidden' }}
+                                            labelId="demo-controlled-open-select-label"
+                                            id="demo-controlled-open-select"
+                                            open={open}
+                                            onClose={handleClose}
+                                            onOpen={handleOpen}
+                                            value={category}
+                                            label="Category"
+                                            onChange={handleChange}
+                                        >
+                                            {categories?.categories?.items?.map((cat) =>
+                                                <MenuItem value={cat.id} sx={{
+                                                    color: '#999999', ':hover': {
+                                                        bgcolor: '#272c2e',
+                                                        transition: '0.25s',
+                                                        cursor: 'pointer'
+                                                    },
+                                                }}>
+                                                    {cat?.name}
+                                                </MenuItem>
+                                            )}
+
+                                        </Select>
                                         <IconButton size="large" onClick={handleOpen} >
                                             <MoreVertIcon sx={{ color: '#71c1e3' }} />
                                         </IconButton>
@@ -189,64 +187,76 @@ export default function MultiActionAreaCard(props) {
                                     </Stack>
                                 </Stack>
 
-                                <Box  sx={{
-                                        maxHeight: '33vh',   overflow: 'auto',
-                                        scrollbarWidth: "none" /* Firefox */,
-                                        ':hover': {
-                                            "&::-webkit-scrollbar-thumb": {
-                                                backgroundColor: '#272c2e'
-                                            },},
-
-                                        "&::-webkit-scrollbar": {
-                                            width: '10px',
-                                            height: '10px',
-                                            backgroundColor: '#16191a',
-                                            display: 'inline-block',
-                                            textAlign: 'center',
-                                            ':hover': {
-                                                cursor: 'pointer'
-                                            }
-                                        },
+                                <Box sx={{
+                                    maxHeight: '33vh', overflow: 'auto',
+                                    scrollbarWidth: "none" /* Firefox */,
+                                    ':hover': {
                                         "&::-webkit-scrollbar-thumb": {
-                                            width: '10px',
-
-                                            backgroundColor: '#16191a',
-                                            borderRadius: '4px',
-                                            height: '10px',
-                                            
+                                            backgroundColor: '#272c2e'
                                         },
+                                    },
 
-                                    }}>
+                                    "&::-webkit-scrollbar": {
+                                        width: '10px',
+                                        height: '10px',
+                                        backgroundColor: '#16191a',
+                                        display: 'inline-block',
+                                        textAlign: 'center',
+                                        ':hover': {
+                                            cursor: 'pointer'
+                                        }
+                                    },
+                                    "&::-webkit-scrollbar-thumb": {
+                                        width: '10px',
+
+                                        backgroundColor: '#16191a',
+                                        borderRadius: '4px',
+                                        height: '10px',
+
+                                    },
+
+                                }}>
                                     {playlists.playlists?.items?.map((item) =>
 
                                         <Box>
                                             {item?.name != null &&
 
-                                                <Card component={Link} to={'?&type=Playlists&id=' + item?.id + '&name=' + item?.name}
+                                                <Stack direction="row" alignItems="center" component={Link} to={'?&type=Playlists&id=' + item?.id + '&name=' + item?.name}
                                                     onClick={() => { updateDisplayed('Playlists'); updateSelectedPlaylist(item?.id, item?.name); }} elevation={0} sx={{
-                                                        display: 'flex', bgcolor: '#16191a', width: '100%', height: '10', textDecoration: 'none',
+                                                        display: 'flex', borderRadius: '4px', bgcolor: '#16191a', width: '100%', textDecoration: 'none', whiteSpace: "nowrap",
+                                                        textOverflow: "ellipsis",
                                                         ':hover': {
                                                             bgcolor: '#272c2e',
                                                             transition: '.3s',
                                                             cursor: 'pointer',
                                                         },
                                                     }}>
-                                                    <CardMedia
-                                                        component="img"
-                                                        sx={{
-                                                            margin: '10px', display: 'block', width: '50px', height: '20%', marginLeft: '3%'
-                                                        }}
+                                                    <CardMedia component="img" sx={{ p: '10px', m: '5px', ml: '0px', display: 'block', width: '45px', height: '45px' }}
                                                         image={item?.images[0].url}
                                                     />
-                                                    <CardContent sx={{ flex: '1 0 auto' }}>
-                                                        <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                                    <Stack sx={{
+                                                        m: '0px', p: '0px',
+                                                        overflow: "hidden",
+                                                        "& .MuiCardContent-content": {
+                                                            overflow: "hidden"
+                                                        }
+                                                    }} direction="column" alignItems="left" >
+
+                                                        <Typography noWrap sx={{ color: '#FFFFFF', fontSize: { xs: '14px', sm: '14px', md: '14px', lg: '14px', xl: '14px' } }} variant="body2">
                                                             {item?.name}
                                                         </Typography>
-                                                        <Typography sx={{ color: '#999999' }} variant="body2">
-                                                            {item?.owner?.display_name}
-                                                        </Typography>
-                                                    </CardContent>
-                                                </Card>
+                                                        <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
+
+
+                                                            <Typography noWrap sx={{ color: '#999999', fontSize: { xs: '11px', sm: '12px', md: '13px', lg: '14px', xl: '14px' } }} variant="body2">
+
+                                                                {item?.owner?.display_name}
+                                                            </Typography>
+
+                                                        </Stack>
+
+                                                    </Stack>
+                                                </Stack>
                                             }
                                         </Box>
                                     )}
@@ -262,7 +272,7 @@ export default function MultiActionAreaCard(props) {
                                             },
                                         },
                                         float: 'center'
-                                    }} size={'small'} count={Math.ceil(playlists?.playlists?.total / 50)} page={page} onChange={changePage} />
+                                    }} size={'small'} count={Math.ceil(playlists?.playlists?.total / 50)} page={page} onChange={changePage} siblingCount={0} />
                                 </Grid>
                             </CardContent>
 

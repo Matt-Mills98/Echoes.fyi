@@ -1104,7 +1104,7 @@ export default function UserPlaylistSongs(props) {
                                     },
                                 },
                                 float: 'center'
-                            }} count={Math.ceil(rowsLocal.total / 50)} page={page} onChange={changePage} />
+                            }} count={Math.ceil(rowsLocal.total / 50)} page={page} onChange={changePage} siblingCount={0}/>
                         </Grid>
 
                     </Box>

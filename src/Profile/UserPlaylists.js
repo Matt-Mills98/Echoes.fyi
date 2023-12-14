@@ -5,13 +5,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
 
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Pagination from '@mui/material/Pagination';
 import Grid from '@mui/material/Grid';
 import refreshTokenFunc from '../SignIn/RefreshToken';
 import checkAccessToken from '../SignIn/CheckAccessToken'
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import Stack from '@mui/material/Stack';
 
 export default function MultiActionAreaCard(props) {
     let { userID, aT, setDisplayed, setSelectedPlaylist, setSelectedPlaylistName } = props;
@@ -89,7 +90,8 @@ export default function MultiActionAreaCard(props) {
                                     ':hover': {
                                         "&::-webkit-scrollbar-thumb": {
                                             backgroundColor: '#272c2e'
-                                        },},
+                                        },
+                                    },
 
                                     "&::-webkit-scrollbar": {
                                         width: '10px',
@@ -107,60 +109,74 @@ export default function MultiActionAreaCard(props) {
                                         backgroundColor: '#16191a',
                                         borderRadius: '4px',
                                         height: '10px',
-                                        
+
                                     },
                                 }}>
-                                    <Card component={Link} to={''}
+                                    <Stack direction="row" alignItems="center" component={Link} to={''}
                                         onClick={() => { updateDisplayed('Liked'); }} elevation={0} sx={{
-                                            display: 'flex', bgcolor: '#16191a', width: '100%', height: '10', textDecoration: 'none',
+                                            display: 'flex', borderRadius: '4px', bgcolor: '#16191a', width: '100%', textDecoration: 'none', whiteSpace: "nowrap",
+                                            textOverflow: "ellipsis",
                                             ':hover': {
                                                 bgcolor: '#272c2e',
                                                 transition: '.3s',
                                                 cursor: 'pointer',
                                             },
                                         }}>
-                                        <CardMedia
-                                            component="img"
-                                            sx={{
-                                                margin: '10px', display: 'block', width: '50px', height: '20%', marginLeft: '3%'
-                                            }}
+                                        <CardMedia component="img" sx={{ p: '10px', m: '5px', ml: '0px', display: 'block', width: '45px', height: '45px' }}
                                             image={'/Liked.png'}
                                         />
-                                        <CardContent sx={{ flex: '1 0 auto' }}>
-                                            <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                        <Stack sx={{
+                                            m: '0px', p: '0px',
+                                            overflow: "hidden",
+                                            "& .MuiCardContent-content": {
+                                                overflow: "hidden"
+                                            }
+                                        }} direction="column" alignItems="left" >
+
+                                            <Typography noWrap sx={{ color: '#FFFFFF', fontSize: { xs: '14px', sm: '14px', md: '14px', lg: '14px', xl: '14px' } }} variant="body2">
                                                 Liked Songs
                                             </Typography>
 
-                                        </CardContent>
-                                    </Card>
+
+                                        </Stack>
+                                    </Stack>
                                     {playlists.items?.map((item) =>
-                                        <Box>
-                                            <Card component={Link} to={'?&type=Playlists&id=' + item?.id + '&name=' + item?.name}
-                                                onClick={() => { updateDisplayed('Playlists'); updateSelectedPlaylist(item?.id, item?.name); }} elevation={0} sx={{
-                                                    display: 'flex', bgcolor: '#16191a', width: '100%', height: '10', textDecoration: 'none',
-                                                    ':hover': {
-                                                        bgcolor: '#272c2e',
-                                                        transition: '.3s',
-                                                        cursor: 'pointer',
-                                                    },
-                                                }}>
-                                                <CardMedia
-                                                    component="img"
-                                                    sx={{
-                                                        margin: '10px', display: 'block', width: '50px', height: '20%', marginLeft: '3%'
-                                                    }}
-                                                    image={item.images[0].url}
-                                                />
-                                                <CardContent sx={{ flex: '1 0 auto' }}>
-                                                    <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                                        {item.name}
-                                                    </Typography>
-                                                    <Typography sx={{ color: '#999999' }} variant="body2">
+                                        <Stack direction="row" alignItems="center" component={Link} to={'?&type=Playlists&id=' + item?.id + '&name=' + item?.name}
+                                            onClick={() => { updateDisplayed('Playlists'); updateSelectedPlaylist(item?.id, item?.name); }} elevation={0} sx={{
+                                                display: 'flex', borderRadius: '4px', bgcolor: '#16191a', width: '100%', textDecoration: 'none', whiteSpace: "nowrap",
+                                                textOverflow: "ellipsis",
+                                                ':hover': {
+                                                    bgcolor: '#272c2e',
+                                                    transition: '.3s',
+                                                    cursor: 'pointer',
+                                                },
+                                            }}>
+                                            <CardMedia component="img" sx={{ p: '10px', m: '5px', ml: '0px', display: 'block', width: '45px', height: '45px' }}
+                                                image={item.images[0].url}
+                                            />
+                                            <Stack sx={{
+                                                m: '0px', p: '0px',
+                                                overflow: "hidden",
+                                                "& .MuiCardContent-content": {
+                                                    overflow: "hidden"
+                                                }
+                                            }} direction="column" alignItems="left" >
+
+                                                <Typography noWrap sx={{ color: '#FFFFFF', fontSize: { xs: '14px', sm: '14px', md: '14px', lg: '14px', xl: '14px' } }} variant="body2">
+                                                    {item.name}
+                                                </Typography>
+                                                <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
+
+
+                                                    <Typography noWrap sx={{ color: '#999999', fontSize: { xs: '11px', sm: '12px', md: '13px', lg: '14px', xl: '14px' } }} variant="body2">
+
                                                         {item.owner?.display_name}
                                                     </Typography>
-                                                </CardContent>
-                                            </Card>
-                                        </Box>
+
+                                                </Stack>
+
+                                            </Stack>
+                                        </Stack>
                                     )}
                                 </Box>
                                 <Grid container justifyContent="center">
@@ -174,7 +190,7 @@ export default function MultiActionAreaCard(props) {
                                             },
                                         },
                                         float: 'center'
-                                    }} size={'small'} count={Math.ceil(playlists?.total / 50)} page={page} onChange={changePage} />
+                                    }} size={'small'} count={Math.ceil(playlists?.total / 50)} page={page} onChange={changePage} siblingCount={0} />
                                 </Grid>
                             </CardContent>
 
