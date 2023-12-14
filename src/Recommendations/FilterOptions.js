@@ -730,7 +730,7 @@ export default function MinimumDistanceSlider(props) {
 
                 <Box sx={{ margin: '10px' }}>
                     <Grid container spacing={2}>
-                        <Grid item xs={12 / 2} md={12/4} xl={12/7}>
+                    <Grid item xs={12} sm = {6} md={3} xl={12/7}>
                             <Grid container direction="row" alignItems="center">
 
                                 <Typography sx={{ color: '#999999' }} variant="h6" onClick={toggleAcousticness}>Acousticness</Typography>
@@ -789,7 +789,7 @@ export default function MinimumDistanceSlider(props) {
                                 </Collapse>
                             </Box>
                         </Grid>
-                        <Grid item xs={12 / 2} md={12/4} xl={12/7}>
+                        <Grid item xs={12} sm = {6} md={3} xl={12/7}>
                             <Grid container direction="row" alignItems="center">
 
                                 <Typography sx={{ color: '#999999' }} variant="h6" onClick={toggleDanceability}>Danceability</Typography>
@@ -849,7 +849,7 @@ export default function MinimumDistanceSlider(props) {
                                 </Collapse>
                             </Box>
                         </Grid>
-                        <Grid item xs={12 / 2} md={12/4} xl={12/7}>
+                        <Grid item xs={12} sm = {6} md={3} xl={12/7}>
                             <Grid container direction="row" alignItems="center">
 
                                 <Typography sx={{ color: '#999999' }} variant="h6" onClick={toggleDuration}>Duration</Typography>
@@ -913,7 +913,7 @@ export default function MinimumDistanceSlider(props) {
                                 </Collapse>
                             </Box>
                         </Grid>
-                        <Grid item xs={12 / 2} md={12/4} xl={12/7}>
+                        <Grid item xs={12} sm = {6} md={3} xl={12/7}>
                             <Grid container direction="row" alignItems="center">
 
                                 <Typography sx={{ color: '#999999' }} variant="h6" onClick={toggleEnergy}>Energy</Typography>
@@ -973,7 +973,7 @@ export default function MinimumDistanceSlider(props) {
                                 </Collapse>
                             </Box>
                         </Grid>
-                        <Grid item xs={12 / 2} md={12/4} xl={12/7}>
+                        <Grid item xs={12} sm = {6} md={3} xl={12/7}>
                             <Grid container direction="row" alignItems="center">
 
                                 <Typography sx={{ color: '#999999' }} variant="h6" onClick={toggleInstrumentalness}>Instrumentalness</Typography>
@@ -1033,7 +1033,7 @@ export default function MinimumDistanceSlider(props) {
                                 </Collapse>
                             </Box>
                         </Grid>
-                        <Grid item xs={12 / 2} md={12/4} xl={12/7}>
+                        <Grid item xs={12} sm = {6} md={3} xl={12/7}>
                             <Grid container direction="row" alignItems="center">
 
                                 <Typography sx={{ color: '#999999' }} variant="h6" onClick={toggleKey}>Key</Typography>
@@ -1113,7 +1113,7 @@ export default function MinimumDistanceSlider(props) {
                                 </Collapse>
                             </Box>
                         </Grid>
-                        <Grid item xs={12 / 2} md={12/4} xl={12/7}>
+                        <Grid item xs={12} sm = {6} md={3} xl={12/7}>
                             <Grid container direction="row" alignItems="center">
 
                                 <Typography sx={{ color: '#999999' }} variant="h6" onClick={toggleLiveness}>Liveness</Typography>
@@ -1173,7 +1173,7 @@ export default function MinimumDistanceSlider(props) {
                                 </Collapse>
                             </Box>
                         </Grid>
-                        <Grid item xs={12 / 2} md={12/4} xl={12/7}>
+                        <Grid item xs={12} sm = {6} md={3} xl={12/7}>
                             <Grid container direction="row" alignItems="center">
 
                                 <Typography sx={{ color: '#999999' }} variant="h6" onClick={toggleLoudness}>Loudness</Typography>
@@ -1235,7 +1235,7 @@ export default function MinimumDistanceSlider(props) {
                                 </Collapse>
                             </Box>
                         </Grid>
-                        <Grid item xs={12 / 2} md={12/4} xl={12/7}>
+                        <Grid item xs={12} sm = {6} md={3} xl={12/7}>
                             <Grid container direction="row" alignItems="center">
 
                                 <Typography sx={{ color: '#999999' }} variant="h6" onClick={togglePopularity}>Popularity</Typography>
@@ -1295,7 +1295,7 @@ export default function MinimumDistanceSlider(props) {
                                 </Collapse>
                             </Box>
                         </Grid>
-                        <Grid item xs={12 / 2} md={12/4} xl={12/7}>
+                        <Grid item xs={12} sm = {6} md={3} xl={12/7}>
                             <Grid container direction="row" alignItems="center">
 
                                 <Typography sx={{ color: '#999999' }} variant="h6" onClick={toggleSpeechiness}>Speechiness</Typography>
@@ -1355,7 +1355,7 @@ export default function MinimumDistanceSlider(props) {
                                 </Collapse>
                             </Box>
                         </Grid>
-                        <Grid item xs={12 / 2} md={12/4} xl={12/7}>
+                        <Grid item xs={12} sm = {6} md={3} xl={12/7}>
                             <Grid container direction="row" alignItems="center">
 
                                 <Typography sx={{ color: '#999999' }} variant="h6" onClick={toggleTempo}>Tempo</Typography>
@@ -1417,7 +1417,7 @@ export default function MinimumDistanceSlider(props) {
                                 </Collapse>
                             </Box>
                         </Grid>
-                        <Grid item xs={12 / 2} md={12/4} xl={12/7}>
+                        <Grid item xs={12} sm = {6} md={3} xl={12/7}>
                             <Grid container direction="row" alignItems="center">
 
                                 <Typography sx={{ color: '#999999' }} variant="h6" onClick={toggleTimeSig}>Time Signature</Typography>
@@ -1479,7 +1479,7 @@ export default function MinimumDistanceSlider(props) {
                                 </Collapse>
                             </Box>
                         </Grid>
-                        <Grid item xs={12 / 2} md={12/4} xl={12/7}>
+                        <Grid item xs={12} sm = {6} md={3} xl={12/7}>
                             <Grid container direction="row" alignItems="center">
                                 <Typography sx={{ color: '#999999' }} variant="h6" onClick={toggleValence}>Valence</Typography>
                                 {showValence ?
