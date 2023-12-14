@@ -23,9 +23,5 @@ export default defineConfig({
   optimizeDeps: {
     force: true,
     include: ['@emotion/styled'],
-    esbuildOptions: {
-      loader: {
-        '.js': 'jsx',
-      },
-    },
+    
   },})
