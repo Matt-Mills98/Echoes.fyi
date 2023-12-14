@@ -86,7 +86,7 @@ export default function MultiActionAreaCard(props) {
                 crossOrigin: 'anonymous'
             }
             extractColors(track?.album?.images[1]?.url, options)
-                .then((result) => { console.log(result); setColor1(result[0].hex); setColor2(result[1].hex); })
+                .then((result) => { setColor1(result[0].hex); setColor2(result[1].hex); })
                 .catch(console.error);
         }
         catch {
@@ -100,7 +100,6 @@ export default function MultiActionAreaCard(props) {
         }
         else {
             setTotalParams(filterParams + genreParams);
-            console.log(filterParams + genreParams);
         }
     }
     const setSearchParams = (params) => {

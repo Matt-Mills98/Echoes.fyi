@@ -86,10 +86,8 @@ export default function SignIn(props) {
         const clientId = "cb2281b91efd4dd2a548e71374e311ff";
 
         if (code != '' && code != null) {
-            console.log(code);
 
             setPage('callback');
-            console.log('ver' + verifier);
 
             const params2 = new URLSearchParams();
             params2.append("client_id", clientId);
@@ -155,7 +153,6 @@ export default function SignIn(props) {
             .then(async (result) => {
                 if (result.ok) {
                     const json = await result.json();
-                    //console.log(json?.genres[0]);
                     localStorage.setItem("genres", JSON.stringify(json?.genres));
                     //initSelectedGenres(json.genres.length);
                 }

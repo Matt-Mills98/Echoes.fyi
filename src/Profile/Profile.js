@@ -99,7 +99,6 @@ export default function MultiActionAreaCard(props) {
         setMedia(media)
     }
     const updateAlbumMedia = (media) => {
-        //console.log(media);
         setSelectedPlaylistAlbumMedia(media);
 
     }

@@ -84,7 +84,6 @@ function WebPlayback(props) {
     React.useEffect(() => {
         if (!checkAccessToken()) {
 
-        console.log(is_active);
         if (type == 'playlists') {
             if (!is_active) {
                 if (index != -1 && isPlayingArr[index]) {
@@ -185,7 +184,6 @@ function WebPlayback(props) {
 
             rows?.items.map((item, index) => {
                 if (current_track?.id == item?.track?.id) {
-                    console.log('matched' + index);
                     newIndex = index;
                 }
             })
@@ -199,7 +197,6 @@ function WebPlayback(props) {
 
             rows?.tracks.map((item, index) => {
                 if (current_track?.id == item?.id) {
-                    console.log('matched' + index);
                     newIndex = index;
                 }
             })
@@ -213,7 +210,6 @@ function WebPlayback(props) {
 
             rows?.items.map((item, index) => {
                 if (current_track?.id == item?.id) {
-                    console.log('matched' + index);
                     newIndex = index;
                 }
             })
@@ -227,7 +223,6 @@ function WebPlayback(props) {
         if (type == 'search') {
             rows?.items.map((item, index) => {
                 if (current_track?.id == item?.id) {
-                    console.log('matched' + index);
                     newIndex = index;
                 }
             })
@@ -245,7 +240,6 @@ function WebPlayback(props) {
     React.useEffect(() => {
         if (!checkAccessToken()) {
 
-        console.log(is_active);
         if (type == 'playlists') {
             if (!is_active && current_track.id == rows?.items[index]?.track.id) {
                 if (index != -1 && isPlayingArr[index]) {
@@ -398,7 +392,6 @@ function WebPlayback(props) {
                     .then(async (result) => {
                         if (result.ok) {
                             player.resume().then(() => {
-                                console.log('Resumed!');
                               });
                             startTimer();
                         }
@@ -570,14 +563,12 @@ function WebPlayback(props) {
     const submitChange = (event) => {
         const value = trackProgress;
         // Clear any timers already running
-        //console.log(value);
         player.seek(value);
         setTrackProgress(value);
         startTimer();
 
     }
     const muteVolume = () => {
-        console.log(volume);
         if (volume != 0) {
             setPrevVolume(volume);
             setVolumeVal(0);
@@ -593,7 +584,6 @@ function WebPlayback(props) {
         clearInterval(intervalRef.current);
 
         const value = parseFloat(event.target.value);
-        console.log(value);
         // Clear any timers already running
         //clearInterval(intervalRef.current);
         setTrackProgress(value);

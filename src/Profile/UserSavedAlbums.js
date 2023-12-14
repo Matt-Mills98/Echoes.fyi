@@ -66,14 +66,12 @@ export default function MultiActionAreaCard(props) {
 
     const updateDisplayed = (type) => {
         setDisplayed(type);
-        console.log('Hit');
     }
     const updateSelectedPlaylist = (id, name, dateAdded, media) => {
         setSelectedPlaylist(id);
         setSelectedPlaylistName(name);
         setDateAdded(dateAdded);
         setAlbumMedia(media);
-        console.log('ID ' + id);
     }
     const changePage = (event, value) => {
         setPage(value)

@@ -23,7 +23,6 @@ export default function MultipleSelect(props) {
     React.useEffect(() => { getGenres() }, []);
 
     const getGenres = () => {
-        console.log(localGenres)
         let arr = [];
         localGenres?.genres?.map((genre) => {
             let object = { genre: '', selected: false };

@@ -42,7 +42,6 @@ export default function TemporaryDrawer(props) {
     }
     const getTime = (time) => {
         time = Math.floor(time / 1000);
-        //console.log(time);
         const minutes = Math.floor(time / 60);
         var seconds = time - minutes * 60;
         function str_pad_left(string, pad, length) {

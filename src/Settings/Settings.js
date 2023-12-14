@@ -33,7 +33,6 @@ export default function Settings(props) {
                     const json = await result.json();
                     if(json?.product == 'premium'){
                         setStatePlayback(!event.target.checked);
-                        console.log(event.target.checked)
                         if (!event.target.checked) {
                             localStorage.setItem('playback', 'true');
                         }

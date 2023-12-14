@@ -191,7 +191,6 @@ export default function StickyHeadTable(props) {
                 })
                     .then(async (result) => {
                         if (result.ok) {
-                            console.log('deleted')
                             let el = liked.map((item, i) => {
                                 if (index === i) { item = !localLiked } return item
                             });
@@ -210,7 +209,6 @@ export default function StickyHeadTable(props) {
                 })
                     .then(async (result) => {
                         if (result.ok) {
-                            console.log('added')
                             let el = liked.map((item, i) => {
                                 if (index === i) { item = !localLiked } return item
                             });

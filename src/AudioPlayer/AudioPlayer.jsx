@@ -447,24 +447,6 @@ const AudioPlayer = ({ rows, isPlayingArr,updateState, setIsPlayingArr, index, e
 
     }, [volume]);
 
-    //console.log('testing')
-    /*const toPrevTrack = () => {
-        if (index - 1 < 0) {
-            setIsPlayingArr(true, isPlayingArr.length - 1);
-        } else {
-            setIsPlayingArr(true, index - 1);
-        }
-    };
-
-    const toNextTrack = () => {
-        if (index < isPlayingArr.length - 1) {
-            //setTrackIndex(trackIndex + 1);
-            setIsPlayingArr(true, index + 1);
-
-        } else {
-            setIsPlayingArr(true, 0);
-        }
-    };*/
     const onScrub = (event) => {
         const value = parseFloat(event.target.value);
         // Clear any timers already running

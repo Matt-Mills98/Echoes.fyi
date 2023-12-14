@@ -78,7 +78,6 @@ export default function CustomizedInputBase(props) {
 
             let types = '';
             if (searchType.length != 0) {
-                console.log(searchType);
 
                 let el = searchType.map((type, i) => {
                     type = type.substring(0, type.length - 1); type = type.toLowerCase(); return type
@@ -155,7 +154,6 @@ export default function CustomizedInputBase(props) {
     }
 
     const setSelected = (boolVal, index) => {
-        console.log(tags);
 
         let el = tags.map((tag, i) => {
             if (index === i) { tag.selected = boolVal } return tag
@@ -168,7 +166,6 @@ export default function CustomizedInputBase(props) {
         setTags(arr);
     }
     const updateText = (value, index) => {
-        console.log(tags);
 
         let el = tags.map((tag, i) => {
             if (index === i) { tag.text = value } return tag

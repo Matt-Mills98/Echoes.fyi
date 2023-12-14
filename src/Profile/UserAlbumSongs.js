@@ -181,8 +181,6 @@ export default function UserAlbumSongs(props) {
 
     const getPlaylistSongs = async (off) => {
         if (!checkAccessToken()) {
-
-            console.log(playlistID);
             setLoading(true);
             off = (page - 1) * 50
             await fetch("https://api.spotify.com/v1/albums/" + playlistID + "/tracks?limit=50&offset=" + off, {
@@ -243,7 +241,6 @@ export default function UserAlbumSongs(props) {
                 })
                     .then(async (result) => {
                         if (result.ok) {
-                            console.log('deleted')
                             let el = liked.map((item, i) => {
                                 if (index === i) { item = !localLiked } return item
                             });
@@ -262,7 +259,6 @@ export default function UserAlbumSongs(props) {
                 })
                     .then(async (result) => {
                         if (result.ok) {
-                            console.log('added')
                             let el = liked.map((item, i) => {
                                 if (index === i) { item = !localLiked } return item
                             });

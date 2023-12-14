@@ -84,18 +84,14 @@ export default function CustomizedInputBase(props) {
         let count = 0
         artists?.items?.map((artist) => {
             count += parseInt(artist.popularity);
-            console.log('pop' + count);
         })
-        console.log(Math.floor(count / artists?.items.length));
         setArtistsAvg(Math.floor(count / artists?.items.length));
     }
     const getTrackAvg = () => {
         let count = 0
         tracks?.items?.map((track) => {
             count += parseInt(track.popularity);
-            console.log('pop' + count);
         })
-        console.log(Math.floor(count / tracks?.items.length));
         setTracksAvg(Math.floor(count / tracks?.items.length));
     }
     const updateTerm = (term) => {
@@ -141,7 +137,6 @@ export default function CustomizedInputBase(props) {
                     .slice(0, 10)                         // get first three items of array
                     .map(([k, v]) => ({ [k]: v }))       // map an object with a destructured
             );
-        console.log(result)
         return result;
     }
 

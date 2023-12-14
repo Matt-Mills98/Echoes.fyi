@@ -36,7 +36,6 @@ export default function MultiActionAreaCard(props) {
                     if (result.ok) {
                         const json = await result.json();
                         setPlaylists(json);
-                        console.log(json);
                     }
                     else {
                         setError(true);

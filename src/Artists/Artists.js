@@ -66,7 +66,7 @@ export default function MultiActionAreaCard(props) {
                 crossOrigin: 'anonymous'
             }
             extractColors(image, options)
-                .then((result) => { console.log(result); setColor1(result[0].hex); })
+                .then((result) => { setColor1(result[0].hex); })
                 .catch(console.error);
         }
         catch {
