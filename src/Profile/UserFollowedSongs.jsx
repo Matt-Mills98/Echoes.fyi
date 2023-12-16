@@ -29,6 +29,8 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import Alert from '@mui/material/Alert';
 import Animation from '../PlayingAnimation/animation';
+import AnimationMobile from '../PlayingAnimation/animationMobile';
+
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
@@ -672,7 +674,7 @@ export default function StickyHeadTable(props) {
                                                         }} direction="column" alignItems="left" >
                                                             <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
 
-                                                                {playingArr[actIndex] && trackID == item.track.id && (<Animation />)}
+                                                                {playingArr[actIndex] && width <= 700 && trackID == item.track.id && (<Box sx={{marginRight:'5px'}}><AnimationMobile /> </Box>)}
                                                                 <Typography noWrap sx={{ color: '#FFFFFF', fontSize: { xs: '14px', sm: '14px', md: '14px', lg: '14px', xl: '14px' } }} variant="body2">
                                                                     {item.track.name}
                                                                 </Typography>

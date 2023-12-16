@@ -1,0 +1,64 @@
+bodY {
+    margin: '5px';
+    padding: '5px';
+    box-sizing: border-box;
+  }
+  .center {
+    height: '100%';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: 'transparent';
+  }
+  .waveMobile {
+    width: 2px;
+    height: 12px;
+    background: #71c1e3;
+    margin: 1px;
+    animation: waveMobile .85s linear infinite;
+    border-radius: 3px;
+    transform: scaleY(0);
+  }
+  .waveMobile:nth-child(2) {
+    animation-delay: 0.1s;
+    animation-duration: 1s;
+  }
+  .waveMobile:nth-child(3) {
+    animation-delay: 0.1s;
+    animation-duration: .5s;
+
+  }
+  .waveMobile:nth-child(4) {
+    animation-delay: 0.2s;
+    animation-duration: .9s;
+
+  }
+  .waveMobile:nth-child(5) {
+    animation-delay: 0s;
+    animation-duration: .7s;
+
+  }
+  .waveMobile:nth-child(6) {
+    animation-delay: 0.2s;
+    animation-duration: .9s;
+
+  }
+  
+  
+  @keyframes waveMobile {
+    0% {
+      transform: scaleY(0);
+      transform-origin:bottom left;
+    }
+    50% {
+      transform: scaleY(1);
+      transform-origin:bottom left;
+
+    }
+    100% {
+      transform: scaleY(0);
+      transform-origin:bottom left;
+
+    }
+  }
+  
