@@ -343,7 +343,7 @@ function ResponsiveAppBar() {
       <BrowserRouter>
         {(refreshToken == null || accessToken == null || refreshToken == '' || accessToken == '') ? (
           <Box sx={{ bgcolor: '#0f0f0f', minHeight: '100vh', height: '100%' }}><SignIn ></SignIn></Box>) : (
-          <div><AppBar position="sticky"  sx={{ background: 'linear-gradient(to right bottom, #4daad1, #0d4157)', minWidth: '100%', maxWidth: '100%' }}>
+            <div><AppBar position="sticky" sx={{ background: 'linear-gradient(to right bottom, #22292b, #16191a)', minWidth: '100%', maxWidth: '100%' }}>
             <Container sx={{ width: '95vw', maxWidth: '100vw' }} maxWidth={false}>
               <Toolbar disableGutters>
                 <Box component={Link} to='/About' >

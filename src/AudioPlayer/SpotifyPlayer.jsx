@@ -82,9 +82,7 @@ function WebPlayback(props) {
     }
 
     React.useEffect(() => {
-        console.log(ready);
         if (!checkAccessToken()) {
-            console.log('trackID ' +ready);
 
             console.log(is_active);
             if (type != '') {
