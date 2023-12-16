@@ -82,92 +82,26 @@ function WebPlayback(props) {
     }
 
     React.useEffect(() => {
+        console.log(ready);
         if (!checkAccessToken()) {
+            console.log('trackID ' +ready);
 
-        if (type == 'playlists') {
-            if (!is_active) {
-                if (index != -1 && isPlayingArr[index]) {
-                    transferPlayback();
-                    //getDomColor();
-                    openDrawer();
-                    startPlay();
+            console.log(is_active);
+            if (type != '') {
+                if (!is_active) {
+                  
                 }
-            }
-            else {
-                if (track.id != current_track.id) {
-                    openDrawer();
-                    startPlay();
+                else {
+                    if (track.id != current_track.id) {
+                        openDrawer();
+                        startPlay();
+                    }
                 }
             }
         }
-        if (type == 'artist') {
-            if (!is_active) {
-                if (index != -1 && isPlayingArr[index]) {
-                    transferPlayback();
-                    //getDomColor();
-                    openDrawer();
-                    startPlay();
-                }
-            }
-            else {
-                if (track.id != current_track.id) {
-                    openDrawer();
-                    startPlay();
-                }
-            }
+        else {
+            refreshTokenFunc();
         }
-        if (type == 'album') {
-            if (!is_active) {
-                if (index != -1 && isPlayingArr[index]) {
-                    transferPlayback();
-                    //getDomColor();
-                    openDrawer();
-                    startPlay();
-                }
-            }
-            else {
-                if (track.id != current_track.id) {
-                    openDrawer();
-                    startPlay();
-                }
-            }
-        }
-        if (type == 'recommend') {
-            if (!is_active) {
-                if (index != -1 && isPlayingArr[index]) {
-                    transferPlayback();
-                    //getDomColor();
-                    openDrawer();
-                    startPlay();
-                }
-            }
-            else {
-                if (track.id != current_track.id) {
-                    openDrawer();
-                    startPlay();
-                }
-            }
-        }
-        if (type == 'search') {
-            if (!is_active) {
-                if (index != -1 && isPlayingArr[index]) {
-                    transferPlayback();
-                    //getDomColor();
-                    openDrawer();
-                    startPlay();
-                }
-            }
-            else {
-                if (track.id != current_track.id) {
-                    openDrawer();
-                    startPlay();
-                }
-            }
-        }
-    }
-    else{
-        refreshTokenFunc();
-    }
 
     }, [trackID]);
     React.useEffect(() => {
