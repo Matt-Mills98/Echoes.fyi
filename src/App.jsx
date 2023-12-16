@@ -459,7 +459,11 @@ function ResponsiveAppBar() {
                   <Button
                     key={'home'}
                     onClick={() => { handleCloseNavMenu(); }}
-                    sx={{ my: 2, color: 'white', display: 'block', ':hover': { color: '#CCDDFF' } }}
+                    sx={{
+                      my: 2, color: '#CCCCCC', display: 'block', ':hover': {
+                        bgcolor: '#272c2e', color:'white'
+                      }
+                    }}
                     component={Link} to='/'
                   >
                     Home
@@ -467,7 +471,9 @@ function ResponsiveAppBar() {
                   <Button
                     key={'recommendations'}
                     onClick={() => { handleCloseNavMenu(); }}
-                    sx={{ my: 2, color: 'white', display: 'block', ':hover': { color: '#CCDDFF' } } }
+                    sx={{ my: 2, color: '#CCCCCC', display: 'block', ':hover': {
+                      bgcolor: '#272c2e', color:'white'
+                    } }}
                     component={Link} to='/Recommendations'
 
                   >
@@ -476,7 +482,9 @@ function ResponsiveAppBar() {
                   <Button
                     key={'search'}
                     onClick={() => { handleCloseNavMenu(); }}
-                    sx={{ my: 2, color: 'white', display: 'block', ':hover': { color: '#CCDDFF' } } }
+                    sx={{ my: 2, color: '#CCCCCC', display: 'block',':hover': {
+                      bgcolor: '#272c2e', color:'white'
+                    } }}
                     component={Link} to='/Search'
 
                   >
@@ -485,7 +493,9 @@ function ResponsiveAppBar() {
                   <Button
                     key={'stats'}
                     onClick={() => { handleCloseNavMenu(); }}
-                    sx={{ my: 2, color: 'white', display: 'block', ':hover': { color: '#CCDDFF' } } }
+                    sx={{ my: 2, color: '#CCCCCC', display: 'block', ':hover': {
+                      bgcolor: '#272c2e', color:'white'
+                    } }}
                     component={Link} to='/Statistics'
 
                   >
