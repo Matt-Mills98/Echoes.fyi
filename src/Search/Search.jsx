@@ -111,7 +111,14 @@ export default function CustomizedInputBase(props) {
     }
     const enterSearchString = (e) => {
         if (e.keyCode == 13) {
-            getSearch();
+            if (searchString == '') {
+                setSnackbarMessage('Error: Please enter search value');
+                setOpenSnackbar(true);
+            }
+            else{
+                getSearch();
+
+            }
             // put the login here
         }
     }
@@ -185,6 +192,9 @@ export default function CustomizedInputBase(props) {
         if (searchString == '') {
             setSnackbarMessage('Error: Please enter search value');
             setOpenSnackbar(true);
+        }
+        else{
+            getSearch();
         }
     }
     const handleDialogClose = () => {
@@ -399,7 +409,7 @@ export default function CustomizedInputBase(props) {
                                             p: '10px', color: '#71c1e3'
 
                                         }} aria-label="search">
-                                            <SearchIcon onClick={getSearch} />
+                                            <SearchIcon onClick={search} />
                                         </IconButton>
                                         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
 
