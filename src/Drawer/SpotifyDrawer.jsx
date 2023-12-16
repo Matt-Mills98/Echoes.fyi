@@ -57,8 +57,8 @@ export default function TemporaryDrawer(props) {
             <Drawer
                 PaperProps={{
                     sx: {
-                        backgroundColor: '#0f0f0f',
-                        background: '#0f0f0f linear-gradient(to bottom right, ' + color + '22 0%, ' + '#0f0f0fFF' + ' 100%)',
+                        backgroundColor: '#16191a',
+                        background: '#0f0f0f linear-gradient(to bottom right, ' + color + '33 0%, ' + '#16191aFF' + ' 100%)',
 
                         color: "#999999",
                         maxHeight: '100vh',
