@@ -74,7 +74,7 @@ export default function SignIn() {
                             Contact
                         </Typography>
                         <Button
-                            href={'mailto:contact@echoesfyi.com'}
+                            href={'mailto:contact@echoes.fyi'}
                         >
                             <Typography sx={{textTransform:'none', color: "#c4c4c4"}}>
                                 contact@echoesfyi.com
