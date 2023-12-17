@@ -136,17 +136,16 @@ export default function MultiActionAreaCard(props) {
                                             </Button>
                                         </Stack>
 
-                                        <CardMedia
-                                            component="img"
-                                            height="140px"
-                                            width='140px'
-                                            sx={{ m: '0px', p: '0px', objectFit: "contain" }}
-                                            image={track?.album?.images[1].url}
-                                            alt="Album Cover"
-                                        >
-                                        </CardMedia>
-
                                         <CardActionArea onClick={() => { redirectToProfile(track?.external_urls?.spotify) }}>
+
+                                            <CardMedia
+                                                component="img"
+                                                height="140px"
+                                                sx={{ m: '0px', padding: '0em', objectFit: "contain" }}
+                                                image={track?.album?.images[1].url}
+                                                alt="Album Cover"
+                                            >
+                                            </CardMedia>
 
                                             <Typography sx={{ color: '#c4c4c4', typography: { xs: 'h5', lg: 'h4' } }} component="div">
                                                 {track.name}
