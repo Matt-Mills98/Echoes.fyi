@@ -47,7 +47,7 @@ import refreshTokenFunc from '../SignIn/RefreshToken';
 import checkAccessToken from '../SignIn/CheckAccessToken'
 import AlertTitle from '@mui/material/AlertTitle';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
-
+import AnimationMobile from '../PlayingAnimation/animationMobile';
 
 
 
@@ -174,13 +174,10 @@ export default function UserAlbumSongs(props) {
     React.useEffect(() => { getPlaylistSongs(0) }, [page, playlistID]);
     React.useEffect(() => { checkLikedSongs() }, [rowsLocal])
 
-    const audioSrcMissing = () => {
-        setOpenSnackbar(true);
-        setSnackbarMessage('Error: Audio Preview not supplied by Spotify');
-    }
-
     const getPlaylistSongs = async (off) => {
         if (!checkAccessToken()) {
+
+            console.log(playlistID);
             setLoading(true);
             off = (page - 1) * 50
             await fetch("https://api.spotify.com/v1/albums/" + playlistID + "/tracks?limit=50&offset=" + off, {
@@ -241,6 +238,7 @@ export default function UserAlbumSongs(props) {
                 })
                     .then(async (result) => {
                         if (result.ok) {
+                            console.log('deleted')
                             let el = liked.map((item, i) => {
                                 if (index === i) { item = !localLiked } return item
                             });
@@ -259,6 +257,7 @@ export default function UserAlbumSongs(props) {
                 })
                     .then(async (result) => {
                         if (result.ok) {
+                            console.log('added')
                             let el = liked.map((item, i) => {
                                 if (index === i) { item = !localLiked } return item
                             });
@@ -366,15 +365,6 @@ export default function UserAlbumSongs(props) {
     const changePage = (event, value) => {
         setPage(value)
     }
-    const handleClickOpen = (event, item, actIndex, trackLocal) => {
-        if (width > 700) {
-            openAnalysis(trackLocal);
-        }
-        else {
-            openMenu(event, item, actIndex)
-        }
-
-    };
     const openAnalysis = async (trackLocal) => {
         if (!checkAccessToken()) {
 
@@ -486,15 +476,17 @@ export default function UserAlbumSongs(props) {
                             }}>
                                 <TableHead >
                                     <TableRow >
-                                        <TableCell
-                                            key={'index'}
-                                            align={'center'}
-                                            sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%' }}>
-                                            <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                                #
-                                            </Typography>
-                                        </TableCell>
+                                        {width > 700 &&
 
+                                            <TableCell
+                                                key={'index'}
+                                                align={'center'}
+                                                sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%' }}>
+                                                <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                                    #
+                                                </Typography>
+                                            </TableCell>
+                                        }
                                         <TableCell
                                             key={'name'}
                                             align={'left'}
@@ -586,17 +578,16 @@ export default function UserAlbumSongs(props) {
                                                 </Typography>
                                             </TableCell>
                                         }
-                                        {width > 700 &&
 
-                                            <TableCell
-                                                key={'more'}
-                                                align={'right'}
-                                                sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%' }}>
-                                                <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                                    More
-                                                </Typography>
-                                            </TableCell>
-                                        }
+                                        <TableCell
+                                            key={'more'}
+                                            align={'right'}
+                                            sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%' }}>
+                                            <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                                More
+                                            </Typography>
+                                        </TableCell>
+
                                     </TableRow>
                                 </TableHead>
                                 <TableBody >
@@ -611,8 +602,9 @@ export default function UserAlbumSongs(props) {
                                                     cursor: 'pointer',
                                                 },
                                             }} tabIndex={-1} key={index} onMouseOver={() => { setIsHoveringArr(true, index) }} onMouseOut={() => { setIsHoveringArr(false, index) }} >
-                                                <TableCell align={'center'} sx={{ borderBottom: 'none', width: '5%' }} >
-                                                    {width > 700 ? (
+                                                {width > 700 &&
+
+                                                    <TableCell align={'center'} sx={{ borderBottom: 'none', width: '5%' }} >
                                                         <div>
                                                             {hovering[index] ? (
                                                                 <div>
@@ -633,23 +625,24 @@ export default function UserAlbumSongs(props) {
                                                                     }
                                                                 </div>
                                                                 )}
-                                                        </div>) : (<div>
-                                                            {(playingArr[actIndex] && trackID == item.id) ?
-                                                                (<IconButton sx={{ color: '#999999' }} onClick={() => { setPlaying(false); setIsPlayingArr(false, rowsLocal?.items?.length, actIndex) }}>
-                                                                    <PauseIcon sx={{ color: '#999999' }} />
-                                                                </IconButton>
-                                                                ) :
-                                                                (<IconButton sx={{ color: '#999999' }} onClick={() => { setPlaying(true); setRows(rowsLocal); setTrackID(item?.id); setType('album'); updateGlobalMedia(albumMedia); setIsPlayingArr(true, rowsLocal?.items?.length, actIndex); setIndex(actIndex); }}>
-                                                                    <PlayArrowIcon sx={{ color: '#999999' }} />
-                                                                </IconButton >)}
-                                                        </div>)
+                                                        </div>
 
+
+                                                    </TableCell>
+                                                }
+                                                <TableCell sx={{
+                                                    borderBottom: 'none', maxWidth: '40vw', whiteSpace: "nowrap",
+                                                    textOverflow: "ellipsis",
+                                                }} onClick={(event) => {
+                                                    if (playingArr[actIndex] && trackID == item.id) {
+                                                        setPlaying(false); setIsPlayingArr(false, rowsLocal?.items?.length, actIndex)
                                                     }
-                                                </TableCell>
-                                                <TableCell sx={{ borderBottom: 'none', maxWidth:'40vw', whiteSpace: "nowrap",
-                                                            textOverflow: "ellipsis", }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
+                                                    else {
+                                                        setPlaying(true); setRows(rowsLocal); setTrackID(item?.id); setType('album'); updateGlobalMedia(albumMedia); setIsPlayingArr(true, rowsLocal?.items?.length, actIndex); setIndex(actIndex);
+                                                    }
+                                                }}>
                                                     <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
-                                                        <CardMedia component="img" sx={{ p: '0px', m: '10px', ml: '0px', display: 'block', width: '40px', height: '40px', }}
+                                                        <CardMedia component="img" sx={{ p: '0px', m: '10px', ml: '0px', display: 'block', width: '40px', height: '40px', borderRadius: '2px' }}
                                                             image={albumMedia}
                                                         />
                                                         <Stack sx={{
@@ -659,10 +652,12 @@ export default function UserAlbumSongs(props) {
                                                                 overflow: "hidden"
                                                             }
                                                         }} direction="column" alignItems="left" >
-                                                            <Typography noWrap sx={{ color: '#FFFFFF', fontSize: { xs: '14px', sm: '14px', md: '14px', lg: '14px', xl: '14px' } }} variant="body2">
-                                                                {item.name}
-                                                            </Typography>
-
+                                                            <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
+                                                                {playingArr[actIndex] && width <= 700 && trackID == item.id && (<Box sx={{ marginRight: '5px' }}><AnimationMobile /> </Box>)}
+                                                                <Typography noWrap sx={{ color: '#FFFFFF', fontSize: { xs: '14px', sm: '14px', md: '14px', lg: '14px', xl: '14px' } }} variant="body2">
+                                                                    {item.name}
+                                                                </Typography>
+                                                            </Stack>
                                                             <Stack direction="row" alignItems="center">
                                                                 {item.explicit ?
                                                                     (
@@ -681,8 +676,17 @@ export default function UserAlbumSongs(props) {
                                                 </TableCell>
                                                 {width > 800 &&
 
-                                                    <TableCell sx={{ borderBottom: 'none', maxWidth:'20vw', whiteSpace: "nowrap",
-                                                    textOverflow: "ellipsis", }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
+                                                    <TableCell sx={{
+                                                        borderBottom: 'none', maxWidth: '20vw', whiteSpace: "nowrap",
+                                                        textOverflow: "ellipsis",
+                                                    }} onClick={(event) => {
+                                                        if (playingArr[actIndex] && trackID == item.id) {
+                                                            setPlaying(false); setIsPlayingArr(false, rowsLocal?.items?.length, actIndex)
+                                                        }
+                                                        else {
+                                                            setPlaying(true); setRows(rowsLocal); setTrackID(item?.id); setType('album'); updateGlobalMedia(albumMedia); setIsPlayingArr(true, rowsLocal?.items?.length, actIndex); setIndex(actIndex);
+                                                        }
+                                                    }}>
                                                         <Typography noWrap sx={{ color: '#999999' }} variant="body2">
                                                             {playlistName}
                                                         </Typography>
@@ -690,7 +694,14 @@ export default function UserAlbumSongs(props) {
                                                 }
                                                 {width > 1400 &&
 
-                                                    <TableCell sx={{ borderBottom: 'none', width: '15%' }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
+                                                    <TableCell sx={{ borderBottom: 'none', width: '15%' }} onClick={(event) => {
+                                                        if (playingArr[actIndex] && trackID == item.id) {
+                                                            setPlaying(false); setIsPlayingArr(false, rowsLocal?.items?.length, actIndex)
+                                                        }
+                                                        else {
+                                                            setPlaying(true); setRows(rowsLocal); setTrackID(item?.id); setType('album'); updateGlobalMedia(albumMedia); setIsPlayingArr(true, rowsLocal?.items?.length, actIndex); setIndex(actIndex);
+                                                        }
+                                                    }}>
                                                         <Typography sx={{ color: '#999999' }} variant="body2">
                                                             {moment(albumDateAdded).fromNow()}
                                                         </Typography>
@@ -698,7 +709,14 @@ export default function UserAlbumSongs(props) {
                                                 }
                                                 {width > 1000 &&
 
-                                                    <TableCell sx={{ borderBottom: 'none', width: '5%' }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
+                                                    <TableCell sx={{ borderBottom: 'none', width: '5%' }} onClick={(event) => {
+                                                        if (playingArr[actIndex] && trackID == item.id) {
+                                                            setPlaying(false); setIsPlayingArr(false, rowsLocal?.items?.length, actIndex)
+                                                        }
+                                                        else {
+                                                            setPlaying(true); setRows(rowsLocal); setTrackID(item?.id); setType('album'); updateGlobalMedia(albumMedia); setIsPlayingArr(true, rowsLocal?.items?.length, actIndex); setIndex(actIndex);
+                                                        }
+                                                    }}>
                                                         <Typography sx={{ color: '#999999' }} variant="body2">
                                                             {msToTime(item.duration_ms)}
                                                         </Typography>
@@ -719,14 +737,13 @@ export default function UserAlbumSongs(props) {
                                                             </div>)}
                                                     </TableCell>
                                                 }
-                                                {width > 700 &&
 
-                                                    <TableCell align={'right'} sx={{ borderBottom: 'none', width: '5%' }} >
-                                                        <IconButton sx={{ color: '#999999' }} onClick={(event) => { openMenu(event, item, actIndex) }}>
-                                                            <MoreHorizIcon sx={{ color: '#999999' }} />
-                                                        </IconButton>
-                                                    </TableCell>
-                                                }
+                                                <TableCell align={'right'} sx={{ borderBottom: 'none', width: '5%' }} >
+                                                    <IconButton sx={{ color: '#999999' }} onClick={(event) => { openMenu(event, item, actIndex) }}>
+                                                        <MoreHorizIcon sx={{ color: '#999999' }} />
+                                                    </IconButton>
+                                                </TableCell>
+
                                             </TableRow>
                                         );
                                     })}
@@ -990,7 +1007,7 @@ export default function UserAlbumSongs(props) {
                                     },
                                 },
                                 float: 'center'
-                            }} count={Math.ceil(rowsLocal.total / 50)} page={page} onChange={changePage} siblingCount={0}/>
+                            }} count={Math.ceil(rowsLocal.total / 50)} page={page} onChange={changePage} />
                         </Grid>
 
 

@@ -45,6 +45,7 @@ import AnalysisDialog from '../Profile/AnalysisDialog';
 import refreshTokenFunc from '../SignIn/RefreshToken';
 import checkAccessToken from '../SignIn/CheckAccessToken'
 import AnalyticsIcon from '@mui/icons-material/Analytics';
+import AnimationMobile from '../PlayingAnimation/animationMobile';
 
 function msToTime(duration) {
     var milliseconds = Math.floor((duration % 1000) / 100),
@@ -201,6 +202,7 @@ export default function StickyHeadTable(props) {
                 })
                     .then(async (result) => {
                         if (result.ok) {
+                            console.log('deleted')
                             let el = liked.map((item, i) => {
                                 if (index === i) { item = !localLiked } return item
                             });
@@ -219,6 +221,7 @@ export default function StickyHeadTable(props) {
                 })
                     .then(async (result) => {
                         if (result.ok) {
+                            console.log('added')
                             let el = liked.map((item, i) => {
                                 if (index === i) { item = !localLiked } return item
                             });
@@ -319,22 +322,6 @@ export default function StickyHeadTable(props) {
         //setAlbumMedia(media);
         //setArtistID(id);
     }
-    const changePage = (event, value) => {
-        setPage(value)
-    }
-    const audioSrcMissing = () => {
-        setOpenSnackbar(true);
-        setSnackbarMessage('Error: Audio Preview not supplied by Spotify');
-    }
-    const handleClickOpen = (event, item, actIndex, trackLocal) => {
-        if (width > 700) {
-            openAnalysis(trackLocal);
-        }
-        else {
-            openMenu(event, item, actIndex)
-        }
-
-    };
     const openAnalysis = async (trackLocal) => {
         if (!checkAccessToken()) {
 
@@ -441,15 +428,17 @@ export default function StickyHeadTable(props) {
                     }}>
                         <TableHead >
                             <TableRow >
-                                <TableCell
-                                    key={'index'}
-                                    align={'center'}
-                                    sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%' }}>
-                                    <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                        #
-                                    </Typography>
-                                </TableCell>
+                                {width > 700 &&
 
+                                    <TableCell
+                                        key={'index'}
+                                        align={'center'}
+                                        sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%' }}>
+                                        <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                            #
+                                        </Typography>
+                                    </TableCell>
+                                }
                                 <TableCell
                                     key={'name'}
                                     align={'left'}
@@ -568,17 +557,14 @@ export default function StickyHeadTable(props) {
                                         </Typography>
                                     </TableCell>
                                 }
-                                {width > 700 &&
-
-                                    <TableCell
-                                        key={'more'}
-                                        align={'right'}
-                                        sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%' }}>
-                                        <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                            More
-                                        </Typography>
-                                    </TableCell>
-                                }
+                                <TableCell
+                                    key={'more'}
+                                    align={'right'}
+                                    sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%' }}>
+                                    <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                        More
+                                    </Typography>
+                                </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody >
@@ -592,45 +578,42 @@ export default function StickyHeadTable(props) {
                                             cursor: 'pointer'
                                         },
                                     }} tabIndex={-1} key={index} onMouseOver={() => { setIsHoveringArr(true, index) }} onMouseOut={() => { setIsHoveringArr(false, index) }} >
-                                        <TableCell align={'center'} sx={{ borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0 }} >
-                                            {width > 700 ? (
-                                                <div>
-                                                    {hovering[index] ? (
-                                                        <div>
-                                                            {(playingArr[actIndex] && trackID == item.id) ?
-                                                                (<IconButton sx={{ color: '#999999' }} onClick={() => { setPlaying(false); setIsPlayingArr(false, rows?.length, actIndex) }}>
-                                                                    <PauseIcon sx={{ color: '#999999' }} />
-                                                                </IconButton>
-                                                                ) :
-                                                                (<IconButton sx={{ color: '#999999' }} onClick={() => { setPlaying(true); setRows(rows); setTrackID(item.id); setType('search'); setAudIndex(actIndex); setIsPlayingArr(true, rows?.length, actIndex); setIndex(getIndex(item?.id)); }}>
-                                                                    <PlayArrowIcon sx={{ color: '#999999' }} />
-                                                                </IconButton >)}
-                                                        </div>) :
-                                                        (<div>
-                                                            {(playingArr[actIndex] && trackID == item.id) ? (<Animation />) : (<Typography sx={{ color: '#999999' }} variant="body2">
-                                                                {index + 1 + ((page - 1) * 50)}
-                                                            </Typography>)
+                                        {width > 700 &&
+                                            <TableCell align={'center'} sx={{ borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0 }} >
+                                                {hovering[index] ? (
+                                                    <div>
+                                                        {(playingArr[actIndex] && trackID == item.id) ?
+                                                            (<IconButton sx={{ color: '#999999' }} onClick={() => { setPlaying(false); setIsPlayingArr(false, rows?.length, actIndex) }}>
+                                                                <PauseIcon sx={{ color: '#999999' }} />
+                                                            </IconButton>
+                                                            ) :
+                                                            (<IconButton sx={{ color: '#999999' }} onClick={() => { setPlaying(true); setRows(rows); setTrackID(item.id); setType('search'); setAudIndex(actIndex); setIsPlayingArr(true, rows?.length, actIndex); setIndex(getIndex(item?.id)); }}>
+                                                                <PlayArrowIcon sx={{ color: '#999999' }} />
+                                                            </IconButton >)}
+                                                    </div>) :
+                                                    (<div>
+                                                        {(playingArr[actIndex] && trackID == item.id) ? (<Animation />) : (<Typography sx={{ color: '#999999' }} variant="body2">
+                                                            {index + 1 + ((page - 1) * 50)}
+                                                        </Typography>)
 
-                                                            }
-                                                        </div>
-                                                        )}
-                                                </div>
-                                            ) : (<div>
-                                                {(playingArr[actIndex] && trackID == item.id) ?
-                                                    (<IconButton sx={{ color: '#999999' }} onClick={() => { setPlaying(false); setIsPlayingArr(false, rows?.length, actIndex) }}>
-                                                        <PauseIcon sx={{ color: '#999999' }} />
-                                                    </IconButton>
-                                                    ) :
-                                                    (<IconButton sx={{ color: '#999999' }} onClick={() => { setPlaying(true); setRows(rows); setTrackID(item.id); setType('search'); setAudIndex(actIndex); setIsPlayingArr(true, rows?.length, actIndex); setIndex(getIndex(item?.id)); }}>
-                                                        <PlayArrowIcon sx={{ color: '#999999' }} />
-                                                    </IconButton >)}
-                                            </div>)
+                                                        }
+                                                    </div>
+                                                    )}
+                                            </TableCell>
+                                        }
+                                        <TableCell sx={{
+                                            borderBottom: 'none', maxWidth: '40vw', whiteSpace: "nowrap",
+                                            textOverflow: "ellipsis", paddingTop: 0, paddingBottom: 0
+                                        }} onClick={(event) => {
+                                            if (playingArr[actIndex] && trackID == item.id) {
+                                                setPlaying(false); setIsPlayingArr(false, rows?.length, actIndex)
                                             }
-                                        </TableCell>
-                                        <TableCell sx={{ borderBottom: 'none',maxWidth:'40vw', whiteSpace: "nowrap",
-                                                            textOverflow: "ellipsis", paddingTop: 0, paddingBottom: 0 }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
+                                            else {
+                                                setPlaying(true); setRows(rows); setTrackID(item.id); setType('search'); setAudIndex(actIndex); setIsPlayingArr(true, rows?.length, actIndex); setIndex(getIndex(item?.id));
+                                            }
+                                        }}>
                                             <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
-                                                <CardMedia component="img" sx={{ p: '0px', m: '10px', ml: '0px', display: 'block', width: '40px', height: '40px', }}
+                                                <CardMedia component="img" sx={{ p: '0px', m: '10px', ml: '0px', display: 'block', width: '40px', height: '40px' }}
                                                     image={item?.album?.images[1].url}
                                                 />
                                                 <Stack sx={{
@@ -640,41 +623,56 @@ export default function StickyHeadTable(props) {
                                                         overflow: "hidden"
                                                     }
                                                 }} direction="column" alignItems="left" >
-                                                    <Typography noWrap sx={{ color: '#FFFFFF', fontSize: { xs: '14px', sm: '14px', md: '14px', lg: '14px', xl: '14px' } }} variant="body2">
-                                                        {item?.name}
-                                                    </Typography>
-
+                                                    <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
+                                                        {playingArr[actIndex] && width <= 700 && trackID == item.id && (<Box sx={{ marginRight: '5px' }}><AnimationMobile /> </Box>)}
+                                                        <Typography noWrap sx={{ color: '#FFFFFF', fontSize: { xs: '14px', sm: '14px', md: '14px', lg: '14px', xl: '14px' } }} variant="body2">
+                                                            {item.name}
+                                                        </Typography>
+                                                    </Stack>
                                                     <Stack direction="row" alignItems="center">
+                                                        {item.explicit ?
+                                                            (
+                                                                <ExplicitIcon fontSize={'small'} sx={{ color: '#999999', mr: '5px' }} />
+                                                            ) :
+                                                            (
+                                                                <div></div>
+                                                            )}
                                                         <Typography noWrap sx={{ color: '#999999', fontSize: { xs: '11px', sm: '12px', md: '13px', lg: '14px', xl: '14px' } }} variant="body2">
 
-                                                            {item.explicit ?
-                                                                (
-                                                                    <ExplicitIcon fontSize={'small'} sx={{ color: '#999999', mr: '5px' }} />
-
-                                                                ) :
-                                                                (
-                                                                    <div></div>
-                                                                )}
                                                             {item.artists.map((artist, index) => (index ? ', ' : '') + artist.name)}
-
                                                         </Typography>
-
                                                     </Stack>
                                                 </Stack>
                                             </Stack>
                                         </TableCell>
                                         {width > 800 &&
 
-                                            <TableCell sx={{ borderBottom: 'none', maxWidth:'20vw', whiteSpace: "nowrap",
-                                            textOverflow: "ellipsis", paddingTop: 0, paddingBottom: 0 }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
-                                                <Typography  noWrap sx={{ color: '#999999' }} variant="body2">
+                                            <TableCell sx={{
+                                                borderBottom: 'none', maxWidth: '20vw', whiteSpace: "nowrap",
+                                                textOverflow: "ellipsis", paddingTop: 0, paddingBottom: 0
+                                            }} onClick={(event) => {
+                                                if (playingArr[actIndex] && trackID == item.id) {
+                                                    setPlaying(false); setIsPlayingArr(false, rows?.length, actIndex)
+                                                }
+                                                else {
+                                                    setPlaying(true); setRows(rows); setTrackID(item.id); setType('search'); setAudIndex(actIndex); setIsPlayingArr(true, rows?.length, actIndex); setIndex(getIndex(item?.id));
+                                                }
+                                            }}>
+                                                <Typography noWrap sx={{ color: '#999999' }} variant="body2">
                                                     {item?.album.name}
                                                 </Typography>
                                             </TableCell>
                                         }
                                         {width > 1400 &&
 
-                                            <TableCell sx={{ borderBottom: 'none', width: '15%', paddingTop: 0, paddingBottom: 0 }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
+                                            <TableCell sx={{ borderBottom: 'none', width: '15%', paddingTop: 0, paddingBottom: 0 }} onClick={(event) => {
+                                                if (playingArr[actIndex] && trackID == item.id) {
+                                                    setPlaying(false); setIsPlayingArr(false, rows?.length, actIndex)
+                                                }
+                                                else {
+                                                    setPlaying(true); setRows(rows); setTrackID(item.id); setType('search'); setAudIndex(actIndex); setIsPlayingArr(true, rows?.length, actIndex); setIndex(getIndex(item?.id));
+                                                }
+                                            }}>
                                                 <Typography sx={{ color: '#999999' }} variant="body2">
                                                     {moment(item?.album?.release_date).fromNow()}
                                                 </Typography>
@@ -682,7 +680,14 @@ export default function StickyHeadTable(props) {
                                         }
                                         {width > 1000 &&
 
-                                            <TableCell sx={{ borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0 }} onClick={(event) => { handleClickOpen(event, item, actIndex, item) }}>
+                                            <TableCell sx={{ borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0 }} onClick={(event) => {
+                                                if (playingArr[actIndex] && trackID == item.id) {
+                                                    setPlaying(false); setIsPlayingArr(false, rows?.length, actIndex)
+                                                }
+                                                else {
+                                                    setPlaying(true); setRows(rows); setTrackID(item.id); setType('search'); setAudIndex(actIndex); setIsPlayingArr(true, rows?.length, actIndex); setIndex(getIndex(item?.id));
+                                                }
+                                            }}>
                                                 <Typography sx={{ color: '#999999' }} variant="body2">
                                                     {msToTime(item?.duration_ms)}
                                                 </Typography>
@@ -704,14 +709,12 @@ export default function StickyHeadTable(props) {
                                                     </div>)}
                                             </TableCell>
                                         }
-                                        {width > 700 &&
+                                        <TableCell align={'right'} sx={{ borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0 }} >
+                                            <IconButton sx={{ color: '#999999' }} onClick={(event) => { openMenu(event, item, actIndex) }}>
+                                                <MoreHorizIcon sx={{ color: '#999999' }} />
+                                            </IconButton>
+                                        </TableCell>
 
-                                            <TableCell align={'right'} sx={{ borderBottom: 'none', width: '5%', paddingTop: 0, paddingBottom: 0 }} >
-                                                <IconButton sx={{ color: '#999999' }} onClick={(event) => { openMenu(event, item, actIndex) }}>
-                                                    <MoreHorizIcon sx={{ color: '#999999' }} />
-                                                </IconButton>
-                                            </TableCell>
-                                        }
                                     </TableRow>
 
                                 );

@@ -422,17 +422,17 @@ export default function CustomizedInputBase(props) {
                         spacing={2}
                         marginTop={'5px'}
                     >
-                        <Grid item sx={12} md={12}  >
+                        <Grid item xs={12} md={12}  >
                             {searchResults?.albums != null &&
                                 <SearchAlbums aT={accessToken} playlists={searchResults?.albums}></SearchAlbums>
                             }
                         </Grid>
-                        <Grid item sx={12} md={12} >
+                        <Grid item xs={12} md={12} >
                             {searchResults?.artists != null &&
                                 <SearchArtists aT={accessToken} artists={searchResults?.artists}></SearchArtists>
                             }
                         </Grid>
-                        <Grid item sx={12} md={12} >
+                        <Grid item xs={12} md={12} >
                             {searchResults?.tracks != null &&
                                 <SearchTracks aT={accessToken} rows={searchResults?.tracks} setRows={setRows} initPlayingArr={initPlayingArr} playingArr={playingArr} setIsPlayingArr={setIsPlayingArr} setIndex={setIndex} setType={setType} setTrackID={setTrackID} trackID={trackID}></SearchTracks>
                             }
