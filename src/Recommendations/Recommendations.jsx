@@ -138,28 +138,34 @@ export default function MultiActionAreaCard(props) {
 
                                         <CardActionArea onClick={() => { redirectToProfile(track?.external_urls?.spotify) }}>
 
-                                            <CardMedia
-                                                component="img"
-                                                height="140px"
-                                                sx={{ m: '0px', padding: '0em', objectFit: "contain" }}
-                                                image={track?.album?.images[1].url}
-                                                alt="Album Cover"
-                                            >
-                                            </CardMedia>
+                                            <Stack direction="row" justifyContent={"left"} spacing={1}>
 
-                                            <Typography sx={{ color: '#c4c4c4', typography: { xs: 'h5', lg: 'h4' } }} component="div">
-                                                {track.name}
-                                            </Typography>
+                                                <CardMedia
+                                                    component="img"
 
-                                            <Typography sx={{ color: '#71c1e3' }} variant="h6" color="text.secondary">
-                                                {track?.artists?.map((artist, index) => (index ? ', ' : '') + artist.name)}
-                                            </Typography>
-                                            <Typography sx={{ color: '#999999' }} variant="body2" color="text.secondary">
-                                                {track?.album?.name}
-                                            </Typography>
-                                            <Typography sx={{ color: '#999999' }} variant="body2" color="text.secondary">
-                                                Released {moment(track?.album?.release_date).fromNow()}
-                                            </Typography>
+                                                    sx={{ m: '0px', padding: '0em', objectFit: "contain", width: '150px' }}
+                                                    image={track?.album?.images[1].url}
+                                                    alt="Album Cover"
+                                                >
+                                                </CardMedia>
+
+                                                <Stack direction="column" justifyContent={"left"} spacing={0}>
+
+                                                    <Typography sx={{ color: '#c4c4c4', typography: { xs: 'h5', lg: 'h4' } }} component="div">
+                                                        {track.name}
+                                                    </Typography>
+
+                                                    <Typography sx={{ color: '#71c1e3' }} variant="h6" color="text.secondary">
+                                                        {track?.artists?.map((artist, index) => (index ? ', ' : '') + artist.name)}
+                                                    </Typography>
+                                                    <Typography sx={{ color: '#999999' }} variant="body2" color="text.secondary">
+                                                        {track?.album?.name}
+                                                    </Typography>
+                                                    <Typography sx={{ color: '#999999' }} variant="body2" color="text.secondary">
+                                                        Released {moment(track?.album?.release_date).fromNow()}
+                                                    </Typography>
+                                                </Stack>
+                                            </Stack>
                                         </CardActionArea>
 
 
