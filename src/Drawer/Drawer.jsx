@@ -89,6 +89,16 @@ export default function TemporaryDrawer(props) {
                                 <KeyboardArrowDownIcon sx={{ color: 'white' }} />
                             </Button>
                         </Grid>
+                        <Grid item xs={12} sx={{ width: '150px', height: '100%', maxHeight: '100px', }}>
+                            <CardMedia
+                                component="img"
+                                sx={{
+                                    width: '100%', height: '100%', maxHeight: '150px', p: '0px', marginBottom:'10px'
+                                }}
+                                image={'./Spotify_Logo_CMYK_White.png'}
+                                
+                            />
+                        </Grid>
                         <Grid item xs={12} sx={{ width: '100%', height: '100%', maxHeight: '600px', }}>
                             <CardMedia
                                 component="img"

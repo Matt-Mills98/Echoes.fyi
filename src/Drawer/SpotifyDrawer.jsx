@@ -78,7 +78,7 @@ export default function TemporaryDrawer(props) {
                     <Grid container
                         direction={'column'}
                         sx={{
-                            maxHeight:'100vh',
+                            maxHeight: '100vh',
 
                             m: '8vw', width: '80vw',
                         }}
@@ -87,6 +87,16 @@ export default function TemporaryDrawer(props) {
                             <Button sx={{ width: '100%', bgcolor: 'transparent', mb: '10px' }} onClick={retractDrawerTrue}>
                                 <KeyboardArrowDownIcon sx={{ color: 'white' }} />
                             </Button>
+                        </Grid>
+                        <Grid item xs={12} sx={{ width: '150px', height: '100%', maxHeight: '100px', }}>
+                            <CardMedia
+                                component="img"
+                                sx={{
+                                    width: '100%', height: '100%', maxHeight: '150px', p: '0px', marginBottom: '10px'
+                                }}
+                                image={'./Spotify_Logo_CMYK_White.png'}
+
+                            />
                         </Grid>
                         <Grid item xs={12} sx={{ width: '100%', height: '100%', maxHeight: '600px', }}>
                             <CardMedia
@@ -271,7 +281,7 @@ export default function TemporaryDrawer(props) {
                                         setExpandDrawer(false);
                                     }}
                                     sx={{
-                                        m: '12px', display: 'block', width: '50px', height: '50px',  padding: '0px', '&:hover': {
+                                        m: '12px', display: 'block', width: '50px', height: '50px', padding: '0px', '&:hover': {
                                             cursor: 'pointer',
                                             width: '51px', height: '51px'
                                         },

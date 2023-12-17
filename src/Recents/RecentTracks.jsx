@@ -20,7 +20,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import LaunchIcon from '@mui/icons-material/Launch';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import AlbumIcon from '@mui/icons-material/Album';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -862,7 +861,7 @@ export default function StickyHeadTable(props) {
                                             },
                                         }} component={Link} to={menuItem?.track?.external_urls?.spotify} >
                                             <ListItemIcon >
-                                                <LaunchIcon sx={{ color: '#999999' }} />
+                                            <img src={'./Spotify_Icon_RGB_White.png'} width='20em' height='20em' style={{ marginLeft: '2px' }} />
                                             </ListItemIcon>
                                             <ListItemText>Listen on Spotify</ListItemText>
                                         </MenuItem>
