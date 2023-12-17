@@ -135,38 +135,35 @@ export default function MultiActionAreaCard(props) {
                                                 Search   <SearchIcon sx={{ ml: '10px', color: '#c4c4c4' }} />
                                             </Button>
                                         </Stack>
-                                        <Grid container spacing={2}>
-                                            <Grid item sx={4}>
-                                                <CardMedia
-                                                    component="img"
-                                                    height="140px"
-                                                    width='140px'
-                                                    sx={{  m:'0px', p:'0px',  objectFit: "contain" }}
-                                                    image={track?.album?.images[1].url}
-                                                    alt="Album Cover"
-                                                >
-                                                </CardMedia>
-                                            </Grid>
-                                            <Grid item sx={8}>
-                                                <CardActionArea onClick={() => { redirectToProfile(track?.external_urls?.spotify) }}>
 
-                                                    <Typography sx={{ color: '#c4c4c4', typography: { xs: 'h5', lg: 'h4' } }} component="div">
-                                                        {track.name}
-                                                    </Typography>
+                                        <CardMedia
+                                            component="img"
+                                            height="140px"
+                                            width='140px'
+                                            sx={{ m: '0px', p: '0px', objectFit: "contain" }}
+                                            image={track?.album?.images[1].url}
+                                            alt="Album Cover"
+                                        >
+                                        </CardMedia>
 
-                                                    <Typography sx={{ color: '#71c1e3' }} variant="h6" color="text.secondary">
-                                                        {track?.artists?.map((artist, index) => (index ? ', ' : '') + artist.name)}
-                                                    </Typography>
-                                                    <Typography sx={{ color: '#999999' }} variant="body2" color="text.secondary">
-                                                        {track?.album?.name}
-                                                    </Typography>
-                                                    <Typography sx={{ color: '#999999' }} variant="body2" color="text.secondary">
-                                                        Released {moment(track?.album?.release_date).fromNow()}
-                                                    </Typography>
-                                                </CardActionArea>
+                                        <CardActionArea onClick={() => { redirectToProfile(track?.external_urls?.spotify) }}>
 
-                                            </Grid>
-                                        </Grid>
+                                            <Typography sx={{ color: '#c4c4c4', typography: { xs: 'h5', lg: 'h4' } }} component="div">
+                                                {track.name}
+                                            </Typography>
+
+                                            <Typography sx={{ color: '#71c1e3' }} variant="h6" color="text.secondary">
+                                                {track?.artists?.map((artist, index) => (index ? ', ' : '') + artist.name)}
+                                            </Typography>
+                                            <Typography sx={{ color: '#999999' }} variant="body2" color="text.secondary">
+                                                {track?.album?.name}
+                                            </Typography>
+                                            <Typography sx={{ color: '#999999' }} variant="body2" color="text.secondary">
+                                                Released {moment(track?.album?.release_date).fromNow()}
+                                            </Typography>
+                                        </CardActionArea>
+
+
                                     </CardContent>
                                     <CardActions onClick={toggleAdvancedFilters} sx={{
                                         alignSelf: "stretch",
@@ -176,8 +173,8 @@ export default function MultiActionAreaCard(props) {
                                         // 👇 Edit padding to further adjust position
                                         pb: 2,
                                         pr: 2,
-                                        ':hover':{
-                                            cursor:'pointer'
+                                        ':hover': {
+                                            cursor: 'pointer'
                                         }
                                     }}>
                                         {showAdvanced ? (<UnfoldLessIcon size="large" sx={{ color: '#71c1e3' }} />) : (<UnfoldMoreIcon size="large" sx={{ color: '#71c1e3' }} />)}
