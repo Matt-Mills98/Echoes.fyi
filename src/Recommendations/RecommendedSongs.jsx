@@ -427,125 +427,99 @@ export default function StickyHeadTable(props) {
             </Alert>
             ) : (
                 <Card sx={{ maxWidth: '100%', bgcolor: '#16191a' }}>
-                    <Box sx={{ padding: '15px' }}>
-                        <Toolbar
-                            sx={{
-                                pl: { sm: 2 },
-                                pr: { xs: 1, sm: 1 },
+                    {visibleRows != undefined &&
+                        <Box sx={{ padding: '15px' }}>
+                            <Toolbar
+                                sx={{
+                                    pl: { sm: 2 },
+                                    pr: { xs: 1, sm: 1 },
 
-                            }}
-                        >
-                            <Typography
-                                sx={{ flex: '1 1 100%', color: '#71c1e3' }}
-                                variant="h6"
-                                id="tableTitle"
-                                component="div"
+                                }}
                             >
-                                Similar Songs
-                            </Typography>
-                            <Tooltips title="Filter list">
-                                <IconButton>
-                                    <FilterListIcon sx={{ color: '#71c1e3' }} onClick={(event) => { openFilterMenu(event) }} />
-                                </IconButton>
-                            </Tooltips>
-                        </Toolbar>
-                        <Box sx={{ overflow: "auto" }}>
-                            <Box sx={{ width: "100%", display: "table", tableLayout: "fixed" }}>
-                                <TableContainer sx={{
-                                    maxWidth: '95vw',
+                                <Typography
+                                    sx={{ flex: '1 1 100%', color: '#71c1e3' }}
+                                    variant="h6"
+                                    id="tableTitle"
+                                    component="div"
+                                >
+                                    Similar Songs
+                                </Typography>
+                                <Tooltips title="Filter list">
+                                    <IconButton>
+                                        <FilterListIcon sx={{ color: '#71c1e3' }} onClick={(event) => { openFilterMenu(event) }} />
+                                    </IconButton>
+                                </Tooltips>
+                            </Toolbar>
+                            <Box sx={{ overflow: "auto" }}>
+                                <Box sx={{ width: "100%", display: "table", tableLayout: "fixed" }}>
+                                    <TableContainer sx={{
+                                        maxWidth: '95vw',
 
-                                    maxHeight: '67vh', scrollbarWidth: "none" /* Firefox */,
-                                    ':hover': {
-                                        "&::-webkit-scrollbar-thumb": {
-                                            backgroundColor: '#272c2e'
-                                        },
-                                    },
-
-                                    "&::-webkit-scrollbar": {
-                                        width: '10px',
-                                        height: '10px',
-                                        backgroundColor: '#16191a',
-                                        display: 'inline-block',
-                                        textAlign: 'center',
+                                        maxHeight: '67vh', scrollbarWidth: "none" /* Firefox */,
                                         ':hover': {
-                                            cursor: 'pointer'
-                                        }
-                                    },
-                                    "&::-webkit-scrollbar-thumb": {
-                                        width: '10px',
+                                            "&::-webkit-scrollbar-thumb": {
+                                                backgroundColor: '#272c2e'
+                                            },
+                                        },
 
-                                        backgroundColor: '#16191a',
-                                        borderRadius: '4px',
-                                        height: '10px',
+                                        "&::-webkit-scrollbar": {
+                                            width: '10px',
+                                            height: '10px',
+                                            backgroundColor: '#16191a',
+                                            display: 'inline-block',
+                                            textAlign: 'center',
+                                            ':hover': {
+                                                cursor: 'pointer'
+                                            }
+                                        },
+                                        "&::-webkit-scrollbar-thumb": {
+                                            width: '10px',
 
-                                    },
-                                }}>
-                                    <Table size="small" stickyHeader aria-label="sticky table" sx={{
-                                        bgcolor: '#16191a', display: 'block',
-                                        '& .MuiTableCell-sizeSmall': {
-                                            pt: '0px', pb: '0px', margin: '0px'
+                                            backgroundColor: '#16191a',
+                                            borderRadius: '4px',
+                                            height: '10px',
+
                                         },
                                     }}>
-                                        <TableHead >
-                                            <TableRow >
-                                                {width > 700 &&
+                                        <Table size="small" stickyHeader aria-label="sticky table" sx={{
+                                            bgcolor: '#16191a', display: 'block',
+                                            '& .MuiTableCell-sizeSmall': {
+                                                pt: '0px', pb: '0px', margin: '0px'
+                                            },
+                                        }}>
+                                            <TableHead >
+                                                <TableRow >
+                                                    {width > 700 &&
 
+                                                        <TableCell
+                                                            key={'index'}
+                                                            align={'center'}
+
+                                                            sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%', }}>
+                                                            <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                                                #
+                                                            </Typography>
+                                                        </TableCell>
+                                                    }
                                                     <TableCell
-                                                        key={'index'}
-                                                        align={'center'}
-
-                                                        sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%', }}>
-                                                        <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                                            #
-                                                        </Typography>
-                                                    </TableCell>
-                                                }
-                                                <TableCell
-                                                    key={'name'}
-                                                    align={'left'}
-                                                    sx={{ color: '#FFFFFF', bgcolor: '#16191a', borderBottom: 'none', minWidth: '35%' }} sortDirection={orderBy === 'name' ? order : false}
-                                                >
-                                                    <TableSortLabel
-                                                        active={orderBy === 'name'}
-                                                        direction={orderBy === 'name' ? order : 'asc'}
-                                                        onClick={createSortHandler('name')}
-                                                        sx={{
-                                                            '& .MuiTableSortLabel-icon': {
-                                                                color: '#999999 !important',
-                                                            },
-                                                        }}
-                                                    >
-                                                        <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                                            Title
-                                                        </Typography>
-                                                        {orderBy === 'name' ? (
-                                                            <Box component="span" sx={visuallyHidden} >
-                                                                {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                                            </Box>
-                                                        ) : null}
-                                                    </TableSortLabel>
-
-                                                </TableCell>
-                                                {width > 800 &&
-
-                                                    <TableCell
-                                                        key={'album'}
+                                                        key={'name'}
                                                         align={'left'}
-                                                        sx={{ color: '#FFFFFF', bgcolor: '#16191a', borderBottom: 'none', minWidth: '35%' }} sortDirection={orderBy === 'album' ? order : false}
+                                                        sx={{ color: '#FFFFFF', bgcolor: '#16191a', borderBottom: 'none', minWidth: '35%' }} sortDirection={orderBy === 'name' ? order : false}
                                                     >
                                                         <TableSortLabel
-                                                            active={orderBy === 'album'}
-                                                            direction={orderBy === 'album' ? order : 'asc'}
-                                                            onClick={createSortHandler('album')}
+                                                            active={orderBy === 'name'}
+                                                            direction={orderBy === 'name' ? order : 'asc'}
+                                                            onClick={createSortHandler('name')}
                                                             sx={{
                                                                 '& .MuiTableSortLabel-icon': {
                                                                     color: '#999999 !important',
                                                                 },
-                                                            }}                                    >
+                                                            }}
+                                                        >
                                                             <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                                                Album
+                                                                Title
                                                             </Typography>
-                                                            {orderBy === 'album' ? (
+                                                            {orderBy === 'name' ? (
                                                                 <Box component="span" sx={visuallyHidden} >
                                                                     {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                                                                 </Box>
@@ -553,171 +527,149 @@ export default function StickyHeadTable(props) {
                                                         </TableSortLabel>
 
                                                     </TableCell>
-                                                }
-                                                {width > 1400 &&
-                                                    <TableCell
-                                                        key={'release_date'}
-                                                        align={'left'}
-                                                        sx={{ color: '#FFFFFF', bgcolor: '#16191a', borderBottom: 'none', minWidth: '10%' }} sortDirection={orderBy === 'release_date' ? order : false}
-                                                    >
-                                                        <TableSortLabel
-                                                            active={orderBy === 'release_date'}
-                                                            direction={orderBy === 'release_date' ? order : 'asc'}
-                                                            onClick={createSortHandler('release_date')}
-                                                            sx={{
-                                                                '& .MuiTableSortLabel-icon': {
-                                                                    color: '#999999 !important',
-                                                                },
-                                                            }}                                    >
-                                                            <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                                                Date Added
-                                                            </Typography>
-                                                            {orderBy === 'release_date' ? (
-                                                                <Box component="span" sx={visuallyHidden} >
-                                                                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                                                </Box>
-                                                            ) : null}
-                                                        </TableSortLabel>
+                                                    {width > 800 &&
 
-                                                    </TableCell>}
+                                                        <TableCell
+                                                            key={'album'}
+                                                            align={'left'}
+                                                            sx={{ color: '#FFFFFF', bgcolor: '#16191a', borderBottom: 'none', minWidth: '35%' }} sortDirection={orderBy === 'album' ? order : false}
+                                                        >
+                                                            <TableSortLabel
+                                                                active={orderBy === 'album'}
+                                                                direction={orderBy === 'album' ? order : 'asc'}
+                                                                onClick={createSortHandler('album')}
+                                                                sx={{
+                                                                    '& .MuiTableSortLabel-icon': {
+                                                                        color: '#999999 !important',
+                                                                    },
+                                                                }}                                    >
+                                                                <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                                                    Album
+                                                                </Typography>
+                                                                {orderBy === 'album' ? (
+                                                                    <Box component="span" sx={visuallyHidden} >
+                                                                        {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                                                                    </Box>
+                                                                ) : null}
+                                                            </TableSortLabel>
 
-                                                {width > 1000 &&
-                                                    <TableCell
-                                                        key={'duration_ms'}
-                                                        align={'left'}
-                                                        sx={{ color: '#FFFFFF', bgcolor: '#16191a', borderBottom: 'none', minWidth: '5%' }} sortDirection={orderBy === 'duration_ms' ? order : false}
-                                                    >
-                                                        <TableSortLabel
-                                                            active={orderBy === 'duration_ms'}
-                                                            direction={orderBy === 'duration_ms' ? order : 'asc'}
-                                                            onClick={createSortHandler('duration_ms')}
-                                                            sx={{
-                                                                '& .MuiTableSortLabel-icon': {
-                                                                    color: '#999999 !important',
-                                                                },
-                                                            }}                                    >
+                                                        </TableCell>
+                                                    }
+                                                    {width > 1400 &&
+                                                        <TableCell
+                                                            key={'release_date'}
+                                                            align={'left'}
+                                                            sx={{ color: '#FFFFFF', bgcolor: '#16191a', borderBottom: 'none', minWidth: '10%' }} sortDirection={orderBy === 'release_date' ? order : false}
+                                                        >
+                                                            <TableSortLabel
+                                                                active={orderBy === 'release_date'}
+                                                                direction={orderBy === 'release_date' ? order : 'asc'}
+                                                                onClick={createSortHandler('release_date')}
+                                                                sx={{
+                                                                    '& .MuiTableSortLabel-icon': {
+                                                                        color: '#999999 !important',
+                                                                    },
+                                                                }}                                    >
+                                                                <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                                                    Date Added
+                                                                </Typography>
+                                                                {orderBy === 'release_date' ? (
+                                                                    <Box component="span" sx={visuallyHidden} >
+                                                                        {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                                                                    </Box>
+                                                                ) : null}
+                                                            </TableSortLabel>
+
+                                                        </TableCell>}
+
+                                                    {width > 1000 &&
+                                                        <TableCell
+                                                            key={'duration_ms'}
+                                                            align={'left'}
+                                                            sx={{ color: '#FFFFFF', bgcolor: '#16191a', borderBottom: 'none', minWidth: '5%' }} sortDirection={orderBy === 'duration_ms' ? order : false}
+                                                        >
+                                                            <TableSortLabel
+                                                                active={orderBy === 'duration_ms'}
+                                                                direction={orderBy === 'duration_ms' ? order : 'asc'}
+                                                                onClick={createSortHandler('duration_ms')}
+                                                                sx={{
+                                                                    '& .MuiTableSortLabel-icon': {
+                                                                        color: '#999999 !important',
+                                                                    },
+                                                                }}                                    >
+                                                                <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                                                    Duration
+                                                                </Typography>
+                                                                {orderBy === 'duration_ms' ? (
+                                                                    <Box component="span" sx={visuallyHidden} >
+                                                                        {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                                                                    </Box>
+                                                                ) : null}
+                                                            </TableSortLabel>
+                                                        </TableCell>
+                                                    }
+                                                    {width > 700 &&
+                                                        <TableCell
+                                                            key={'liked'}
+                                                            align={'right'}
+                                                            sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%' }}>
                                                             <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                                                Duration
                                                             </Typography>
-                                                            {orderBy === 'duration_ms' ? (
-                                                                <Box component="span" sx={visuallyHidden} >
-                                                                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                                                </Box>
-                                                            ) : null}
-                                                        </TableSortLabel>
-                                                    </TableCell>
-                                                }
-                                                {width > 700 &&
+                                                        </TableCell>
+                                                    }
+
                                                     <TableCell
-                                                        key={'liked'}
+                                                        key={'more'}
                                                         align={'right'}
                                                         sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%' }}>
                                                         <Typography sx={{ color: '#FFFFFF' }} variant="body2">
+                                                            More
                                                         </Typography>
                                                     </TableCell>
-                                                }
 
-                                                <TableCell
-                                                    key={'more'}
-                                                    align={'right'}
-                                                    sx={{ bgcolor: '#16191a', borderBottom: 'none', width: '5%' }}>
-                                                    <Typography sx={{ color: '#FFFFFF' }} variant="body2">
-                                                        More
-                                                    </Typography>
-                                                </TableCell>
+                                                </TableRow>
+                                            </TableHead>
+                                            <TableBody >
+                                                {visibleRows?.map((item, index) => {
+                                                    const actIndex = getIndex(item?.id);
 
-                                            </TableRow>
-                                        </TableHead>
-                                        <TableBody >
-                                            {visibleRows?.map((item, index) => {
-                                                const actIndex = getIndex(item?.id);
+                                                    return (
+                                                        <TableRow sx={{
+                                                            ':hover': {
+                                                                bgcolor: '#272c2e',
+                                                                transition: '0.25s',
+                                                                cursor: 'pointer',
 
-                                                return (
-                                                    <TableRow sx={{
-                                                        ':hover': {
-                                                            bgcolor: '#272c2e',
-                                                            transition: '0.25s',
-                                                            cursor: 'pointer',
+                                                            },
+                                                        }} tabIndex={-1} key={index} onMouseOver={() => { setIsHoveringArr(true, index) }} onMouseOut={() => { setIsHoveringArr(false, index) }} >
+                                                            {width > 700 &&
 
-                                                        },
-                                                    }} tabIndex={-1} key={index} onMouseOver={() => { setIsHoveringArr(true, index) }} onMouseOut={() => { setIsHoveringArr(false, index) }} >
-                                                        {width > 700 &&
+                                                                <TableCell align={'center'} sx={{ borderBottom: 'none', width: '5%' }} >
+                                                                    {hovering[index] ? (
+                                                                        <div>
+                                                                            {(playingArr[actIndex] && trackID == item.id) ?
+                                                                                (<IconButton sx={{ color: '#999999' }} onClick={() => { setPlaying(false); setIsPlayingArr(false, rowsLocal?.tracks?.length, actIndex) }}>
+                                                                                    <PauseIcon sx={{ color: '#999999' }} />
+                                                                                </IconButton>
+                                                                                ) :
+                                                                                (<IconButton sx={{ color: '#999999' }} onClick={() => { setPlaying(true); setRows(rowsLocal); setTrackID(item.id); setType('recommend'); setIsPlayingArr(true, rowsLocal?.tracks?.length, getIndex(item?.id)); setIndex(getIndex(item?.id)); }}>
+                                                                                    <PlayArrowIcon sx={{ color: '#999999' }} />
+                                                                                </IconButton >)}
+                                                                        </div>) :
+                                                                        (<div>
+                                                                            {(playingArr[actIndex] && trackID == item.id) ? (<Animation />) : (<Typography sx={{ color: '#999999' }} variant="body2">
+                                                                                {index + 1}
+                                                                            </Typography>)
 
-                                                            <TableCell align={'center'} sx={{ borderBottom: 'none', width: '5%' }} >
-                                                                {hovering[index] ? (
-                                                                    <div>
-                                                                        {(playingArr[actIndex] && trackID == item.id) ?
-                                                                            (<IconButton sx={{ color: '#999999' }} onClick={() => { setPlaying(false); setIsPlayingArr(false, rowsLocal?.tracks?.length, actIndex) }}>
-                                                                                <PauseIcon sx={{ color: '#999999' }} />
-                                                                            </IconButton>
-                                                                            ) :
-                                                                            (<IconButton sx={{ color: '#999999' }} onClick={() => { setPlaying(true); setRows(rowsLocal); setTrackID(item.id); setType('recommend'); setIsPlayingArr(true, rowsLocal?.tracks?.length, getIndex(item?.id)); setIndex(getIndex(item?.id)); }}>
-                                                                                <PlayArrowIcon sx={{ color: '#999999' }} />
-                                                                            </IconButton >)}
-                                                                    </div>) :
-                                                                    (<div>
-                                                                        {(playingArr[actIndex] && trackID == item.id) ? (<Animation />) : (<Typography sx={{ color: '#999999' }} variant="body2">
-                                                                            {index + 1}
-                                                                        </Typography>)
-
-                                                                        }
-                                                                    </div>
-                                                                    )}
-                                                            </TableCell>
-                                                        }
-
-
-                                                        <TableCell sx={{
-                                                            borderBottom: 'none', maxWidth: '40vw', whiteSpace: "nowrap",
-                                                            textOverflow: "ellipsis",
-                                                        }} onClick={(event) => {
-                                                            if (playingArr[actIndex] && trackID == item.id) {
-                                                                setPlaying(false); setIsPlayingArr(false, rowsLocal?.tracks?.length, actIndex)
+                                                                            }
+                                                                        </div>
+                                                                        )}
+                                                                </TableCell>
                                                             }
-                                                            else {
-                                                                setPlaying(true); setRows(rowsLocal); setTrackID(item.id); setType('recommend'); setIsPlayingArr(true, rowsLocal?.tracks?.length, getIndex(item?.id)); setIndex(getIndex(item?.id));
-                                                            }
-                                                        }}>
-                                                            <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
 
-                                                                <CardMedia component="img" sx={{ p: '0px', m: '10px', ml: '0px', display: 'block', width: '40px', height: '40px' }}
-                                                                    image={item.album.images[1].url}
-                                                                />
-                                                                <Stack sx={{
-                                                                    m: '0px', p: '0px',
-                                                                    overflow: "hidden",
-                                                                    "& .MuiCardContent-content": {
-                                                                        overflow: "hidden"
-                                                                    }
-                                                                }} direction="column" alignItems="left" >
-                                                                    <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
-                                                                        {playingArr[actIndex] && width <= 700 && trackID == item.id && (<Box sx={{ marginRight: '5px' }}><AnimationMobile /> </Box>)}
-                                                                        <Typography noWrap sx={{ color: '#FFFFFF', fontSize: { xs: '14px', sm: '14px', md: '14px', lg: '14px', xl: '14px' } }} variant="body2">
-                                                                            {item.name}
-                                                                        </Typography>
-                                                                    </Stack>
-                                                                    <Stack direction="row" alignItems="center">
-                                                                        {item.explicit ?
-                                                                            (
-                                                                                <ExplicitIcon fontSize={'small'} sx={{ color: '#999999', mr: '5px' }} />
-
-                                                                            ) :
-                                                                            (
-                                                                                <div></div>
-                                                                            )}
-                                                                        <Typography noWrap sx={{ color: '#999999', fontSize: { xs: '11px', sm: '12px', md: '13px', lg: '14px', xl: '14px' } }} variant="body2">
-
-                                                                            {item.artists.map((artist, index) => (index ? ', ' : '') + artist.name)}
-                                                                        </Typography>
-
-                                                                    </Stack>
-                                                                </Stack>
-                                                            </Stack>
-                                                        </TableCell>
-                                                        {width > 800 &&
 
                                                             <TableCell sx={{
-                                                                borderBottom: 'none', maxWidth: '20vw', whiteSpace: "nowrap",
+                                                                borderBottom: 'none', maxWidth: '40vw', whiteSpace: "nowrap",
                                                                 textOverflow: "ellipsis",
                                                             }} onClick={(event) => {
                                                                 if (playingArr[actIndex] && trackID == item.id) {
@@ -727,415 +679,466 @@ export default function StickyHeadTable(props) {
                                                                     setPlaying(true); setRows(rowsLocal); setTrackID(item.id); setType('recommend'); setIsPlayingArr(true, rowsLocal?.tracks?.length, getIndex(item?.id)); setIndex(getIndex(item?.id));
                                                                 }
                                                             }}>
-                                                                <Typography noWrap sx={{ color: '#999999' }} variant="body2">
-                                                                    {item.album.name}
-                                                                </Typography>
-                                                            </TableCell>
-                                                        }
-                                                        {width > 1400 &&
-                                                            <TableCell sx={{ borderBottom: 'none', width: '15%' }} onClick={(event) => {
-                                                                if (playingArr[actIndex] && trackID == item.id) {
-                                                                    setPlaying(false); setIsPlayingArr(false, rowsLocal?.tracks?.length, actIndex)
-                                                                }
-                                                                else {
-                                                                    setPlaying(true); setRows(rowsLocal); setTrackID(item.id); setType('recommend'); setIsPlayingArr(true, rowsLocal?.tracks?.length, getIndex(item?.id)); setIndex(getIndex(item?.id));
-                                                                }
-                                                            }}>
-                                                                <Typography sx={{ color: '#999999' }} variant="body2">
-                                                                    {moment(item.album?.release_date).fromNow()}
-                                                                </Typography>
-                                                            </TableCell>
-                                                        }
-                                                        {width > 1000 &&
-                                                            <TableCell sx={{ borderBottom: 'none', width: '5%' }} onClick={(event) => {
-                                                                if (playingArr[actIndex] && trackID == item.id) {
-                                                                    setPlaying(false); setIsPlayingArr(false, rowsLocal?.tracks?.length, actIndex)
-                                                                }
-                                                                else {
-                                                                    setPlaying(true); setRows(rowsLocal); setTrackID(item.id); setType('recommend'); setIsPlayingArr(true, rowsLocal?.tracks?.length, getIndex(item?.id)); setIndex(getIndex(item?.id));
-                                                                }
-                                                            }}>
-                                                                <Typography sx={{ color: '#999999' }} variant="body2">
-                                                                    {msToTime(item.duration_ms)}
-                                                                </Typography>
-                                                            </TableCell>
-                                                        }
-                                                        {width > 700 &&
-                                                            <TableCell align={'right'} sx={{ borderBottom: 'none', width: '5%' }} >
-                                                                {liked[actIndex] ? (
-                                                                    <IconButton sx={{ color: '#999999' }} onClick={(event) => { toggleLiked(liked[actIndex], item.id, actIndex); }}>
-                                                                        <FavoriteIcon sx={{ color: '#71c1e3' }} />
+                                                                <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
 
-                                                                    </IconButton>) : (<div>
-                                                                        {hovering[index] ? (
-                                                                            <IconButton sx={{ color: '#999999' }} onClick={(event) => { toggleLiked(liked[actIndex], item.id, actIndex); }}>
-                                                                                {liked[actIndex] ? (<FavoriteIcon sx={{ color: '#71c1e3' }} />) : (<FavoriteBorderIcon sx={{ color: '#999999' }} />
+                                                                    <CardMedia component="img" sx={{ p: '0px', m: '10px', ml: '0px', display: 'block', width: '40px', height: '40px' }}
+                                                                        image={item.album.images[1].url}
+                                                                    />
+                                                                    <Stack sx={{
+                                                                        m: '0px', p: '0px',
+                                                                        overflow: "hidden",
+                                                                        "& .MuiCardContent-content": {
+                                                                            overflow: "hidden"
+                                                                        }
+                                                                    }} direction="column" alignItems="left" >
+                                                                        <Stack sx={{ m: '0px', p: '0px' }} direction="row" alignItems="center">
+                                                                            {playingArr[actIndex] && width <= 700 && trackID == item.id && (<Box sx={{ marginRight: '5px' }}><AnimationMobile /> </Box>)}
+                                                                            <Typography noWrap sx={{ color: '#FFFFFF', fontSize: { xs: '14px', sm: '14px', md: '14px', lg: '14px', xl: '14px' } }} variant="body2">
+                                                                                {item.name}
+                                                                            </Typography>
+                                                                        </Stack>
+                                                                        <Stack direction="row" alignItems="center">
+                                                                            {item.explicit ?
+                                                                                (
+                                                                                    <ExplicitIcon fontSize={'small'} sx={{ color: '#999999', mr: '5px' }} />
+
+                                                                                ) :
+                                                                                (
+                                                                                    <div></div>
                                                                                 )}
-                                                                            </IconButton>
-                                                                        ) : (<Box></Box>)}
-                                                                    </div>)}
+                                                                            <Typography noWrap sx={{ color: '#999999', fontSize: { xs: '11px', sm: '12px', md: '13px', lg: '14px', xl: '14px' } }} variant="body2">
+
+                                                                                {item.artists.map((artist, index) => (index ? ', ' : '') + artist.name)}
+                                                                            </Typography>
+
+                                                                        </Stack>
+                                                                    </Stack>
+                                                                </Stack>
                                                             </TableCell>
-                                                        }
+                                                            {width > 800 &&
 
-                                                        <TableCell align={'right'} sx={{ borderBottom: 'none', width: '5%' }} >
-                                                            <IconButton sx={{ color: '#999999' }} onClick={(event) => { openMenu(event, item, actIndex); }}>
-                                                                <MoreHorizIcon sx={{ color: '#999999' }} />
-                                                            </IconButton>
-                                                        </TableCell>
+                                                                <TableCell sx={{
+                                                                    borderBottom: 'none', maxWidth: '20vw', whiteSpace: "nowrap",
+                                                                    textOverflow: "ellipsis",
+                                                                }} onClick={(event) => {
+                                                                    if (playingArr[actIndex] && trackID == item.id) {
+                                                                        setPlaying(false); setIsPlayingArr(false, rowsLocal?.tracks?.length, actIndex)
+                                                                    }
+                                                                    else {
+                                                                        setPlaying(true); setRows(rowsLocal); setTrackID(item.id); setType('recommend'); setIsPlayingArr(true, rowsLocal?.tracks?.length, getIndex(item?.id)); setIndex(getIndex(item?.id));
+                                                                    }
+                                                                }}>
+                                                                    <Typography noWrap sx={{ color: '#999999' }} variant="body2">
+                                                                        {item.album.name}
+                                                                    </Typography>
+                                                                </TableCell>
+                                                            }
+                                                            {width > 1400 &&
+                                                                <TableCell sx={{ borderBottom: 'none', width: '15%' }} onClick={(event) => {
+                                                                    if (playingArr[actIndex] && trackID == item.id) {
+                                                                        setPlaying(false); setIsPlayingArr(false, rowsLocal?.tracks?.length, actIndex)
+                                                                    }
+                                                                    else {
+                                                                        setPlaying(true); setRows(rowsLocal); setTrackID(item.id); setType('recommend'); setIsPlayingArr(true, rowsLocal?.tracks?.length, getIndex(item?.id)); setIndex(getIndex(item?.id));
+                                                                    }
+                                                                }}>
+                                                                    <Typography sx={{ color: '#999999' }} variant="body2">
+                                                                        {moment(item.album?.release_date).fromNow()}
+                                                                    </Typography>
+                                                                </TableCell>
+                                                            }
+                                                            {width > 1000 &&
+                                                                <TableCell sx={{ borderBottom: 'none', width: '5%' }} onClick={(event) => {
+                                                                    if (playingArr[actIndex] && trackID == item.id) {
+                                                                        setPlaying(false); setIsPlayingArr(false, rowsLocal?.tracks?.length, actIndex)
+                                                                    }
+                                                                    else {
+                                                                        setPlaying(true); setRows(rowsLocal); setTrackID(item.id); setType('recommend'); setIsPlayingArr(true, rowsLocal?.tracks?.length, getIndex(item?.id)); setIndex(getIndex(item?.id));
+                                                                    }
+                                                                }}>
+                                                                    <Typography sx={{ color: '#999999' }} variant="body2">
+                                                                        {msToTime(item.duration_ms)}
+                                                                    </Typography>
+                                                                </TableCell>
+                                                            }
+                                                            {width > 700 &&
+                                                                <TableCell align={'right'} sx={{ borderBottom: 'none', width: '5%' }} >
+                                                                    {liked[actIndex] ? (
+                                                                        <IconButton sx={{ color: '#999999' }} onClick={(event) => { toggleLiked(liked[actIndex], item.id, actIndex); }}>
+                                                                            <FavoriteIcon sx={{ color: '#71c1e3' }} />
 
-                                                    </TableRow>
-                                                );
-                                            })}
-                                            <Menu
-                                                sx={{
-                                                    "& .MuiPaper-root": {
-                                                        backgroundColor: '#16191a'
-                                                    },
+                                                                        </IconButton>) : (<div>
+                                                                            {hovering[index] ? (
+                                                                                <IconButton sx={{ color: '#999999' }} onClick={(event) => { toggleLiked(liked[actIndex], item.id, actIndex); }}>
+                                                                                    {liked[actIndex] ? (<FavoriteIcon sx={{ color: '#71c1e3' }} />) : (<FavoriteBorderIcon sx={{ color: '#999999' }} />
+                                                                                    )}
+                                                                                </IconButton>
+                                                                            ) : (<Box></Box>)}
+                                                                        </div>)}
+                                                                </TableCell>
+                                                            }
 
-                                                }}
-                                                id="basic-menu"
-                                                anchorEl={openMore}
-                                                open={anchorMenu}
-                                                onClose={closeMenu}
-                                                MenuListProps={{
-                                                    'aria-labelledby': 'basic-button',
-                                                }}
-                                            >
+                                                            <TableCell align={'right'} sx={{ borderBottom: 'none', width: '5%' }} >
+                                                                <IconButton sx={{ color: '#999999' }} onClick={(event) => { openMenu(event, item, actIndex); }}>
+                                                                    <MoreHorizIcon sx={{ color: '#999999' }} />
+                                                                </IconButton>
+                                                            </TableCell>
 
-                                                    <MenuItem sx={{
-                                                        color: '#999999', ':hover': {
-                                                            bgcolor: '#272c2e',
-                                                            transition: '0.25s',
-                                                            cursor: 'pointer'
-                                                        },
-                                                    }} onClick={() => { closeMenu(); openAnalysis(menuItem); }} >
-                                                        <ListItemIcon >
-                                                            <AnalyticsIcon sx={{ color: '#999999' }} />
-                                                        </ListItemIcon>
-                                                        <ListItemText>Get Analysis</ListItemText>
-                                                    </MenuItem>
-                                                
-                                                {width <= 700 &&
-
-                                                    <MenuItem sx={{
-                                                        color: '#999999', ':hover': {
-                                                            bgcolor: '#272c2e',
-                                                            transition: '0.25s',
-                                                            cursor: 'pointer'
-                                                        },
-                                                    }}
-                                                        onClick={() => { toggleLiked(liked[itemIndex], menuItem?.id, itemIndex) }}>
-                                                        <ListItemIcon >
-                                                            {liked[itemIndex] ? (
-                                                                <FavoriteIcon sx={{ color: '#71c1e3' }} />
-                                                            ) : (<FavoriteBorderIcon sx={{ color: '#999999' }} />)}
-                                                        </ListItemIcon>
-                                                        {liked[itemIndex] ? (
-
-                                                            <ListItemText>Remove Track</ListItemText>
-                                                        ) : (<ListItemText>Like Track</ListItemText>
-                                                        )}
-                                                    </MenuItem>
-                                                }
-                                                <MenuItem sx={{
-                                                    color: '#999999', ':hover': {
-                                                        bgcolor: '#272c2e',
-                                                        transition: '0.25s',
-                                                        cursor: 'pointer'
-                                                    },
-                                                }} component={Link} to={'/Album?id=' + menuItem?.album?.id + '&name=' + encodeURIComponent(menuItem?.album?.name) + '&date=' + encodeURIComponent(menuItem?.album?.release_date) + '&media=' + encodeURIComponent(menuItem?.album?.images[1].url)}
-                                                    onClick={() => { closeMenu(); }}>
-                                                    <ListItemIcon >
-                                                        <AlbumIcon sx={{ color: '#999999' }} />
-                                                    </ListItemIcon>
-                                                    <ListItemText>Get Album</ListItemText>
-                                                </MenuItem>
-                                                <MenuItem sx={{
-                                                    color: '#999999', ':hover': {
-                                                        bgcolor: '#272c2e',
-                                                        transition: '0.25s',
-                                                        cursor: 'pointer'
-                                                    },
-                                                }} component={Link} to={menuItem?.external_urls?.spotify} >
-                                                    <ListItemIcon >
-                                                    <img src={'./Spotify_Icon_RGB_White.png'} width='20em' height='20em' style={{ marginLeft: '2px' }} />
-                                                    </ListItemIcon>
-                                                    <ListItemText>Listen on Spotify</ListItemText>
-                                                </MenuItem>
-                                                <Divider sx={{ my: 0.5, bgcolor: '#999999' }} />
-
-                                                <MenuItem sx={{
-                                                    color: '#999999', ':hover': {
-                                                        bgcolor: '#272c2e',
-                                                        transition: '0.25s',
-                                                        cursor: 'pointer'
-                                                    },
-                                                }} onClick={artistsOpenMenu} >
-                                                    <ListItemIcon >
-                                                        <ExpandMoreIcon sx={{ color: '#999999' }} />
-                                                    </ListItemIcon>
-                                                    <ListItemText>Artists</ListItemText>
-                                                </MenuItem>
-
-
-                                            </Menu>
-                                            <Menu
-                                                sx={{
-                                                    "& .MuiPaper-root": {
-                                                        backgroundColor: '#16191a'
-                                                    },
-
-                                                }}
-                                                id="basic-menu"
-                                                anchorEl={artistsOpenMore}
-                                                open={artistsAnchorMenu}
-                                                onClose={closeMenu}
-                                                MenuListProps={{
-                                                    'aria-labelledby': 'basic-button',
-                                                }}
-                                            >
-
-                                                {menuItem.artists?.map((artist) => {
-                                                    return (<MenuItem sx={{
-                                                        color: '#999999', ':hover': {
-                                                            bgcolor: '#272c2e',
-                                                            transition: '0.25s',
-                                                            cursor: 'pointer'
-                                                        },
-                                                    }} component={Link} to={'/Artist?id=' + artist.id}
-                                                        onClick={() => { closeMenu(); }}><ListItemIcon >
-                                                            <OpenInFullIcon sx={{ color: '#999999' }} />
-                                                        </ListItemIcon>
-                                                        <ListItemText>{artist.name + "'s Top Songs"}</ListItemText></MenuItem>)
-
+                                                        </TableRow>
+                                                    );
                                                 })}
-                                            </Menu>
-                                            <Menu
-                                                sx={{
-                                                    "& .MuiPaper-root": {
-                                                        backgroundColor: '#16191a'
-                                                    },
+                                                <Menu
+                                                    sx={{
+                                                        "& .MuiPaper-root": {
+                                                            backgroundColor: '#16191a'
+                                                        },
 
-                                                }}
-                                                id="basic-menu"
-                                                anchorEl={openFilter}
-                                                open={anchorFilterMenu}
-                                                onClose={closeFilter}
-                                                MenuListProps={{
-                                                    'aria-labelledby': 'basic-button',
-                                                }}
-                                            >
-                                                <MenuItem sx={{
-                                                    color: '#999999', ':hover': {
-                                                        bgcolor: '#272c2e',
-                                                        transition: '0.25s',
-                                                        cursor: 'pointer'
-                                                    },
-                                                }} onClick={createSortHandler('name')}
+                                                    }}
+                                                    id="basic-menu"
+                                                    anchorEl={openMore}
+                                                    open={anchorMenu}
+                                                    onClose={closeMenu}
+                                                    MenuListProps={{
+                                                        'aria-labelledby': 'basic-button',
+                                                    }}
                                                 >
-                                                    <TableSortLabel
-                                                        active={orderBy === 'name'}
-                                                        direction={orderBy === 'name' ? order : 'asc'}
-                                                        onClick={createSortHandler('name')}
-                                                        sx={{
-                                                            '& .MuiTableSortLabel-icon': {
-                                                                color: '#999999 !important',
+                                                    {width <= 700 &&
+
+                                                        <MenuItem sx={{
+                                                            color: '#999999', ':hover': {
+                                                                bgcolor: '#272c2e',
+                                                                transition: '0.25s',
+                                                                cursor: 'pointer'
+                                                            },
+                                                        }} onClick={() => { closeMenu(); openAnalysis(menuItem); }} >
+                                                            <ListItemIcon >
+                                                                <AnalyticsIcon sx={{ color: '#999999' }} />
+                                                            </ListItemIcon>
+                                                            <ListItemText>Get Analysis</ListItemText>
+                                                        </MenuItem>
+                                                    }
+                                                    {width <= 700 &&
+
+                                                        <MenuItem sx={{
+                                                            color: '#999999', ':hover': {
+                                                                bgcolor: '#272c2e',
+                                                                transition: '0.25s',
+                                                                cursor: 'pointer'
                                                             },
                                                         }}
+                                                            onClick={() => { toggleLiked(liked[itemIndex], menuItem?.id, itemIndex) }}>
+                                                            <ListItemIcon >
+                                                                {liked[itemIndex] ? (
+                                                                    <FavoriteIcon sx={{ color: '#71c1e3' }} />
+                                                                ) : (<FavoriteBorderIcon sx={{ color: '#999999' }} />)}
+                                                            </ListItemIcon>
+                                                            {liked[itemIndex] ? (
+
+                                                                <ListItemText>Remove Track</ListItemText>
+                                                            ) : (<ListItemText>Like Track</ListItemText>
+                                                            )}
+                                                        </MenuItem>
+                                                    }
+                                                    <MenuItem sx={{
+                                                        color: '#999999', ':hover': {
+                                                            bgcolor: '#272c2e',
+                                                            transition: '0.25s',
+                                                            cursor: 'pointer'
+                                                        },
+                                                    }} component={Link} to={'/Album?id=' + menuItem?.album?.id + '&name=' + encodeURIComponent(menuItem?.album?.name) + '&date=' + encodeURIComponent(menuItem?.album?.release_date) + '&media=' + encodeURIComponent(menuItem?.album?.images[1].url)}
+                                                        onClick={() => { closeMenu(); }}>
+                                                        <ListItemIcon >
+                                                            <AlbumIcon sx={{ color: '#999999' }} />
+                                                        </ListItemIcon>
+                                                        <ListItemText>Get Album</ListItemText>
+                                                    </MenuItem>
+                                                    <MenuItem sx={{
+                                                        color: '#999999', ':hover': {
+                                                            bgcolor: '#272c2e',
+                                                            transition: '0.25s',
+                                                            cursor: 'pointer'
+                                                        },
+                                                    }} component={Link} to={menuItem?.external_urls?.spotify} >
+                                                        <ListItemIcon >
+                                                            <img src={'./Spotify_Icon_RGB_White.png'} width='20em' height='20em' style={{ marginLeft: '2px' }} />
+                                                        </ListItemIcon>
+                                                        <ListItemText>Listen on Spotify</ListItemText>
+                                                    </MenuItem>
+                                                    <Divider sx={{ my: 0.5, bgcolor: '#999999' }} />
+
+                                                    <MenuItem sx={{
+                                                        color: '#999999', ':hover': {
+                                                            bgcolor: '#272c2e',
+                                                            transition: '0.25s',
+                                                            cursor: 'pointer'
+                                                        },
+                                                    }} onClick={artistsOpenMenu} >
+                                                        <ListItemIcon >
+                                                            <ExpandMoreIcon sx={{ color: '#999999' }} />
+                                                        </ListItemIcon>
+                                                        <ListItemText>Artists</ListItemText>
+                                                    </MenuItem>
+
+
+                                                </Menu>
+                                                <Menu
+                                                    sx={{
+                                                        "& .MuiPaper-root": {
+                                                            backgroundColor: '#16191a'
+                                                        },
+
+                                                    }}
+                                                    id="basic-menu"
+                                                    anchorEl={artistsOpenMore}
+                                                    open={artistsAnchorMenu}
+                                                    onClose={closeMenu}
+                                                    MenuListProps={{
+                                                        'aria-labelledby': 'basic-button',
+                                                    }}
+                                                >
+
+                                                    {menuItem.artists?.map((artist) => {
+                                                        return (<MenuItem sx={{
+                                                            color: '#999999', ':hover': {
+                                                                bgcolor: '#272c2e',
+                                                                transition: '0.25s',
+                                                                cursor: 'pointer'
+                                                            },
+                                                        }} component={Link} to={'/Artist?id=' + artist.id}
+                                                            onClick={() => { closeMenu(); }}><ListItemIcon >
+                                                                <OpenInFullIcon sx={{ color: '#999999' }} />
+                                                            </ListItemIcon>
+                                                            <ListItemText>{artist.name + "'s Top Songs"}</ListItemText></MenuItem>)
+
+                                                    })}
+                                                </Menu>
+                                                <Menu
+                                                    sx={{
+                                                        "& .MuiPaper-root": {
+                                                            backgroundColor: '#16191a'
+                                                        },
+
+                                                    }}
+                                                    id="basic-menu"
+                                                    anchorEl={openFilter}
+                                                    open={anchorFilterMenu}
+                                                    onClose={closeFilter}
+                                                    MenuListProps={{
+                                                        'aria-labelledby': 'basic-button',
+                                                    }}
+                                                >
+                                                    <MenuItem sx={{
+                                                        color: '#999999', ':hover': {
+                                                            bgcolor: '#272c2e',
+                                                            transition: '0.25s',
+                                                            cursor: 'pointer'
+                                                        },
+                                                    }} onClick={createSortHandler('name')}
                                                     >
-                                                        <ListItemText sx={{ color: '#999999' }}>Title</ListItemText>
+                                                        <TableSortLabel
+                                                            active={orderBy === 'name'}
+                                                            direction={orderBy === 'name' ? order : 'asc'}
+                                                            onClick={createSortHandler('name')}
+                                                            sx={{
+                                                                '& .MuiTableSortLabel-icon': {
+                                                                    color: '#999999 !important',
+                                                                },
+                                                            }}
+                                                        >
+                                                            <ListItemText sx={{ color: '#999999' }}>Title</ListItemText>
 
-                                                        {orderBy === 'name' ? (
-                                                            <Box component="span" sx={visuallyHidden} >
-                                                                {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                                            </Box>
-                                                        ) : null}
-                                                    </TableSortLabel>
-                                                </MenuItem>
-                                                <MenuItem sx={{
-                                                    color: '#999999', ':hover': {
-                                                        bgcolor: '#272c2e',
-                                                        transition: '0.25s',
-                                                        cursor: 'pointer'
-                                                    },
-                                                }} onClick={createSortHandler('artist')}
-                                                >
-                                                    <TableSortLabel
-                                                        active={orderBy === 'artist'}
-                                                        direction={orderBy === 'artist' ? order : 'asc'}
-                                                        sx={{
-                                                            '& .MuiTableSortLabel-icon': {
-                                                                color: '#999999 !important',
-                                                            },
-                                                        }}
+                                                            {orderBy === 'name' ? (
+                                                                <Box component="span" sx={visuallyHidden} >
+                                                                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                                                                </Box>
+                                                            ) : null}
+                                                        </TableSortLabel>
+                                                    </MenuItem>
+                                                    <MenuItem sx={{
+                                                        color: '#999999', ':hover': {
+                                                            bgcolor: '#272c2e',
+                                                            transition: '0.25s',
+                                                            cursor: 'pointer'
+                                                        },
+                                                    }} onClick={createSortHandler('artist')}
                                                     >
-                                                        <ListItemText sx={{ color: '#999999' }}>Artist</ListItemText>
+                                                        <TableSortLabel
+                                                            active={orderBy === 'artist'}
+                                                            direction={orderBy === 'artist' ? order : 'asc'}
+                                                            sx={{
+                                                                '& .MuiTableSortLabel-icon': {
+                                                                    color: '#999999 !important',
+                                                                },
+                                                            }}
+                                                        >
+                                                            <ListItemText sx={{ color: '#999999' }}>Artist</ListItemText>
 
-                                                        {orderBy === 'artist' ? (
-                                                            <Box component="span" sx={visuallyHidden} >
-                                                                {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                                            </Box>
-                                                        ) : null}
-                                                    </TableSortLabel>
-                                                </MenuItem>
-                                                <MenuItem sx={{
-                                                    color: '#999999', ':hover': {
-                                                        bgcolor: '#272c2e',
-                                                        transition: '0.25s',
-                                                        cursor: 'pointer'
-                                                    },
-                                                }} onClick={createSortHandler('album')} >
-                                                    <TableSortLabel
-                                                        active={orderBy === 'album'}
-                                                        direction={orderBy === 'album' ? order : 'asc'}
+                                                            {orderBy === 'artist' ? (
+                                                                <Box component="span" sx={visuallyHidden} >
+                                                                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                                                                </Box>
+                                                            ) : null}
+                                                        </TableSortLabel>
+                                                    </MenuItem>
+                                                    <MenuItem sx={{
+                                                        color: '#999999', ':hover': {
+                                                            bgcolor: '#272c2e',
+                                                            transition: '0.25s',
+                                                            cursor: 'pointer'
+                                                        },
+                                                    }} onClick={createSortHandler('album')} >
+                                                        <TableSortLabel
+                                                            active={orderBy === 'album'}
+                                                            direction={orderBy === 'album' ? order : 'asc'}
 
-                                                        sx={{
-                                                            '& .MuiTableSortLabel-icon': {
-                                                                color: '#999999 !important',
-                                                            },
-                                                        }}                                    >
-                                                        <ListItemText sx={{ color: '#999999' }}>Album</ListItemText>
+                                                            sx={{
+                                                                '& .MuiTableSortLabel-icon': {
+                                                                    color: '#999999 !important',
+                                                                },
+                                                            }}                                    >
+                                                            <ListItemText sx={{ color: '#999999' }}>Album</ListItemText>
 
-                                                        {orderBy === 'album' ? (
-                                                            <Box component="span" sx={visuallyHidden} >
-                                                                {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                                            </Box>
-                                                        ) : null}
-                                                    </TableSortLabel>
-                                                </MenuItem>
-                                                <MenuItem sx={{
-                                                    color: '#999999', ':hover': {
-                                                        bgcolor: '#272c2e',
-                                                        transition: '0.25s',
-                                                        cursor: 'pointer'
-                                                    },
-                                                }} onClick={createSortHandler('release_date')}
-                                                >
-                                                    <TableSortLabel
-                                                        active={orderBy === 'release_date'}
-                                                        direction={orderBy === 'release_date' ? order : 'asc'}
-                                                        sx={{
-                                                            '& .MuiTableSortLabel-icon': {
-                                                                color: '#999999 !important',
-                                                            },
-                                                        }}                                    >
-                                                        <ListItemText sx={{ color: '#999999' }}>Date Added</ListItemText>
+                                                            {orderBy === 'album' ? (
+                                                                <Box component="span" sx={visuallyHidden} >
+                                                                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                                                                </Box>
+                                                            ) : null}
+                                                        </TableSortLabel>
+                                                    </MenuItem>
+                                                    <MenuItem sx={{
+                                                        color: '#999999', ':hover': {
+                                                            bgcolor: '#272c2e',
+                                                            transition: '0.25s',
+                                                            cursor: 'pointer'
+                                                        },
+                                                    }} onClick={createSortHandler('release_date')}
+                                                    >
+                                                        <TableSortLabel
+                                                            active={orderBy === 'release_date'}
+                                                            direction={orderBy === 'release_date' ? order : 'asc'}
+                                                            sx={{
+                                                                '& .MuiTableSortLabel-icon': {
+                                                                    color: '#999999 !important',
+                                                                },
+                                                            }}                                    >
+                                                            <ListItemText sx={{ color: '#999999' }}>Date Added</ListItemText>
 
-                                                        {orderBy === 'release_date' ? (
-                                                            <Box component="span" sx={visuallyHidden} >
-                                                                {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                                            </Box>
-                                                        ) : null}
-                                                    </TableSortLabel>
-                                                </MenuItem>
-                                                <MenuItem sx={{
-                                                    color: '#999999', ':hover': {
-                                                        bgcolor: '#272c2e',
-                                                        transition: '0.25s',
-                                                        cursor: 'pointer'
-                                                    },
-                                                }} onClick={createSortHandler('duration_ms')}
-                                                >
-                                                    <TableSortLabel
-                                                        active={orderBy === 'duration_ms'}
-                                                        direction={orderBy === 'duration_ms' ? order : 'asc'}
-                                                        sx={{
-                                                            '& .MuiTableSortLabel-icon': {
-                                                                color: '#999999 !important',
-                                                            },
-                                                        }}                                    >
-                                                        <ListItemText sx={{ color: '#999999' }}>Duration</ListItemText>
+                                                            {orderBy === 'release_date' ? (
+                                                                <Box component="span" sx={visuallyHidden} >
+                                                                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                                                                </Box>
+                                                            ) : null}
+                                                        </TableSortLabel>
+                                                    </MenuItem>
+                                                    <MenuItem sx={{
+                                                        color: '#999999', ':hover': {
+                                                            bgcolor: '#272c2e',
+                                                            transition: '0.25s',
+                                                            cursor: 'pointer'
+                                                        },
+                                                    }} onClick={createSortHandler('duration_ms')}
+                                                    >
+                                                        <TableSortLabel
+                                                            active={orderBy === 'duration_ms'}
+                                                            direction={orderBy === 'duration_ms' ? order : 'asc'}
+                                                            sx={{
+                                                                '& .MuiTableSortLabel-icon': {
+                                                                    color: '#999999 !important',
+                                                                },
+                                                            }}                                    >
+                                                            <ListItemText sx={{ color: '#999999' }}>Duration</ListItemText>
 
-                                                        {orderBy === 'duration_ms' ? (
-                                                            <Box component="span" sx={visuallyHidden} >
-                                                                {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                                            </Box>
-                                                        ) : null}
-                                                    </TableSortLabel>
-                                                </MenuItem>
-                                                <MenuItem sx={{
-                                                    color: '#999999', ':hover': {
-                                                        bgcolor: '#272c2e',
-                                                        transition: '0.25s',
-                                                        cursor: 'pointer'
-                                                    },
-                                                }} onClick={createSortHandler('popularity')}
-                                                >
-                                                    <TableSortLabel
-                                                        active={orderBy === 'popularity'}
-                                                        direction={orderBy === 'popularity' ? order : 'asc'}
-                                                        sx={{
-                                                            '& .MuiTableSortLabel-icon': {
-                                                                color: '#999999 !important',
-                                                            },
-                                                        }}                                    >
-                                                        <ListItemText sx={{ color: '#999999' }}>Popularity</ListItemText>
+                                                            {orderBy === 'duration_ms' ? (
+                                                                <Box component="span" sx={visuallyHidden} >
+                                                                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                                                                </Box>
+                                                            ) : null}
+                                                        </TableSortLabel>
+                                                    </MenuItem>
+                                                    <MenuItem sx={{
+                                                        color: '#999999', ':hover': {
+                                                            bgcolor: '#272c2e',
+                                                            transition: '0.25s',
+                                                            cursor: 'pointer'
+                                                        },
+                                                    }} onClick={createSortHandler('popularity')}
+                                                    >
+                                                        <TableSortLabel
+                                                            active={orderBy === 'popularity'}
+                                                            direction={orderBy === 'popularity' ? order : 'asc'}
+                                                            sx={{
+                                                                '& .MuiTableSortLabel-icon': {
+                                                                    color: '#999999 !important',
+                                                                },
+                                                            }}                                    >
+                                                            <ListItemText sx={{ color: '#999999' }}>Popularity</ListItemText>
 
-                                                        {orderBy === 'popularity' ? (
-                                                            <Box component="span" sx={visuallyHidden} >
-                                                                {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                                            </Box>
-                                                        ) : null}
-                                                    </TableSortLabel>
-                                                </MenuItem>
-                                                <MenuItem sx={{
-                                                    color: '#999999', ':hover': {
-                                                        bgcolor: '#272c2e',
-                                                        transition: '0.25s',
-                                                        cursor: 'pointer'
-                                                    },
-                                                }} onClick={createSortHandler('explicit')}
-                                                >
-                                                    <TableSortLabel
-                                                        active={orderBy === 'explicit'}
-                                                        direction={orderBy === 'explicit' ? order : 'asc'}
-                                                        sx={{
-                                                            '& .MuiTableSortLabel-icon': {
-                                                                color: '#999999 !important',
-                                                            },
-                                                        }}                                    >
-                                                        <ListItemText sx={{ color: '#999999' }}>Explicit</ListItemText>
+                                                            {orderBy === 'popularity' ? (
+                                                                <Box component="span" sx={visuallyHidden} >
+                                                                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                                                                </Box>
+                                                            ) : null}
+                                                        </TableSortLabel>
+                                                    </MenuItem>
+                                                    <MenuItem sx={{
+                                                        color: '#999999', ':hover': {
+                                                            bgcolor: '#272c2e',
+                                                            transition: '0.25s',
+                                                            cursor: 'pointer'
+                                                        },
+                                                    }} onClick={createSortHandler('explicit')}
+                                                    >
+                                                        <TableSortLabel
+                                                            active={orderBy === 'explicit'}
+                                                            direction={orderBy === 'explicit' ? order : 'asc'}
+                                                            sx={{
+                                                                '& .MuiTableSortLabel-icon': {
+                                                                    color: '#999999 !important',
+                                                                },
+                                                            }}                                    >
+                                                            <ListItemText sx={{ color: '#999999' }}>Explicit</ListItemText>
 
-                                                        {orderBy === 'explicit' ? (
-                                                            <Box component="span" sx={visuallyHidden} >
-                                                                {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                                            </Box>
-                                                        ) : null}
-                                                    </TableSortLabel>
-                                                </MenuItem>
+                                                            {orderBy === 'explicit' ? (
+                                                                <Box component="span" sx={visuallyHidden} >
+                                                                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                                                                </Box>
+                                                            ) : null}
+                                                        </TableSortLabel>
+                                                    </MenuItem>
 
-                                            </Menu>
-                                        </TableBody>
-                                    </Table>
-                                </TableContainer>
+                                                </Menu>
+                                            </TableBody>
+                                        </Table>
+                                    </TableContainer>
 
-                            </Box>
-                            <AnalysisDialog track={track} features={features} analysis={analysis} open={open} handleClose={handleClose} copyToClipBoard={copyToClipBoard} />
-                            <Snackbar
-                                open={openSnackbar}
-                                onClose={() => setOpenSnackbar(false)}
-                                autoHideDuration={4000}
-                            >
-                                {snackbarMessage.includes('Error') ?
-                                    (<Alert onClose={() => setOpenSnackbar(false)} severity="error" sx={{ width: '100%' }}>
-                                        {snackbarMessage}
-                                    </Alert>) :
-                                    (<Alert onClose={() => setOpenSnackbar(false)} severity="success" sx={{ width: '100%' }}>
-                                        {snackbarMessage}
-                                    </Alert>)
+                                </Box>
+                                <AnalysisDialog track={track} features={features} analysis={analysis} open={open} handleClose={handleClose} copyToClipBoard={copyToClipBoard} />
 
-                                }
-                            </Snackbar>
-                            {
-                                loading && <Backdrop
-                                    sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                                    open={loading}
-                                >
-                                    <CircularProgress sx={{ color: '#71c1e3' }} />
-                                </Backdrop>
-                            }
-                        </Box></Box>
+                            </Box></Box>
+                    }
+                    <Snackbar
+                        open={openSnackbar}
+                        onClose={() => setOpenSnackbar(false)}
+                        autoHideDuration={4000}
+                    >
+                        {snackbarMessage.includes('Error') ?
+                            (<Alert onClose={() => setOpenSnackbar(false)} severity="error" sx={{ width: '100%' }}>
+                                {snackbarMessage}
+                            </Alert>) :
+                            (<Alert onClose={() => setOpenSnackbar(false)} severity="success" sx={{ width: '100%' }}>
+                                {snackbarMessage}
+                            </Alert>)
 
+                        }
+                    </Snackbar>
+                    {
+                        loading && <Backdrop
+                            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                            open={loading}
+                        >
+                            <CircularProgress sx={{ color: '#71c1e3' }} />
+                        </Backdrop>
+                    }
                 </Card >
             )}
         </Box>
