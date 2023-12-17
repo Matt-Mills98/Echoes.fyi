@@ -138,7 +138,7 @@ export default function MultiActionAreaCard(props) {
 
                                         <CardActionArea onClick={() => { redirectToProfile(track?.external_urls?.spotify) }}>
 
-                                            <Stack direction="row" justifyContent={"left"} spacing={1}>
+                                            <Stack direction="row" justifyContent={"left"} spacing={2}>
 
                                                 <CardMedia
                                                     component="img"
@@ -149,7 +149,7 @@ export default function MultiActionAreaCard(props) {
                                                 >
                                                 </CardMedia>
 
-                                                <Stack direction="column" justifyContent={"left"} spacing={0}>
+                                                <Stack direction="column" justifyContent={"center"} spacing={0}>
 
                                                     <Typography sx={{ color: '#c4c4c4', typography: { xs: 'h5', lg: 'h4' } }} component="div">
                                                         {track.name}
