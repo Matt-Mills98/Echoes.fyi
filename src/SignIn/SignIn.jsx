@@ -406,11 +406,7 @@ export default function SignIn(props) {
                             alignItems: 'center', display: "flex", flexDirection: "column",
                             justifyContent: "center"
                         }}>
-                            <Grow in={page == 'callback'} >
-                                <Card sx={{ bgcolor: '#16191a' }}>
-                                    <Button onClick={getAccessToken}>Click Me</Button>
-                                </Card>
-                            </Grow>
+                            
                         </Grid>
                     }
                 </div>

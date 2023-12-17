@@ -343,7 +343,7 @@ function ResponsiveAppBar() {
       <BrowserRouter>
         {(refreshToken == null || accessToken == null || refreshToken == '' || accessToken == '') ? (
           <Box sx={{ bgcolor: '#0f0f0f', minHeight: '100vh', height: '100%' }}><SignIn ></SignIn></Box>) : (
-            <div><AppBar position="sticky" sx={{ background: 'linear-gradient(to right bottom, #22292b, #16191a)', minWidth: '100%', maxWidth: '100%' }}>
+          <div><AppBar position="sticky" sx={{ background: 'linear-gradient(to right bottom, #22292b, #16191a)', minWidth: '100%', maxWidth: '100%' }}>
             <Container sx={{ width: '95vw', maxWidth: '100vw' }} maxWidth={false}>
               <Toolbar disableGutters>
                 <Box component={Link} to='/About' >
@@ -427,16 +427,19 @@ function ResponsiveAppBar() {
                     </MenuItem>
                   </Menu>
                 </Box>
-                <Box
-                  component="img"
-                  sx={{
-                    mr: 2,
-                    display: { xs: 'flex', md: 'none', maxWidth: '100px' },
-                    flexGrow: 1,
-                  }}
-                  alt="Echoes Logo"
-                  src="EchoesTextLogo.png"
-                />
+                <Box component={Link} to='/About' >
+
+                  <Box
+                    component="img"
+                    sx={{
+                      mr: 2,
+                      display: { xs: 'flex', md: 'none', maxWidth: '100px' },
+                      flexGrow: 1,
+                    }}
+                    alt="Echoes Logo"
+                    src="EchoesTextLogo.png"
+                  />
+                </Box>
                 <Typography
                   variant="h5"
                   component="a"
@@ -461,7 +464,7 @@ function ResponsiveAppBar() {
                     onClick={() => { handleCloseNavMenu(); }}
                     sx={{
                       my: 2, color: '#CCCCCC', display: 'block', ':hover': {
-                        bgcolor: '#272c2e', color:'white'
+                        bgcolor: '#272c2e', color: 'white'
                       }
                     }}
                     component={Link} to='/'
@@ -471,9 +474,11 @@ function ResponsiveAppBar() {
                   <Button
                     key={'recommendations'}
                     onClick={() => { handleCloseNavMenu(); }}
-                    sx={{ my: 2, color: '#CCCCCC', display: 'block', ':hover': {
-                      bgcolor: '#272c2e', color:'white'
-                    } }}
+                    sx={{
+                      my: 2, color: '#CCCCCC', display: 'block', ':hover': {
+                        bgcolor: '#272c2e', color: 'white'
+                      }
+                    }}
                     component={Link} to='/Recommendations'
 
                   >
@@ -482,9 +487,11 @@ function ResponsiveAppBar() {
                   <Button
                     key={'search'}
                     onClick={() => { handleCloseNavMenu(); }}
-                    sx={{ my: 2, color: '#CCCCCC', display: 'block',':hover': {
-                      bgcolor: '#272c2e', color:'white'
-                    } }}
+                    sx={{
+                      my: 2, color: '#CCCCCC', display: 'block', ':hover': {
+                        bgcolor: '#272c2e', color: 'white'
+                      }
+                    }}
                     component={Link} to='/Search'
 
                   >
@@ -493,9 +500,11 @@ function ResponsiveAppBar() {
                   <Button
                     key={'stats'}
                     onClick={() => { handleCloseNavMenu(); }}
-                    sx={{ my: 2, color: '#CCCCCC', display: 'block', ':hover': {
-                      bgcolor: '#272c2e', color:'white'
-                    } }}
+                    sx={{
+                      my: 2, color: '#CCCCCC', display: 'block', ':hover': {
+                        bgcolor: '#272c2e', color: 'white'
+                      }
+                    }}
                     component={Link} to='/Statistics'
 
                   >
@@ -532,7 +541,7 @@ function ResponsiveAppBar() {
                   >
                     <MenuItem sx={{
                       color: '#999999', ':hover': {
-                        color: '#CCCCCC', 
+                        color: '#CCCCCC',
                         bgcolor: '#272c2e',
                         transition: '0.25s',
                         cursor: 'pointer'
@@ -542,7 +551,7 @@ function ResponsiveAppBar() {
                     </MenuItem>
                     <MenuItem sx={{
                       color: '#999999', ':hover': {
-                        color: '#CCCCCC', 
+                        color: '#CCCCCC',
                         bgcolor: '#272c2e',
                         transition: '0.25s',
                         cursor: 'pointer'
@@ -552,7 +561,7 @@ function ResponsiveAppBar() {
                     </MenuItem>
                     <MenuItem sx={{
                       color: '#999999', ':hover': {
-                        color: '#CCCCCC', 
+                        color: '#CCCCCC',
                         bgcolor: '#272c2e',
                         transition: '0.25s',
                         cursor: 'pointer'
@@ -562,7 +571,7 @@ function ResponsiveAppBar() {
                     </MenuItem>
                     <MenuItem sx={{
                       color: '#999999', ':hover': {
-                        color: '#CCCCCC', 
+                        color: '#CCCCCC',
                         bgcolor: '#272c2e',
                         transition: '0.25s',
                         cursor: 'pointer'
