@@ -4,7 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Grid from "@mui/material/Grid";
-
+import Button from "@mui/material/Button";
 export default function SignIn() {
 
     return (
@@ -73,9 +73,13 @@ export default function SignIn() {
                         <Typography align="left" sx={{ color: '#71c1e3' }} gutterBottom variant="h5" component="div">
                             Contact
                         </Typography>
-                        <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-                            Email: contact@echoesfyi.com
-                        </Typography>
+                        <Button
+                            href={'mailto:contact@echoesfyi.com'}
+                        >
+                            <Typography sx={{textTransform:'none', color: "#c4c4c4"}}>
+                                contact@echoesfyi.com
+                            </Typography>
+                        </Button>
                     </CardContent>
                 </Card>
             </Grid>
