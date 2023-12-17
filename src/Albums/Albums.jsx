@@ -136,5 +136,5 @@ export default function MultiActionAreaCard(props) {
                 </Grid>)}
         </Box >
 
-    );
+    )
 }

@@ -1038,8 +1038,8 @@ export default function UserAlbumSongs(props) {
                 </Card >
 
             )
-            };
+            }
         </Box >
 
-    );
+    )
 }
