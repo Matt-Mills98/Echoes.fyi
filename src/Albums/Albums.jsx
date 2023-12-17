@@ -43,7 +43,7 @@ export default function MultiActionAreaCard(props) {
                 crossOrigin: 'anonymous'
             }
             extractColors(media, options)
-                .then((result) => {setColor1(result[0].hex); })
+                .then((result) => { console.log(result); setColor1(result[0].hex); })
                 .catch(console.error);
         }
         catch {
@@ -101,7 +101,7 @@ export default function MultiActionAreaCard(props) {
                                                         component="img"
                                                         height="140px"
                                                         width='140px'
-                                                        sx={{   m:'0px', p:'0px',objectFit: "contain" }}
+                                                        sx={{  m:'0px', p:'0px', objectFit: "contain" }}
                                                         image={media}
                                                         alt="Album Cover"
                                                     >
@@ -113,6 +113,8 @@ export default function MultiActionAreaCard(props) {
                                                     <Typography sx={{ color: '#c4c4c4' }} variant="h4" component="div">
                                                         {name}
                                                     </Typography>
+
+
                                                     <Typography sx={{ color: '#999999' }} variant="body2" color="text.secondary">
                                                         Released {moment(date).fromNow()}
                                                     </Typography>
@@ -136,5 +138,5 @@ export default function MultiActionAreaCard(props) {
                 </Grid>)}
         </Box >
 
-    )
+    );
 }
