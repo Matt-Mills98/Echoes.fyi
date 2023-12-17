@@ -763,7 +763,6 @@ export default function UserAlbumSongs(props) {
                                             'aria-labelledby': 'basic-button',
                                         }}
                                     >
-                                        {width <= 700 &&
 
                                             <MenuItem sx={{
                                                 color: '#999999', ':hover': {
@@ -777,7 +776,7 @@ export default function UserAlbumSongs(props) {
                                                 </ListItemIcon>
                                                 <ListItemText>Get Analysis</ListItemText>
                                             </MenuItem>
-                                        }
+                                        
                                         <MenuItem sx={{
                                             color: '#999999', ':hover': {
                                                 bgcolor: '#272c2e',
