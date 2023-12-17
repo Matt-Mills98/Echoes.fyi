@@ -79,7 +79,7 @@ export default function TemporaryDrawer(props) {
                     <Grid container
                         direction={'column'}
                         sx={{
-                            maxHeight:'100vh',
+                            maxHeight: '100vh',
 
                             m: '8vw', width: '80vw',
                         }}
@@ -93,10 +93,10 @@ export default function TemporaryDrawer(props) {
                             <CardMedia
                                 component="img"
                                 sx={{
-                                    width: '100%', height: '100%', maxHeight: '150px', p: '0px', marginBottom:'10px'
+                                    width: '100%', height: '100%', maxHeight: '150px', p: '0px', marginBottom: '10px'
                                 }}
                                 image={'./Spotify_Logo_CMYK_White.png'}
-                                
+
                             />
                         </Grid>
                         <Grid item xs={12} sx={{ width: '100%', height: '100%', maxHeight: '600px', }}>
@@ -485,7 +485,7 @@ export default function TemporaryDrawer(props) {
                                         <Box sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex', xl: 'flex' } }}>
 
                                             <IconButton component={Link} to={track?.external_urls?.spotify} onClick={reloadLocation}>
-                                                <LaunchIcon fontSize='small' sx={{ marginBottom: '0px', marginTop: '2vh', color: '#999999', '&:hover': { color: 'white' } }} />
+                                                <img src={'./Spotify_Icon_RGB_White.png'} width='20px' height='20px' style={{ marginTop: '20px' }} />
                                             </IconButton>
                                         </Box>
                                     </Grid>

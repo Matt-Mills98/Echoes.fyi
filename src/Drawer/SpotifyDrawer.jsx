@@ -483,7 +483,7 @@ export default function TemporaryDrawer(props) {
                                         <Box sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex', xl: 'flex' } }}>
 
                                             <IconButton component={Link} to={track?.external_urls?.spotify} onClick={reloadLocation}>
-                                                <LaunchIcon fontSize='small' sx={{ marginBottom: '0px', marginTop: '2vh', color: '#999999', '&:hover': { color: 'white' } }} />
+                                            <img src={'./Spotify_Icon_RGB_White.png'} width='20px' height='20px' style={{marginTop:'20px'}}/>
                                             </IconButton>
                                         </Box>
                                     </Grid>
