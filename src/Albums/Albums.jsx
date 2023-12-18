@@ -95,7 +95,7 @@ export default function MultiActionAreaCard(props) {
                                     <CardMedia
                                         component="img"
 
-                                        sx={{ mt: '10px', mb:'10px', p: '0px', objectFit: "contain", width: '150px' }}
+                                        sx={{ m:'10px', p: '0px', objectFit: "contain", width: '150px' }}
                                         image={media}
                                         alt="Album Cover"
                                     >
