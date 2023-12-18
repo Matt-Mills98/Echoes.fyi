@@ -244,6 +244,14 @@ export default function SignIn(props) {
                                             </Fab>
                                             <CardContent>
                                                 <Typography align="left" sx={{ color: '#71c1e3' }} gutterBottom variant="h5" component="div">
+                                                    About
+                                                </Typography>
+                                                <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
+                                                    Echoes.fyi is a individual project built to assist users in retrieving and filtering song recommendations, viewing personal account statistics, and viewing track analyses. Full navigation can be done via the "more" button that appears on every track table. Feel free to reach out via the contact section for any feature requests or bug reports.
+                                                </Typography>
+                                            </CardContent>
+                                            <CardContent>
+                                                <Typography align="left" sx={{ color: '#71c1e3' }} gutterBottom variant="h5" component="div">
                                                     Primary Use Cases
                                                 </Typography>
                                                 <Box marginLeft={'20px'} marginTop={'20px'}>
