@@ -418,7 +418,7 @@ export default function AnalysisDialog(props) {
         },
 
     }}>
-        <DialogTitle variant="h4" ><Typography variant="h4" sx={{ color: '#71c1e3' }}>{track?.name}</Typography> <Typography variant="h6" sx={{ color: '#999999' }}>{track?.artists?.map((artist, index) => (index ? ', ' : '') + artist.name)}</Typography></DialogTitle>
+        <DialogTitle  ><Typography  sx={{ color: '#71c1e3', typography: { xs: 'h5', lg: 'h4' } }}>{track?.name}</Typography> <Typography variant="h6" sx={{ color: '#999999' }}>{track?.artists?.map((artist, index) => (index ? ', ' : '') + artist.name)}</Typography></DialogTitle>
         <IconButton
             aria-label="close"
             onClick={handleClose}
