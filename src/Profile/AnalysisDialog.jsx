@@ -176,7 +176,7 @@ export default function AnalysisDialog(props) {
                         const ctx = context.chart.ctx;
                         const gradient = ctx.createLinearGradient(0, 0, 0, 200);
                         gradient.addColorStop(1, getColorSingle(analysis?.sections, 'tempo', index));
-                        gradient.addColorStop(0, '#71c1e3');
+                        gradient.addColorStop(0, getColorSingle(analysis?.sections, 'tempo', index)+'66');
                         return gradient;
                     }
 
@@ -355,7 +355,7 @@ export default function AnalysisDialog(props) {
                         const ctx = context.chart.ctx;
                         const gradient = ctx.createLinearGradient(0, 0, 0, 200);
                         gradient.addColorStop(1, getColorSingle(analysis?.sections, 'key', index));
-                        gradient.addColorStop(0, '#71c1e3');
+                        gradient.addColorStop(0, getColorSingle(analysis?.sections, 'key', index)+'66');
                         return gradient;
                     }
 
