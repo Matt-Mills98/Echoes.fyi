@@ -109,7 +109,7 @@ export default function MultiActionAreaCard(props) {
                                                 </CardMedia>
                                                 <Stack direction="column" justifyContent={"center"} spacing={0}>
 
-                                                    <Typography sx={{ color: '#c4c4c4' }} variant="h4" component="div">
+                                                    <Typography sx={{ color: '#c4c4c4', typography: { xs: 'h5', lg: 'h4' } }}  component="div">
                                                         {name}
                                                     </Typography>
 

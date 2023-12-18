@@ -132,7 +132,7 @@ export default function MultiActionAreaCard(props) {
                                                     </CardMedia>
                                                 </Grid>
                                                 <Grid item sx={8}>
-                                                    <Typography sx={{ color: '#c4c4c4' }} variant="h4" component="div">
+                                                    <Typography sx={{ color: '#c4c4c4',typography: { xs: 'h5', lg: 'h4' } }}  component="div">
                                                         {artist?.name}
                                                     </Typography>
                                                     <Typography sx={{ color: '#71c1e3' }} variant="h6" color="text.secondary">
