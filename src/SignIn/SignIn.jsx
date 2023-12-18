@@ -336,12 +336,6 @@ export default function SignIn(props) {
                                                                 User-Read-Private allows Echoes.fyi to read a user's subscription details. This means Echoes.fyi can view whether a user is a free or a premium account.
                                                             </Typography>
                                                             <Typography align="left" sx={{ color: '#71c1e3' }} gutterBottom variant="h6" component="div" marginTop={'10px'}>
-                                                                User-Read-Email
-                                                            </Typography>
-                                                            <Typography align="left" sx={{ color: '#999999' }} variant="body2"  >
-                                                                User-Read-Email allows Echoes.fyi to read a user's email address.
-                                                            </Typography>
-                                                            <Typography align="left" sx={{ color: '#71c1e3' }} gutterBottom variant="h6" component="div" marginTop={'10px'}>
                                                                 Playlist-Read-Collaborative
                                                             </Typography>
                                                             <Typography align="left" sx={{ color: '#999999' }} variant="body2" >
@@ -371,6 +365,12 @@ export default function SignIn(props) {
                                                             <Typography align="left" sx={{ color: '#999999' }} variant="body2" >
                                                                 User-Follow-Read allows Echoes.fyi to view a user's followed artists. This is used when retrieving artists in the users profile screen.
                                                             </Typography>
+                                                            <Typography align="left" sx={{ color: '#71c1e3' }} gutterBottom variant="h6" component="div" marginTop={'10px'}>
+                                                                User-Top-Read
+                                                            </Typography>
+                                                            <Typography align="left" sx={{ color: '#999999' }} variant="body2" >
+                                                                User-Top-Read allows Echoes.fyi to view a user's top tracks and artists, which is displayed in the "Statistics" section.
+                                                            </Typography>
                                                         </Box>
                                                     </Box >
                                                     <Box marginLeft={'20px'} marginTop={'20px'}>
@@ -386,7 +386,19 @@ export default function SignIn(props) {
                                                                 User-Library-Modify
                                                             </Typography>
                                                             <Typography align="left" sx={{ color: '#999999' }} variant="body2" >
-                                                                The scopes in this section allow Echoes.fyi add or delete songs from a user's liked tracks. This is only needed to give users the ability to like a song directly inside of Echoes.fyi. This is only used where a "heart" icon appears.
+                                                                User-Library-Modify allows Echoes to add or delete songs from a user's liked tracks. This is only needed to give users the ability to like a song directly inside of Echoes.fyi. This is only used where a "heart" icon appears.
+                                                            </Typography>
+                                                            <Typography align="left" sx={{ color: '#71c1e3' }} gutterBottom variant="h6" component="div" marginTop={'10px'}>
+                                                                User-Modify-Playback-State
+                                                            </Typography>
+                                                            <Typography align="left" sx={{ color: '#999999' }} variant="body2" >
+                                                                User-Modify-Playback-State allowa Echoes.fyi to change the playback state of the Spotify Player. This includes skipping tracks, changing volume, transferring playback, etc. This is necessary for full playback for a premium user.
+                                                            </Typography>
+                                                            <Typography align="left" sx={{ color: '#71c1e3' }} gutterBottom variant="h6" component="div" marginTop={'10px'}>
+                                                                Streaming
+                                                            </Typography>
+                                                            <Typography align="left" sx={{ color: '#999999' }} variant="body2" >
+                                                                Streaming allows echoes to stream full playback for premium users
                                                             </Typography>
                                                         </Box >
                                                     </Box>
@@ -406,7 +418,7 @@ export default function SignIn(props) {
                             alignItems: 'center', display: "flex", flexDirection: "column",
                             justifyContent: "center"
                         }}>
-                            
+
                         </Grid>
                     }
                 </div>
