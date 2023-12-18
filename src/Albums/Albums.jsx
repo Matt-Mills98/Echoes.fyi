@@ -88,52 +88,39 @@ export default function MultiActionAreaCard(props) {
             ) : (
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                        <Card sx={{ maxWidth: '100%', background: 'linear-gradient(to bottom right, ' + color1 + '33 0%, ' + '#16191aFF' + ' 100%)', backgroundColor: '#16191a' }}>
+                            <CardActionArea onClick={redirect}>
+                                <Stack direction="row" justifyContent={"left"} spacing={2}>
 
-                        <Grid container spacing={2}>
+                                    <CardMedia
+                                        component="img"
 
-                            <Grid item xs={12}>
+                                        sx={{ m: '0px', p: '0px', objectFit: "contain", width: '150px' }}
+                                        image={media}
+                                        alt="Album Cover"
+                                    >
+                                    </CardMedia>
+                                    <Stack direction="column" justifyContent={"center"} spacing={0}>
 
-                                <Card sx={{ maxWidth: '100%', background: 'linear-gradient(to bottom right, ' + color1 + '33 0%, ' + '#16191aFF' + ' 100%)', backgroundColor: '#16191a' }}>
-                                    <CardActionArea onClick={redirect}>
-                                        <CardContent>
-                                            <Stack direction="row" justifyContent={"left"} spacing={2}>
-
-                                                <CardMedia
-                                                    component="img"
-                                                    height="140px"
-                                                    width='140px'
-                                                    sx={{ m: '0px', p: '0px', objectFit: "contain" }}
-                                                    image={media}
-                                                    alt="Album Cover"
-                                                >
-                                                </CardMedia>
-                                                <Stack direction="column" justifyContent={"center"} spacing={0}>
-
-                                                    <Typography sx={{ color: '#c4c4c4', typography: { xs: 'h5', lg: 'h4' } }}  component="div">
-                                                        {name}
-                                                    </Typography>
+                                        <Typography sx={{ color: '#c4c4c4', typography: { xs: 'h5', lg: 'h4' } }} component="div">
+                                            {name}
+                                        </Typography>
 
 
-                                                    <Typography sx={{ color: '#999999' }} variant="body2" color="text.secondary">
-                                                        Released {moment(date).fromNow()}
-                                                    </Typography>
-                                                </Stack>
-                                            </Stack>
-                                        </CardContent>
-                                    </CardActionArea>
-                                </Card>
-
-                            </Grid>
-                            <Grid item xs={12}>
-                                <UserAlbumSongs aT={accessToken} playlistID={id} playlistName={name} albumDateAdded={date} albumMedia={media} setDisplayed={updateDisplayed} setArtistID={updateArtistID} setSelectedPlaylist={updateSelectedPlaylist} setSelectedPlaylistName={updateSelectedPlaylistName} setDateAdded={updateDateAdded} setAlbumMedia={updateAlbumMedia}
-                                    setRows={setRows} rows={rows} initPlayingArr={initPlayingArr} playingArr={playingArr} setIsPlayingArr={setIsPlayingArr} setIndex={setIndex} setType={setType} updateGlobalMedia={updateGlobalMedia} setTrackID={setTrackID} trackID={trackID}></UserAlbumSongs>
-                            </Grid>
-                        </Grid>
+                                        <Typography sx={{ color: '#999999' }} variant="body2" color="text.secondary">
+                                            Released {moment(date).fromNow()}
+                                        </Typography>
+                                    </Stack>
+                                </Stack>
+                            </CardActionArea>
+                        </Card>
                     </Grid>
-                    <Grid item xs={2}>
-
-
+                    <Grid item xs={12}>
+                        <UserAlbumSongs aT={accessToken} playlistID={id} playlistName={name} albumDateAdded={date} albumMedia={media} setDisplayed={updateDisplayed} setArtistID={updateArtistID} setSelectedPlaylist={updateSelectedPlaylist} setSelectedPlaylistName={updateSelectedPlaylistName} setDateAdded={updateDateAdded} setAlbumMedia={updateAlbumMedia}
+                            setRows={setRows} rows={rows} initPlayingArr={initPlayingArr} playingArr={playingArr} setIsPlayingArr={setIsPlayingArr} setIndex={setIndex} setType={setType} updateGlobalMedia={updateGlobalMedia} setTrackID={setTrackID} trackID={trackID}></UserAlbumSongs>
                     </Grid>
+
+
                 </Grid>)}
         </Box >
 

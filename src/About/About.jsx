@@ -117,7 +117,7 @@ export default function SignIn() {
                                         Echoes.fyi has officially released!
                                     </Typography>
                                     <Typography align="left" sx={{ color: '#999999' }} variant="body3" >
-                                        --11/15/23--
+                                        --TBD--
                                     </Typography>
                                 </Box>
 
@@ -130,15 +130,7 @@ export default function SignIn() {
                                 <Typography align="left" sx={{ color: '#71c1e3' }} gutterBottom variant="h5" component="div">
                                     Planned Updates
                                 </Typography>
-                                <Box marginLeft={'20px'} marginTop={'20px'}>
-                                    <Typography align="left" sx={{ color: '#c4c4c4' }} gutterBottom variant="h6" component="div">
-                                        Forums
-                                    </Typography>
-                                    <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-                                        This functionality is entirely dependant on user amount. In the case that Echoes.fyi gains active users, development towards forums for song recommendations will likely commence.
-                                        The ability for AI to recommend songs can only go so far. Implementing forums would likely improve overall recommendations, but would be difficult to implement/filter.
-                                    </Typography>
-                                </Box>
+                                
                                 <Box marginLeft={'20px'} marginTop={'20px'}>
                                     <Typography align="left" sx={{ color: '#c4c4c4' }} gutterBottom variant="h6" component="div">
                                         Bug reports/User requested functionality
@@ -151,9 +143,7 @@ export default function SignIn() {
                                     <Typography align="left" sx={{ color: '#c4c4c4' }} gutterBottom variant="h6" component="div">
                                         General bug fixes
                                     </Typography>
-                                    <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-
-                                    </Typography>
+                                    
                                 </Box>
                             </CardContent>
                         </Card>
