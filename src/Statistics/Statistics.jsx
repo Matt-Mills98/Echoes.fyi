@@ -220,7 +220,7 @@ export default function CustomizedInputBase(props) {
                 <Grid container
                     spacing={2}
                     marginTop={'5px'}
-                    sx={{maxWidth:'100vw'}}
+                    sx={{maxWidth:'98vw'}}
                 >
                     <Grid item xs={12} md={12}>
                         <Grid container
@@ -260,32 +260,32 @@ export default function CustomizedInputBase(props) {
                                             <Bar options={optionLoudness} data={dataLoudness} />
                                         </Box>
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={4} lg={4} xl={4} justifyContent="center" alignItems="center" sx={{ margin: '0px', padding: '0px' }}>
+                                    <Grid item xs={6} sm={6} md={4} lg={4} xl={4} justifyContent="center" alignItems="center" sx={{ margin: '0px', padding: '0px' }}>
                                         <Box display="flex" justifyContent="center" marginTop='20px' alignItems="center">
-                                            <Typography variant='h1' sx={{
+                                            <Typography  sx={{
                                                 margin: '0px', padding: '0px', background: '-webkit-linear-gradient(45deg, ' + getColor(tracksAvg) + ' 30%, #71c1e3 90%)', WebkitBackgroundClip: "text",
-                                                WebkitTextFillColor: "transparent", fontFamily: 'Arial', fontSize: '175px'
+                                                WebkitTextFillColor: "transparent", fontFamily: 'Arial', fontSize: {xs:'100px', md:'175px'}
                                             }}>
                                                 <CountUp duration={4} end={tracksAvg} />
                                             </Typography>
                                         </Box>
                                         <Box display="flex" justifyContent="center" alignItems="center">
-                                            <Typography variant='h6' sx={{ color: '#999999' }}>
+                                            <Typography  sx={{ color: '#999999', typography: { xs: 'body2', md: 'h6' } }}>
                                                 Average Track Popularity
                                             </Typography>
                                         </Box>
                                     </Grid>
-                                    <Grid item xs={12} sm={12} md={4} lg={4}  xl={4} justifyContent="center" alignItems="center">
+                                    <Grid item xs={6} sm={6} md={4} lg={4}  xl={4} justifyContent="center" alignItems="center">
                                         <Box display="flex" justifyContent="center" marginTop='20px'>
-                                            <Typography variant='h1' sx={{
+                                            <Typography  sx={{
                                                 color: '#518da6', fontFamily: 'Arial', background: '-webkit-linear-gradient(45deg, ' + getColor(artistsAvg) + ' 30%, #71c1e3 90%)', WebkitBackgroundClip: "text",
-                                                WebkitTextFillColor: "transparent", fontSize: '175px'
+                                                WebkitTextFillColor: "transparent", fontSize: {xs:'100px', md:'175px'}
                                             }}>
                                                 <CountUp duration={4} end={artistsAvg} />
                                             </Typography>
                                         </Box>
                                         <Box display="flex" justifyContent="center" >
-                                            <Typography variant='h6' sx={{ color: '#999999' }}>
+                                            <Typography  sx={{ color: '#999999', typography: { xs: 'body2', md: 'h6' } }}>
                                                 Average Artist Popularity
                                             </Typography>
                                         </Box>
