@@ -23,7 +23,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import AlbumIcon from '@mui/icons-material/Album';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Pagination from '@mui/material/Pagination';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import Alert from '@mui/material/Alert';
@@ -1111,20 +1110,6 @@ export default function StickyHeadTable(props) {
                                 </TableBody>
                             </Table>
                         </TableContainer>
-                        <Grid container justifyContent="center">
-                            <Pagination sx={{
-                                "& .MuiPaginationItem-root": {
-                                    color: "#999999",
-                                    '&.Mui-selected': {
-                                        background: '#71c1e3',
-                                        color: 'black',
-                                        // borderRadius: '50%',
-                                    },
-                                },
-                                float: 'center'
-                            }} count={Math.ceil(rowsLocal?.total / 50)} page={page} onChange={changePage} />
-                        </Grid>
-
 
                     </Box>
                     <AnalysisDialog track={track} features={features} analysis={analysis} open={open} handleClose={handleClose} copyToClipBoard={copyToClipBoard} />
