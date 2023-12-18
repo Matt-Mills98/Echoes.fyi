@@ -244,48 +244,63 @@ export default function SignIn(props) {
                                             </Fab>
                                             <CardContent>
                                                 <Typography align="left" sx={{ color: '#71c1e3' }} gutterBottom variant="h5" component="div">
-                                                    About
+                                                    Primary Use Cases
                                                 </Typography>
-                                                <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-                                                    Echoes.fyi is a web application built with the purpose of making Spotify information/data more available to the public.
-                                                    Echoes.fyi links to your Spotify account to display relevant track, artist, and album information in a way that is easily comprehendable.
-                                                    This information is then used for various purposes, including song recommendations and search filtering. Feel free to reach out via the contact section for any feature requests or bug reports.
-                                                </Typography>
-                                            </CardContent>
-                                            <CardContent>
+                                                <Box marginLeft={'20px'} marginTop={'20px'}>
+                                                    <Typography align="left" sx={{ color: '#c4c4c4' }} gutterBottom variant="h6" component="div">
+                                                        Use Case 1
+                                                    </Typography>
+                                                    <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
+                                                        {'The ability to select genres and receive recommendations based on selected genres. These recommendations are to be sortable based on several variables (title, duration, album, popularity, etc.) and filterable based on track features. This can be done via the "Recommendation" tab on the top bar menu, where a user can select genres and then search.'}
+                                                    </Typography>
+                                                </Box>
+                                                <Box marginLeft={'20px'} marginTop={'20px'}>
+                                                    <Typography align="left" sx={{ color: '#c4c4c4' }} gutterBottom variant="h6" component="div">
+                                                        Use Case 2
+                                                    </Typography>
+                                                    <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
+                                                        {'The ability to select a track and retrieve recommendations based on that track. Like above, these recommendations are to be filterable and sortable. This can be done via selecting the horizontal ellipses "more" icon button and selecting the "Get Recommendation" menu item. This will redirect the user to the recommendations page where recommendations will be automatically populated based on the selected track.'}
+                                                    </Typography>
+                                                </Box>
+                                                <Box marginLeft={'20px'} marginTop={'20px'}>
+                                                    <Typography align="left" sx={{ color: '#c4c4c4' }} gutterBottom variant="h6" component="div">
+                                                        Use Case 3
+                                                    </Typography>
+                                                    <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
+                                                        {' The ability to view signed in account statistics. This can be done via the "Statistics" tab on the top bar menu. Once selected, info regarding the signed in user\'s most listened to tracks and artists will populate. '}
+                                                    </Typography>
+                                                </Box>
+                                                <Box marginLeft={'20px'} marginTop={'20px'}>
+                                                    <Typography align="left" sx={{ color: '#c4c4c4' }} gutterBottom variant="h6" component="div">
+                                                        Use Case 4
+                                                    </Typography>
+                                                    <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
+                                                        {'The ability to easily see audio analyses and track features based on a selected track. Like use case 2, this can be done by selecting the "more" button on any track table, . Once selected, a dialog window will pop-up displaying information regarding the track. '}
+                                                    </Typography>
+                                                </Box>
                                                 <Typography align="left" sx={{ color: '#71c1e3' }} gutterBottom variant="h5" component="div">
-                                                    Description of Pages
+                                                    Other Use Cases
                                                 </Typography>
                                                 <Box marginLeft={'20px'} marginTop={'20px'}>
-                                                    <Typography align="left" sx={{ color: '#c4c4c4' }} gutterBottom variant="h6" component="div">
-                                                        Home
-                                                    </Typography>
+
                                                     <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-                                                        Displays general playlists, including Spotify Featured, Top Global, Top Local, and more.
+                                                        {'1) Every listed track can redirect to Spotify via the "more" button or bottom drawer when a track is playing.  '}
                                                     </Typography>
                                                 </Box>
                                                 <Box marginLeft={'20px'} marginTop={'20px'}>
-                                                    <Typography align="left" sx={{ color: '#c4c4c4' }} gutterBottom variant="h6" component="div">
-                                                        Recommendations
-                                                    </Typography>
                                                     <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-                                                        Uses Spotify's algorithms to recommend songs based on a number of factors. These recommendations can be filtered via popularity, genres, tempo, key, etc. to allow the user more control over their recommendations.
+                                                        {'2) Partial or full playback based on user privileges. '}
                                                     </Typography>
                                                 </Box>
                                                 <Box marginLeft={'20px'} marginTop={'20px'}>
-                                                    <Typography align="left" sx={{ color: '#c4c4c4' }} gutterBottom variant="h6" component="div">
-                                                        Search
-                                                    </Typography>
+
                                                     <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-                                                        Utilizes Spotify's search functionality to allow users to view and preview results based on several filters. Users can select the results they would like to see as well as include tags to narrow results.
+                                                        {'3) Ability to view albums, top artist tracks, Spotify Featured Playlists, Spotify Genre Playlists, user followed tracks, user followed albums, user followed playlists, etc.'}
                                                     </Typography>
                                                 </Box>
                                                 <Box marginLeft={'20px'} marginTop={'20px'}>
-                                                    <Typography align="left" sx={{ color: '#c4c4c4' }} gutterBottom variant="h6" component="div">
-                                                        Profile
-                                                    </Typography>
                                                     <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-                                                        Profile returns data depending on the logged in user. A user can see their liked songs, created and followed playlists, and followed artists. All information pertaining to these items can be displayed by clicking on a selected row.
+                                                        {'4) Searchability'}
                                                     </Typography>
                                                 </Box>
                                             </CardContent>
@@ -293,9 +308,13 @@ export default function SignIn(props) {
                                                 <Typography align="left" sx={{ color: '#71c1e3' }} gutterBottom variant="h5" component="div">
                                                     Contact
                                                 </Typography>
-                                                <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-                                                    Email: echoesfyi@gmail.com
-                                                </Typography>
+                                                <Button
+                                                    href={'mailto:contact@echoes.fyi'}
+                                                >
+                                                    <Typography sx={{ textTransform: 'none', color: "#c4c4c4" }}>
+                                                        contact@echoesfyi.com
+                                                    </Typography>
+                                                </Button>
                                             </CardContent>
                                         </Card>
                                     </Grow>
