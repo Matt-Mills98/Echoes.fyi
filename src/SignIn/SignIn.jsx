@@ -37,7 +37,7 @@ async function redirectToAuthCodeFlow(clientId) {
         params.append("client_id", clientId);
         params.append("response_type", "code");
         params.append("redirect_uri", "https://echoes.fyi/callback");
-        params.append("scope", "user-read-private user-read-email playlist-read-collaborative playlist-read-private user-read-recently-played user-library-read user-library-modify user-follow-read streaming user-modify-playback-state user-top-read");
+        params.append("scope", "user-read-private playlist-read-collaborative playlist-read-private user-read-recently-played user-library-read user-library-modify user-follow-read streaming user-modify-playback-state user-top-read");
         params.append("code_challenge_method", "S256");
         params.append("code_challenge", challenge);
 
