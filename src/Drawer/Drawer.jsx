@@ -138,119 +138,65 @@ export default function TemporaryDrawer(props) {
                         </Grid>
 
                         <Grid item xs={12} >
-                            <Grid
-                                container
-                                spacing={2}
+                            <Stack direction="row" justifyContent={"center"} spacing={2}>
 
-                                sx={{ ml: '5vw', mr: '5vw' }}
+                                <IconButton sx={{ paddingBottom: '0px', marginBottom: '0px' }} onClick={toPrev}>
+                                    <SkipPreviousIcon fontSize='large' sx={{ color: '#999999', '&:hover': { color: 'white' } }} />
+                                </IconButton>
 
-                            >
 
-                                <Grid item xs={4}
-                                >
-                                    <IconButton sx={{ paddingBottom: '0px', marginBottom: '0px' }} onClick={toPrev}>
-                                        <SkipPreviousIcon fontSize='large' sx={{ color: '#999999', '&:hover': { color: 'white' } }} />
-                                    </IconButton>
-                                </Grid>
-                                <Grid item xs={4}
-                                >
+                                {playing[index] ? (<IconButton sx={{ paddingBottom: '0px', marginBottom: '0px', '&:hover': { transform: 'scale(1.1)' } }} onClick={() => { setPlaying(false, playing.length, index); }}>
 
-                                    {playing[index] ? (<IconButton sx={{ paddingBottom: '0px', marginBottom: '0px', '&:hover': { transform: 'scale(1.1)' } }} onClick={() => { setPlaying(false, playing.length, index); }}>
+                                    <PauseCircleIcon fontSize='large' sx={{ color: 'white' }} />
+                                </IconButton>) : (<IconButton sx={{ paddingBottom: '0px', marginBottom: '0px', '&:hover': { transform: 'scale(1.1)' } }} onClick={() => { setPlaying(true, playing.length, index); }}>
 
-                                        <PauseCircleIcon fontSize='large' sx={{ color: 'white' }} />
-                                    </IconButton>) : (<IconButton sx={{ paddingBottom: '0px', marginBottom: '0px', '&:hover': { transform: 'scale(1.1)' } }} onClick={() => { setPlaying(true, playing.length, index); }}>
+                                    <PlayCircleIcon fontSize='large' sx={{ color: 'white' }} />
+                                </IconButton>)}
 
-                                        <PlayCircleIcon fontSize='large' sx={{ color: 'white' }} />
-                                    </IconButton>)}
-                                </Grid>
 
-                                <Grid item xs={4}
-                                >
 
-                                    <IconButton sx={{ paddingBottom: '0px', marginBottom: '0px' }} onClick={toNext}>
+                                <IconButton sx={{ paddingBottom: '0px', marginBottom: '0px' }} onClick={toNext}>
 
-                                        <SkipNextIcon fontSize='large' sx={{ color: '#999999', '&:hover': { color: 'white' } }} />
-                                    </IconButton>
-                                </Grid>
+                                    <SkipNextIcon fontSize='large' sx={{ color: '#999999', '&:hover': { color: 'white' } }} />
+                                </IconButton>
+                            </Stack>
 
-                            </Grid>
-                            <Grid item xs={12} >
-
-                                <Slider
-                                    sx={{
-                                        height: '4px', minWidth: '100%', color: '#71c1e3', '& .MuiSlider-thumb': { width: '0px', height: '0px' }, '&:hover': {
-                                            '& .MuiSlider-track': {
-                                                color: 'white',
-                                            },
-                                            '& .MuiSlider-thumb': {
-                                                width: '12px', height: '12px', color: '#71c1e3'
-                                            }
+                            <Slider
+                                sx={{
+                                    height: '4px', minWidth: '100%', color: '#71c1e3', '& .MuiSlider-thumb': { width: '0px', height: '0px' }, '&:hover': {
+                                        '& .MuiSlider-track': {
+                                            color: 'white',
+                                        },
+                                        '& .MuiSlider-thumb': {
+                                            width: '12px', height: '12px', color: '#71c1e3'
                                         }
-                                    }}
-                                    size="small"
-                                    defaultValue={0}
-                                    value={currentTime}
-                                    onChange={onScrub}
+                                    }
+                                }}
+                                size="small"
+                                defaultValue={0}
+                                value={currentTime}
+                                onChange={onScrub}
 
-                                    aria-label="Small"
-                                    valueLabelDisplay="auto"
-                                    min={0} max={trackLength}
-                                    valueLabelFormat={value => <div>{getTime(value)}</div>}
-                                />
-                            </Grid>
+                                aria-label="Small"
+                                valueLabelDisplay="auto"
+                                min={0} max={trackLength}
+                                valueLabelFormat={value => <div>{getTime(value)}</div>}
+                            />
 
-                        </Grid>
-                        <Grid item xs={12}>
 
-                            <Grid
-                                container
-                                spacing={2}
-                                direction="row"
-                                alignItems="center"
-                            >
-                                <Grid item xs={1} >
 
-                                    <IconButton onClick={muteVolume}>
-                                        {volume == 0 && <VolumeOffIcon sx={{ marginBottom: '0px', marginTop: '2vh', color: '#999999' }} />}
-                                        {volume > 0 && volume < 25 && <VolumeMuteIcon sx={{ marginBottom: '0px', marginTop: '2vh', color: '#999999' }} />}
-                                        {volume >= 25 && volume < 66 && <VolumeDownIcon sx={{ marginBottom: '0px', marginTop: '2vh', color: '#999999' }} />}
-                                        {volume >= 66 && <VolumeUpIcon sx={{ marginBottom: '0px', marginTop: '2vh', color: '#999999' }} />}
-                                    </IconButton>
-                                </Grid>
-                                <Grid item xs={9}>
-                                    <Slider
-                                        sx={{
-                                            marginBottom: '0px', minWidth: '100%', height: '4px', marginTop: '2vh', color: '#71c1e3', '& .MuiSlider-thumb': { width: '0px', height: '0px' }, '&:hover': {
-                                                '& .MuiSlider-track': {
-                                                    color: 'white',
-                                                },
-                                                '& .MuiSlider-thumb': {
-                                                    width: '12px', height: '12px', color: '#71c1e3'
-                                                }
-                                            }
-                                        }}
-                                        size="small"
-                                        defaultValue={80}
-                                        value={volume}
-                                        onChange={setVolume}
-                                        aria-label="Small"
-                                        valueLabelDisplay="auto"
-                                        min={0} max={100}
-                                    />
-                                </Grid>
-                                <Grid item xs={1} >
+                            <Stack direction="row" justifyContent={"center"} spacing={2}>
 
-                                    <IconButton component={Link} to={'./Recommendations?id=' + track?.id} onClick={() => { window.document.title = 'Recommendations | ' + track?.name; }}>
-                                        <ThumbUpIcon fontSize='small' sx={{ marginBottom: '0px', marginTop: '2vh', color: '#999999', '&:hover': { color: 'white' } }} />
-                                    </IconButton>
-                                </Grid>
 
-                                <Grid item xs={1} >
+                                <IconButton component={Link} to={'./Recommendations?id=' + track?.id} onClick={() => { window.document.title = 'Recommendations | ' + track?.name; }}>
+                                    <ThumbUpIcon fontSize='small' sx={{ marginBottom: '0px', color: '#999999', '&:hover': { color: 'white' } }} />
+                                </IconButton>
 
-                                    <LaunchIcon fontSize='small' sx={{ marginBottom: '0px', marginTop: '2vh', color: '#999999', '&:hover': { color: 'white' } }} />
-                                </Grid>
-                            </Grid>
+                                <IconButton component={Link} to={track?.external_urls?.spotify} onClick={reloadLocation}>
+                                    <img src={'./Spotify_Icon_RGB_White.png'} width='20px' height='20px' style={{}} />
+                                </IconButton>
 
+                            </Stack>
                         </Grid>
                     </Grid>
                 </Collapse>

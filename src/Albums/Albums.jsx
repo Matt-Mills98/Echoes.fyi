@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Box,  CardActionArea, Grid } from '@mui/material';
+import { Box, CardActionArea, Grid } from '@mui/material';
 import UserAlbumSongs from '../Profile/UserAlbumSongs';
 import { extractColors } from 'extract-colors'
 import moment from 'moment/moment';
@@ -95,20 +95,18 @@ export default function MultiActionAreaCard(props) {
                                 <Card sx={{ maxWidth: '100%', background: 'linear-gradient(to bottom right, ' + color1 + '33 0%, ' + '#16191aFF' + ' 100%)', backgroundColor: '#16191a' }}>
                                     <CardActionArea onClick={redirect}>
                                         <CardContent>
-                                            <Grid container spacing={2}>
-                                                <Grid item sx={4}>
-                                                    <CardMedia
-                                                        component="img"
-                                                        height="140px"
-                                                        width='140px'
-                                                        sx={{  m:'0px', p:'0px', objectFit: "contain" }}
-                                                        image={media}
-                                                        alt="Album Cover"
-                                                    >
-                                                    </CardMedia>
-                                                </Grid>
-                                                <Grid item sx={8}>
+                                            <Stack direction="row" justifyContent={"left"} spacing={2}>
 
+                                                <CardMedia
+                                                    component="img"
+                                                    height="140px"
+                                                    width='140px'
+                                                    sx={{ m: '0px', p: '0px', objectFit: "contain" }}
+                                                    image={media}
+                                                    alt="Album Cover"
+                                                >
+                                                </CardMedia>
+                                                <Stack direction="column" justifyContent={"center"} spacing={0}>
 
                                                     <Typography sx={{ color: '#c4c4c4' }} variant="h4" component="div">
                                                         {name}
@@ -118,8 +116,8 @@ export default function MultiActionAreaCard(props) {
                                                     <Typography sx={{ color: '#999999' }} variant="body2" color="text.secondary">
                                                         Released {moment(date).fromNow()}
                                                     </Typography>
-                                                </Grid>
-                                            </Grid>
+                                                </Stack>
+                                            </Stack>
                                         </CardContent>
                                     </CardActionArea>
                                 </Card>
