@@ -246,7 +246,7 @@ export default function CustomizedInputBase(props) {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid item xs={12} xl={12} sx={{ maxWidth:'100vw', height: '100%', margin: '0px', padding: '0px' }}>
+                    <Grid item xs={12} xl={12} sx={{ maxWidth:'98vw', height: '100%', margin: '0px', padding: '0px' }}>
                         <Box >
                             {artists?.items != null &&
                                 <Grid container
