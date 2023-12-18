@@ -180,18 +180,8 @@ export default function TemporaryDrawer(props) {
                             />
                             <Stack direction="row" justifyContent={"center"} spacing={2}>
 
-
-
-                                <IconButton onClick={muteVolume}>
-                                    {volume == 0 && <VolumeOffIcon sx={{ marginBottom: '0px', marginTop: '2vh', color: '#999999' }} />}
-                                    {volume > 0 && volume < 25 && <VolumeMuteIcon sx={{ marginBottom: '0px', marginTop: '2vh', color: '#999999' }} />}
-                                    {volume >= 25 && volume < 66 && <VolumeDownIcon sx={{ marginBottom: '0px', marginTop: '2vh', color: '#999999' }} />}
-                                    {volume >= 66 && <VolumeUpIcon sx={{ marginBottom: '0px', marginTop: '2vh', color: '#999999' }} />}
-                                </IconButton>
-
-
                                 <IconButton component={Link} to={'./Recommendations?id=' + track?.id} onClick={() => { window.document.title = 'Recommendations | ' + track?.name; }}>
-                                    <ThumbUpIcon fontSize='small' sx={{ marginBottom: '0px', marginTop: '2vh', color: '#999999', '&:hover': { color: 'white' } }} />
+                                    <ThumbUpIcon fontSize='small' sx={{ marginBottom: '0px', color: '#999999', '&:hover': { color: 'white' } }} />
                                 </IconButton>
 
 
