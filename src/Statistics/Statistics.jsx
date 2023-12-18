@@ -220,7 +220,7 @@ export default function CustomizedInputBase(props) {
                 <Grid container
                     spacing={2}
                     marginTop={'5px'}
-                    sx={{maxWidth:'98vw'}}
+                    sx={{maxWidth:'96vw'}}
                 >
                     <Grid item xs={12} md={12}>
                         <Grid container
@@ -246,7 +246,7 @@ export default function CustomizedInputBase(props) {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid item xs={12} xl={12} sx={{ maxWidth:'98vw', height: '100%', margin: '0px', padding: '0px' }}>
+                    <Grid item xs={12} xl={12} sx={{ maxWidth:'96vw', height: '100%', margin: '0px', padding: '0px' }}>
                         <Box >
                             {artists?.items != null &&
                                 <Grid container
@@ -256,7 +256,7 @@ export default function CustomizedInputBase(props) {
                                     justifyContent="center"
                                     sx={{ margin: '0px', padding: '0px' }}>
                                     <Grid item xs={12} sm={12} md={4} lg={4} xl={4} >
-                                        <Box display="flex" justifyContent="center" sx={{ height: '250px', maxWidth: '98vw' }}>
+                                        <Box display="flex" justifyContent="center" sx={{ height: '230px', maxWidth: '96vw' }}>
                                             <Bar options={optionLoudness} data={dataLoudness} />
                                         </Box>
                                     </Grid>
