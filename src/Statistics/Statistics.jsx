@@ -256,7 +256,7 @@ export default function CustomizedInputBase(props) {
                                     justifyContent="center"
                                     sx={{ margin: '0px', padding: '0px' }}>
                                     <Grid item xs={12} sm={12} md={4} lg={4} xl={4} >
-                                        <Box display="flex" justifyContent="center" sx={{ height: '250px', maxWidth: '100%' }}>
+                                        <Box display="flex" justifyContent="center" sx={{ height: '250px', maxWidth: '98vw' }}>
                                             <Bar options={optionLoudness} data={dataLoudness} />
                                         </Box>
                                     </Grid>
