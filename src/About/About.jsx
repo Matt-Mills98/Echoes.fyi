@@ -63,9 +63,11 @@ export default function SignIn() {
                                 Use Case 4
                             </Typography>
                             <Typography align="left" sx={{ color: '#999999' }} variant="body1" >
-                                {'The ability to easily see audio analyses and track features based on a selected track. Like use case 2, this can be done by selecting the "more" button on any track table, . Once selected, a dialog window will pop-up displaying information regarding the track. '}
+                                {'The ability to easily see audio analyses and track features based on a selected track. Like use case 2, this can be done by selecting the "more" button on any track table. Once selected, a dialog window will pop-up displaying information regarding the track. '}
                             </Typography>
                         </Box>
+                    </CardContent>
+                    <CardContent>
                         <Typography align="left" sx={{ color: '#71c1e3' }} gutterBottom variant="h5" component="div">
                             Other Use Cases
                         </Typography>
