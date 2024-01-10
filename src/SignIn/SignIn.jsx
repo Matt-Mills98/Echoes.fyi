@@ -206,6 +206,13 @@ export default function SignIn(props) {
                                                 </Box>
                                                 <Typography align="center" sx={{ color: '#999999' }} variant="body1" >Echoes.fyi uses the Spotify Web API to retrieve data from a user's Spotify Account. Please link your Spotify account via the Sign In button.</Typography>
                                             </CardContent>
+                                            <CardContent sx={{ alignItems: 'center', display: "flex", flexDirection: "column", justifyContent: "center" }}>
+
+                                                <Alert align="center" severity="info" variant="standard">
+                                                    <AlertTitle align="center">Notice: Echoes.fyi is currently awaiting Spotify approval. Due to this, unauthorized users cannot access all features. For manual authorization, please contact <Link href={'mailto:contact@echoesfyi.com'} color="inherit">contact@echoes.fyi</Link></AlertTitle>
+                                                    {errorMessage}
+                                                </Alert>
+                                            </CardContent>
                                             <CardContent sx={{ alignItems: 'center', display: "flex", flexDirection: "column", justifyContent: "center", width: '100%' }}>
                                                 <Button
                                                     sx={{ bgcolor: '#518da6', width: '75%', height: '50px', }}
