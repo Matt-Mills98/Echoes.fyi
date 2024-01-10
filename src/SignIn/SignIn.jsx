@@ -209,7 +209,7 @@ export default function SignIn(props) {
                                             <CardContent sx={{ alignItems: 'center', display: "flex", flexDirection: "column", justifyContent: "center" }}>
 
                                                 <Alert align="center" severity="info" variant="standard">
-                                                    <AlertTitle align="center">Notice: Echoes.fyi is currently awaiting Spotify approval. Due to this, unauthorized users cannot access all features. For manual authorization, please contact <Link href={'mailto:contact@echoesfyi.com'} color="inherit">contact@echoes.fyi</Link></AlertTitle>
+                                                    <AlertTitle align="center">Notice: Echoes.fyi is currently awaiting Spotify approval. Due to this, unauthorized users cannot access all features. For manual authorization, please contact <Link href={'mailto:contact@echoes.fyi'} color="inherit">contact@echoes.fyi</Link></AlertTitle>
                                                     {errorMessage}
                                                 </Alert>
                                             </CardContent>
