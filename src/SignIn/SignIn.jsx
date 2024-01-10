@@ -329,7 +329,7 @@ export default function SignIn(props) {
                                                     href={'mailto:contact@echoes.fyi'}
                                                 >
                                                     <Typography sx={{ textTransform: 'none', color: "#c4c4c4" }}>
-                                                        contact@echoesfyi.com
+                                                        contact@echoes.fyi
                                                     </Typography>
                                                 </Button>
                                             </CardContent>
