@@ -1,11 +1,8 @@
 
 # Echoes.fyi
-
-Fully responsive Web App which consumes the Spotify Web API; developed using Vite.
-
-
 <img src="https://m-mills.com/EchoesTextLogo.png" alt="drawing" style="width:200px;"/>
 
+Fully responsive Web App which consumes the Spotify Web API; developed using Vite.
 
 ## Features
 
