@@ -6,17 +6,17 @@ Fully responsive Web App which consumes the Spotify Web API; developed using Vit
 
 ## Features
 
-- Track Recommendations
+- View Track Recommendations
     - Track recommendations are filterable and searchable. Recommendations can be based on genres and individual tracks. 
-- Account Statistics
+- View Account Statistics
     - Track, artists, and genre statistics returned dependent on the signed in user.
-- Audio Analysis
+- View Audio Analysis
     - All tracks include an audio analysis which breaks down track features and sections.
 - Full and Partial Track Playback
     - Dependent on Spotify Subscription. Full playback is only available to premium users. 
-- Artist's Top Songs
-- Albums
-- Liked/Followed Tracks, Albums, and Playlists
+- View Artist's Top Songs
+- View Albums
+- View Liked/Followed Tracks, Albums, and Playlists
 
 ## Screenshots
 
