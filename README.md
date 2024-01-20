@@ -4,7 +4,7 @@
 Fully responsive Web App which consumes the Spotify Web API; developed using Vite.
 
 
-![Logo](https://m-mills.com/EchoesTextLogo.png)
+<img src="drawing.jpg" alt="drawing" style="width:200px;"/>
 
 
 ## Features
