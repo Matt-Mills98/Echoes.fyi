@@ -41,3 +41,8 @@ Fully responsive Web App which consumes the Spotify Web API; developed using Vit
 [Spotify Web API](https://developer.spotify.com/documentation/web-api)
 
 [Web Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk)
+
+
+## Feedback
+
+If you have any feedback, please reach out to us at [contact@echoes.fyi](mailto:contact@echoes.fyi)
