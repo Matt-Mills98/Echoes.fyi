@@ -18,6 +18,21 @@ Fully responsive Web App which consumes the Spotify Web API; developed using Vit
 - Albums
 - Liked/Followed Tracks, Albums, and Playlists
 
+## Screenshots
+
+![App Screenshot](https://m-mills.com/Echoes1.png)
+
+![App Screenshot](https://m-mills.com/Echoes2.png)
+
+![App Screenshot](https://m-mills.com/Echoes3.png)
+
+![App Screenshot](https://m-mills.com/Echoes4.png)
+
+![App Screenshot](https://m-mills.com/Echoes5.png)
+
+![App Screenshot](https://m-mills.com/Echoes6.png)
+
+![App Screenshot](https://m-mills.com/Echoes7.png)
 
 ## Links
 
