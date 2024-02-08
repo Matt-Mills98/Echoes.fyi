@@ -174,7 +174,7 @@ export default function SignIn(props) {
             </Alert>
             ) : (
                 <div>
-                    <img src={'./public/SignInBG.png'} style={{
+                    <img src={'./SignInBG.png'} style={{
                                 height:'100vh',
                                 transform: 'translate(-50%,-50%)',
                                 position: 'fixed',
