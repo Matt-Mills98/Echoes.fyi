@@ -100,11 +100,9 @@ function ResponsiveAppBar() {
         setPlayer(player);
         player.connect().then(success => {
           if (success) {
-            console.log('The Web Playback SDK successfully connected to Spotify!');
           }
         })
         player.addListener('ready', ({ device_id }) => {
-          console.log('Ready with Device ID', device_id);
           transferPlayback(device_id);
           setDeviceID(device_id);
           player.resume();
@@ -149,10 +147,8 @@ function ResponsiveAppBar() {
         })
           .then(async (result) => {
             if (result.ok) {
-              console.log('transferred');
             }
             else {
-              console.log('bad');
 
             }
           })
@@ -230,14 +226,12 @@ function ResponsiveAppBar() {
     setVolume(value);
   }
   const setIsPlayingArr = (boolVal, totalLength, index) => {
-    //console.log('Playing ' + index);
     let length = totalLength;
     let newArr = [];
     for (let i = 0; i < length; i++) {
       newArr.push(false);
     }
     newArr[index] = boolVal;
-    console.log(newArr);
     setPlayingArr(newArr);
   }
   const audioSrcMissing = () => {
@@ -290,10 +284,8 @@ function ResponsiveAppBar() {
     localStorage.removeItem('expires');
   }
   const toNext = () => {
-    console.log(type);
     if (type == 'playlists') {
       if (index < playingArr.length - 1) {
-        console.log('playlist')
         //setTrackIndex(trackIndex + 1);
         setTrackID(rows.items[index + 1]?.track?.id);
         setIsPlayingArr(true, playingArr.length, index + 1);
@@ -307,7 +299,6 @@ function ResponsiveAppBar() {
       }
     }
     else if (type == 'artist' || type == 'recommend') {
-      console.log('artrec');
 
       if (index < playingArr.length - 1) {
         //setTrackIndex(trackIndex + 1);
@@ -323,7 +314,6 @@ function ResponsiveAppBar() {
       }
     }
     else if (type == 'album' || type == 'search') {
-      console.log('albumplay');
       if (index < playingArr.length - 1) {
         //setTrackIndex(trackIndex + 1);
         setTrackID(rows.items[index + 1]?.id);

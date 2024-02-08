@@ -83,8 +83,6 @@ function WebPlayback(props) {
 
     React.useEffect(() => {
         if (!checkAccessToken()) {
-
-            console.log(is_active);
             if (type != '') {
                 if (!is_active) {
                   
