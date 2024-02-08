@@ -225,9 +225,9 @@ export default function SignIn(props) {
                                             </CardContent>
                                             <CardContent sx={{ alignItems: 'center', display: "flex", flexDirection: "column", justifyContent: "center", width: '100%' }}>
                                                 <Button
-                                                    sx={{ bgcolor: '#518da6', width: '75%', height: '50px', }}
+                                                    sx={{ bgcolor: '#518da6', width: '75%', height: '50px', ":hover":{bgcolor: '#306a84'} }}
                                                     onClick={handleOAuth}>
-                                                    <Typography sx={{ color: 'white' }} m={'10px'}>Sign in</Typography>
+                                                    <Typography sx={{ color: 'white'}} m={'10px'}>Sign in</Typography>
                                                     <LoginIcon sx={{ color: 'white' }} />
                                                 </Button>
                                             </CardContent>
