@@ -174,7 +174,7 @@ export default function SignIn(props) {
             </Alert>
             ) : (
                 <div>
-                    <img src={'./public/SignInArt.png'} style={{
+                    <img src={'./public/SignInBG.png'} style={{
                                 height:'100vh',
                                 transform: 'translate(-50%,-50%)',
                                 position: 'fixed',
@@ -204,9 +204,11 @@ export default function SignIn(props) {
                                     justifyContent: "center"
                                 }}>
                                     <Fade in={page == ''} >
-                                        <Card sx={{
+                                        <Card  sx={{
                                             bgcolor: '#16191a', mx: '20px', py: { xs: '50px', md: '50px', lg: '100px', xl: '100px' }, alignItems: 'center', display: "flex", flexDirection: "column",
-                                            justifyContent: "center"
+                                            justifyContent: "center",boxShadow: 10
+                                    
+                                        
                                         }}>
 
                                             <CardContent sx={{ alignItems: 'center', display: "flex", flexDirection: "column", justifyContent: "center" }}>
