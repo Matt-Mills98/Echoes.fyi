@@ -255,7 +255,7 @@ export default function SignIn(props) {
                                     alignItems: 'center', display: "flex", flexDirection: "column",
                                     justifyContent: "center"
                                 }}> <Grow in={page == 'About'} >
-                                        <Card sx={{ bgcolor: '#16191a', mt: '40px' }}>
+                                        <Card sx={{ bgcolor: '#16191a', my: '40px' }}>
                                             <Fab sx={{ bgcolor: '#518da6', marginTop: '10px', ml: '10px' }} onClick={() => { updateView('') }}>
                                                 <ArrowBackIcon />
                                             </Fab>
@@ -353,7 +353,7 @@ export default function SignIn(props) {
                                     justifyContent: "center"
                                 }}>
                                     <Grow in={page == 'Perms'} >
-                                        <Card sx={{ bgcolor: '#16191a', mt: '40px'  }}>
+                                        <Card sx={{ bgcolor: '#16191a', my: '40px'  }}>
                                             <Fab sx={{ bgcolor: '#518da6', marginTop: '10px', ml: '10px' }} onClick={() => { updateView('') }}>
                                                 <ArrowBackIcon />
                                             </Fab>
