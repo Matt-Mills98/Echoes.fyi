@@ -174,18 +174,30 @@ export default function SignIn(props) {
             </Alert>
             ) : (
                 <div>
-
+                    <img src={'./public/SignInArt.png'} style={{
+                                height:'100vh',
+                                transform: 'translate(-50%,-50%)',
+                                position: 'fixed',
+                                top: '50%',
+                                left: '50%',
+                                filter:'blur(4px)'
+                            }} />
                     {page != 'callback' &&
 
 
                         <Grid container
                             spacing={2}
+                            alignItems="center"
+                            display="flex"
+                            justifyContent="center"
+                            sx={{
+                                transform: 'translate(-50%,-50%)',
+                                position: 'fixed',
+                                top: '50%',
+                                left: '50%',
+                            }}
                         >
-                            <Box component='img' src='./EchoesTextLogo.png' height={{ xs: '75px', xl: '100px' }} m={'12px'} sx={{ position: 'absolute', left: '0px', opacity: '.5' }}></Box>
 
-                            <Grid item xs={0} md={0} lg={6} xl={6}>
-                                <Box component='img' src='./SignInArt.png' width={{ xs: '0%', md: '0%', lg: '100%', xl: '100%' }}></Box>
-                            </Grid>
                             {page == '' &&
                                 <Grid item xs={12} md={12} lg={6} xl={6} sx={{
                                     alignItems: 'center', display: "flex", flexDirection: "column",
@@ -193,7 +205,7 @@ export default function SignIn(props) {
                                 }}>
                                     <Fade in={page == ''} >
                                         <Card sx={{
-                                            bgcolor: '#16191a', m: '20px', pt: { xs: '100px', md: '100px', lg: '200px', xl: '200px' }, pb: { xs: '100px', md: '100px', lg: '200px', xl: '200px' }, alignItems: 'center', display: "flex", flexDirection: "column",
+                                            bgcolor: '#16191a', mx: '20px', py: { xs: '50px', md: '50px', lg: '100px', xl: '100px' }, alignItems: 'center', display: "flex", flexDirection: "column",
                                             justifyContent: "center"
                                         }}>
 
@@ -207,7 +219,6 @@ export default function SignIn(props) {
                                                 <Typography align="center" sx={{ color: '#999999' }} variant="body1" >Echoes.fyi uses the Spotify Web API to retrieve data from a user's Spotify Account. Please link your Spotify account via the Sign In button.</Typography>
                                             </CardContent>
                                             <CardContent sx={{ alignItems: 'center', display: "flex", flexDirection: "column", justifyContent: "center" }}>
-
                                                 <Alert align="center" severity="info" variant="standard">
                                                     <AlertTitle align="center">Notice: Echoes.fyi is currently awaiting Spotify approval. Due to this, unauthorized users cannot access all features. For manual authorization, please contact <Link href={'mailto:contact@echoes.fyi'} color="inherit">contact@echoes.fyi</Link></AlertTitle>
                                                     {errorMessage}
