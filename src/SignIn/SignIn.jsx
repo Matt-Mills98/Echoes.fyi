@@ -192,9 +192,10 @@ export default function SignIn(props) {
                             justifyContent="center"
                             sx={{
                                 transform: 'translate(-50%,-50%)',
-                                position: 'fixed',
+                                position: 'absolute',
                                 top: '50%',
                                 left: '50%',
+                                maxHeight:'100vh'
                             }}
                         >
 
