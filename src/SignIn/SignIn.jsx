@@ -186,7 +186,6 @@ export default function SignIn(props) {
 
 
                         <Grid container
-                            spacing={2}
                             alignItems="center"
                             display="flex"
                             justifyContent="center"
@@ -207,9 +206,7 @@ export default function SignIn(props) {
                                     <Fade in={page == ''} >
                                         <Card  sx={{
                                             bgcolor: '#16191a', mx: '20px', py: { xs: '50px', md: '50px', lg: '100px', xl: '100px' }, alignItems: 'center', display: "flex", flexDirection: "column",
-                                            justifyContent: "center",boxShadow: 10
-                                    
-                                        
+                                            justifyContent: "center", boxShadow: 10, 
                                         }}>
 
                                             <CardContent sx={{ alignItems: 'center', display: "flex", flexDirection: "column", justifyContent: "center" }}>
@@ -243,9 +240,9 @@ export default function SignIn(props) {
                                                     justifyContent="center">
                                                     <Link href="https://www.spotify.com/us/signup" sx={{ color: '#999999' }} variant="body1" underline="hover">Create Spotify account</Link>
 
-                                                    <Link marginTop={'10px'} onClick={() => { updateView('About') }} sx={{ color: '#999999' }} variant="body1" underline="hover">About Echoes.fyi</Link>
+                                                    <Link marginTop={'.5rem'} onClick={() => { updateView('About') }} sx={{ color: '#999999' }} variant="body1" underline="hover">About Echoes.fyi</Link>
 
-                                                    <Link marginTop={'10px'} onClick={() => { updateView('Perms') }} sx={{ color: '#999999' }} variant="body1" underline="hover">Summary of requested permissions</Link>
+                                                    <Link marginTop={'.5rem'} onClick={() => { updateView('Perms') }} sx={{ color: '#999999' }} variant="body1" underline="hover">Summary of requested permissions</Link>
 
                                                 </Grid>
                                             </CardContent>
@@ -259,7 +256,7 @@ export default function SignIn(props) {
                                     alignItems: 'center', display: "flex", flexDirection: "column",
                                     justifyContent: "center"
                                 }}> <Grow in={page == 'About'} >
-                                        <Card sx={{ bgcolor: '#16191a' }}>
+                                        <Card sx={{ bgcolor: '#16191a', mx: '20px' }}>
                                             <Fab sx={{ bgcolor: '#518da6', marginTop: '10px', ml: '10px' }} onClick={() => { updateView('') }}>
                                                 <ArrowBackIcon />
                                             </Fab>
